@@ -66,7 +66,7 @@ function Home() {
 
   return (
     <main className="grain overflow-hidden bg-[#f5f3ec]">
-      <section id="inicio" className="relative min-h-[760px] bg-[#1d4333] text-[#f7f4ed]">
+      <section id="inicio" className="fintech-grid relative min-h-[760px] bg-[#1d4333] text-[#f7f4ed]">
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, #bbd878 0, transparent 27%), linear-gradient(115deg, transparent 40%, rgba(216,232,108,.18) 40.2%, transparent 40.5%)' }} />
         <header className="relative z-10 mx-auto flex max-w-[1320px] items-center justify-between px-5 py-6 md:px-10 lg:py-8">
           <Logo light />
@@ -159,7 +159,7 @@ function Home() {
         </div>
       </section>
 
-      <section id="solucoes" className="bg-[#e5eadf] px-5 py-24 md:px-10 md:py-32">
+      <section id="solucoes" className="fintech-grid-light bg-[#e5eadf] px-5 py-24 md:px-10 md:py-32">
         <div className="mx-auto max-w-[1320px]">
           <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
             <div>

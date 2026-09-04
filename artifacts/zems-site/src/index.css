@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -43,7 +43,7 @@
   --accent: 39 83% 60%;
   --accent-foreground: 154 31% 15%;
   --app-font-sans: 'Manrope', sans-serif;
-  --app-font-serif: 'Newsreader', Georgia, serif;
+  --app-font-serif: 'Space Grotesk', 'Manrope', sans-serif;
   --app-font-mono: 'DM Mono', monospace;
   --radius: 1rem;
   --shadow-soft: 0 24px 70px rgba(28, 56, 43, .10);
@@ -70,14 +70,37 @@
 @layer base {
   * { @apply border-border; }
   html { scroll-behavior: smooth; }
-  body { @apply font-sans antialiased bg-background text-foreground; }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-feature-settings: "tnum" 1, "ss01" 1;
+  }
   ::selection { background: hsl(var(--accent)); color: hsl(var(--foreground)); }
 }
 
 @layer utilities {
-  .font-display { font-family: var(--app-font-serif); }
-  .font-mono-custom { font-family: var(--app-font-mono); }
+  .font-display {
+    font-family: var(--app-font-serif);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -.065em;
+  }
+  .font-mono-custom {
+    font-family: var(--app-font-mono);
+    font-feature-settings: "tnum" 1;
+  }
   .text-balance { text-wrap: balance; }
+  .fintech-grid {
+    background-image:
+      linear-gradient(rgba(216, 232, 108, .055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(216, 232, 108, .055) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .fintech-grid-light {
+    background-image:
+      linear-gradient(rgba(33, 73, 55, .045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(33, 73, 55, .045) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
   .reveal { opacity: 0; transform: translateY(24px); animation: reveal-in .8s cubic-bezier(.2,.8,.2,1) forwards; }
   .reveal-delay-1 { animation-delay: .1s; }
   .reveal-delay-2 { animation-delay: .2s; }
@@ -104,6 +127,7 @@
 .line-link:hover::after { transform: scaleX(1); }
 .magnetic-card { transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
 .magnetic-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); }
+button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
