@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Zems — Consultoria em eficiência empresarial"
+description = "Site institucional da Zems, consultoria em tecnologia, gestão e capacitação financeira para empresas que buscam operar melhor, gastar menos e crescer com clareza."
+version = "1.0.0"
+id = "artifacts/zems-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22426
+
+[services.development]
+run = "pnpm --filter @workspace/zems-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/zems-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/zems-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22426"
+BASE_PATH = "/"
