@@ -8,10 +8,12 @@ const courseNavItems = [
   { label: 'Dúvidas', href: '#duvidas' },
 ];
 
-const tracks = [
+export const tracks = [
   {
     index: '01',
     tone: 'dark',
+    thumbnail: '/zems-hero.jpg',
+    thumbnailPosition: 'object-center',
     label: 'Curso gravado · Essencial',
     title: 'Finanças para quem decide',
     description: 'O repertório para ler os números com segurança, fazer as perguntas certas e decidir sem depender de tradução.',
@@ -23,6 +25,8 @@ const tracks = [
   {
     index: '02',
     tone: 'lime',
+    thumbnail: '/zems-portrait.jpg',
+    thumbnailPosition: 'object-[center_35%]',
     label: 'Curso gravado · Caixa',
     title: 'Caixa em movimento',
     description: 'Uma visão prática do dinheiro que entra, sai e precisa estar disponível para o próximo passo.',
@@ -34,6 +38,8 @@ const tracks = [
   {
     index: '03',
     tone: 'paper',
+    thumbnail: '/zems-hero.jpg',
+    thumbnailPosition: 'object-[70%_center]',
     label: 'Curso gravado · Margem',
     title: 'Margem sem mistério',
     description: 'Como proteger resultado, precificar melhor e enxergar onde a operação cria — ou perde — valor.',
@@ -45,6 +51,8 @@ const tracks = [
   {
     index: '04',
     tone: 'outline',
+    thumbnail: '/zems-portrait.jpg',
+    thumbnailPosition: 'object-[35%_center]',
     label: 'Curso gravado · Gestão',
     title: 'Ritual financeiro para equipes',
     description: 'A estrutura mínima para transformar finanças em uma conversa frequente, objetiva e compartilhada.',
@@ -214,12 +222,20 @@ function Cursos() {
           </div>
           <div className="mt-16 grid gap-4 md:grid-cols-2">
             {tracks.map((track) => (
-              <article key={track.index} className={`magnetic-card group relative flex min-h-[430px] flex-col overflow-hidden rounded-[1.5rem] p-7 lg:p-8 ${track.tone === 'dark' ? 'bg-[#214937] text-[#f7f4ed]' : track.tone === 'lime' ? 'bg-[#d8e86c] text-[#214937]' : track.tone === 'paper' ? 'border border-[#c4d0c1] bg-[#f5f3ec] text-[#214937]' : 'border border-[#52735c] bg-[#28523e] text-[#f7f4ed]'}`} data-testid={`card-mock-course-${track.index}`}>
+              <article key={track.index} className={`magnetic-card group relative flex min-h-[620px] flex-col overflow-hidden rounded-[1.5rem] p-5 lg:p-6 ${track.tone === 'dark' ? 'bg-[#214937] text-[#f7f4ed]' : track.tone === 'lime' ? 'bg-[#d8e86c] text-[#214937]' : track.tone === 'paper' ? 'border border-[#c4d0c1] bg-[#f5f3ec] text-[#214937]' : 'border border-[#52735c] bg-[#28523e] text-[#f7f4ed]'}`} data-testid={`card-mock-course-${track.index}`}>
                 <div className="flex items-start justify-between">
                   <span className={`font-mono-custom text-[11px] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#8a9e47]' : 'text-[#d8e86c]'}`}>{track.index}</span>
                   <ArrowUpRight className={`transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${track.tone === 'paper' ? 'text-[#728b75]' : ''}`} size={19} />
                 </div>
-                <div className="mt-12 flex flex-1 flex-col">
+                <div className="relative mt-5 h-40 overflow-hidden rounded-xl">
+                  <img src={track.thumbnail} alt="" className={`h-full w-full object-cover ${track.thumbnailPosition} mix-blend-multiply opacity-75 transition-transform duration-500 group-hover:scale-105`} />
+                  <div className={`absolute inset-0 ${track.tone === 'lime' ? 'bg-[#d8e86c]/45' : track.tone === 'paper' ? 'bg-[#b7c7ad]/30' : 'bg-[#214937]/45'}`} />
+                  <div className="absolute inset-x-4 bottom-3 flex items-center justify-between">
+                    <span className="rounded-full border border-white/35 bg-[#214937]/35 px-2.5 py-1 font-mono-custom text-[9px] uppercase tracking-[.12em] text-white">curso gravado</span>
+                    <MonitorPlay size={18} className="text-white" />
+                  </div>
+                </div>
+                <div className="mt-7 flex flex-1 flex-col">
                   <div className={`flex items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.16em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a8bfaa]'}`}><MonitorPlay size={13} />{track.label}</div>
                   <h3 className="mt-3 max-w-[420px] text-2xl font-extrabold leading-[1.02] tracking-[-.055em] lg:text-3xl">{track.title}</h3>
                   <p className={`mt-3 max-w-[420px] text-sm leading-[1.65] ${track.tone === 'lime' ? 'text-[#526b4d]' : track.tone === 'paper' ? 'text-[#667c70]' : 'text-[#c0d0c1]'}`}>{track.description}</p>
@@ -240,6 +256,11 @@ function Cursos() {
                 {track.tone === 'dark' && <div className="absolute -bottom-16 -right-10 h-64 w-64 rounded-full border-[38px] border-[#315b44] transition-transform duration-500 group-hover:scale-110" />}
               </article>
             ))}
+          </div>
+          <div className="mt-10 flex justify-center">
+            <Link href="/cursos/catalogo" className="group inline-flex items-center gap-3 rounded-full border border-[#214937] px-6 py-3.5 text-[13px] font-extrabold text-[#214937] transition-colors hover:bg-[#214937] hover:text-[#f5f3ec]" data-testid="link-cursos-ver-mais">
+              Ver mais cursos <span className="grid h-6 w-6 place-items-center rounded-full bg-[#d8e86c] text-[#214937] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
+            </Link>
           </div>
         </div>
       </section>
