@@ -15,7 +15,9 @@ const tracks = [
     label: 'Curso gravado · Essencial',
     title: 'Finanças para quem decide',
     description: 'O repertório para ler os números com segurança, fazer as perguntas certas e decidir sem depender de tradução.',
-    details: '6 encontros · 6h',
+    details: '6 aulas · 6h',
+    level: 'Intermediário',
+    price: 'R$ 197',
     topics: ['DRE que conta uma história', 'Indicadores para a rotina', 'Decisões com contexto'],
   },
   {
@@ -24,7 +26,9 @@ const tracks = [
     label: 'Curso gravado · Caixa',
     title: 'Caixa em movimento',
     description: 'Uma visão prática do dinheiro que entra, sai e precisa estar disponível para o próximo passo.',
-    details: '4 encontros · 4h',
+    details: '4 aulas · 4h',
+    level: 'Básico',
+    price: 'R$ 147',
     topics: ['Fluxo de caixa real', 'Cenários e previsibilidade', 'Ritual de acompanhamento'],
   },
   {
@@ -33,7 +37,9 @@ const tracks = [
     label: 'Curso gravado · Margem',
     title: 'Margem sem mistério',
     description: 'Como proteger resultado, precificar melhor e enxergar onde a operação cria — ou perde — valor.',
-    details: '4 encontros · 4h',
+    details: '4 aulas · 4h',
+    level: 'Intermediário',
+    price: 'R$ 167',
     topics: ['Custo e contribuição', 'Preço com clareza', 'Mix que faz sentido'],
   },
   {
@@ -42,7 +48,9 @@ const tracks = [
     label: 'Curso gravado · Gestão',
     title: 'Ritual financeiro para equipes',
     description: 'A estrutura mínima para transformar finanças em uma conversa frequente, objetiva e compartilhada.',
-    details: '4 encontros · 4h',
+    details: '4 aulas · 4h',
+    level: 'Avançado',
+    price: 'R$ 197',
     topics: ['Papéis e cadências', 'Painel de gestão', 'Acordos para agir'],
   },
 ];
@@ -199,19 +207,19 @@ function Cursos() {
         <div className="mx-auto max-w-[1320px]">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
-              <CourseSectionLabel>Catálogo de cursos gravados</CourseSectionLabel>
-              <h2 className="mt-7 max-w-[730px] text-balance text-[clamp(2.8rem,5.8vw,6rem)] font-normal leading-[.91] tracking-[-.065em] text-[#214937]">Aprenda no seu ritmo. Decida com mais <em className="font-display text-[#8a9e47]">clareza.</em></h2>
+              <CourseSectionLabel>Lista de cursos gravados</CourseSectionLabel>
+              <h2 className="mt-7 max-w-[730px] text-balance text-[clamp(2.8rem,5.8vw,6rem)] font-normal leading-[.91] tracking-[-.065em] text-[#214937]">Escolha o curso que coloca sua próxima decisão em <em className="font-display text-[#8a9e47]">movimento.</em></h2>
             </div>
-            <p className="max-w-[290px] text-sm leading-[1.65] text-[#61766a] md:pb-2">Cursos objetivos, gravados e feitos para virar aplicação na rotina — sem depender de agenda ou turma aberta.</p>
+            <p className="max-w-[290px] text-sm leading-[1.65] text-[#61766a] md:pb-2">Dados demonstrativos para você visualizar o catálogo. Cursos objetivos, gravados e feitos para assistir no seu ritmo.</p>
           </div>
-          <div className="mt-16 grid gap-4 lg:grid-cols-12 lg:grid-rows-[280px_250px]">
+          <div className="mt-16 grid gap-4 md:grid-cols-2">
             {tracks.map((track) => (
-              <article key={track.index} className={`magnetic-card group relative overflow-hidden rounded-[1.5rem] p-7 lg:p-8 ${track.tone === 'dark' ? 'bg-[#214937] text-[#f7f4ed] lg:col-span-7 lg:row-span-2' : track.tone === 'lime' ? 'bg-[#d8e86c] text-[#214937] lg:col-span-5' : track.tone === 'paper' ? 'border border-[#c4d0c1] bg-[#f5f3ec] text-[#214937] lg:col-span-5' : 'border border-[#52735c] bg-[#28523e] text-[#f7f4ed] lg:col-span-5'}`}>
+              <article key={track.index} className={`magnetic-card group relative flex min-h-[430px] flex-col overflow-hidden rounded-[1.5rem] p-7 lg:p-8 ${track.tone === 'dark' ? 'bg-[#214937] text-[#f7f4ed]' : track.tone === 'lime' ? 'bg-[#d8e86c] text-[#214937]' : track.tone === 'paper' ? 'border border-[#c4d0c1] bg-[#f5f3ec] text-[#214937]' : 'border border-[#52735c] bg-[#28523e] text-[#f7f4ed]'}`} data-testid={`card-mock-course-${track.index}`}>
                 <div className="flex items-start justify-between">
                   <span className={`font-mono-custom text-[11px] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#8a9e47]' : 'text-[#d8e86c]'}`}>{track.index}</span>
                   <ArrowUpRight className={`transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${track.tone === 'paper' ? 'text-[#728b75]' : ''}`} size={19} />
                 </div>
-                <div className={`${track.tone === 'dark' ? 'mt-28 lg:mt-48' : 'mt-12'}`}>
+                <div className="mt-12 flex flex-1 flex-col">
                   <div className={`flex items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.16em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a8bfaa]'}`}><MonitorPlay size={13} />{track.label}</div>
                   <h3 className="mt-3 max-w-[420px] text-2xl font-extrabold leading-[1.02] tracking-[-.055em] lg:text-3xl">{track.title}</h3>
                   <p className={`mt-3 max-w-[420px] text-sm leading-[1.65] ${track.tone === 'lime' ? 'text-[#526b4d]' : track.tone === 'paper' ? 'text-[#667c70]' : 'text-[#c0d0c1]'}`}>{track.description}</p>
@@ -221,7 +229,13 @@ function Cursos() {
                       <span key={topic} className={`rounded-full border px-2.5 py-1 font-mono-custom text-[9px] uppercase tracking-[.08em] ${track.tone === 'lime' ? 'border-[#91a646] text-[#536b37]' : track.tone === 'paper' ? 'border-[#c4d0c1] text-[#718571]' : 'border-[#607f68] text-[#b9cab9]'}`}>{topic}</span>
                     ))}
                   </div>
-                  <a href={`mailto:oi@zems.com.br?subject=Quero%20conhecer%20o%20curso%20${encodeURIComponent(track.title)}`} className={`mt-6 inline-flex items-center gap-2 text-[12px] font-extrabold underline-offset-4 hover:underline ${track.tone === 'lime' ? 'text-[#214937]' : track.tone === 'paper' ? 'text-[#214937]' : 'text-[#d8e86c]'}`} data-testid={`link-course-interest-${track.index}`}>Quero conhecer este curso <ArrowRight size={14} /></a>
+                  <div className="mt-auto flex flex-wrap items-end justify-between gap-4 pt-8">
+                    <div>
+                      <div className={`font-mono-custom text-[9px] uppercase tracking-[.14em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a9c0aa]'}`}>{track.level}</div>
+                      <strong className={`mt-1 block text-2xl font-extrabold tracking-[-.06em] ${track.tone === 'lime' || track.tone === 'paper' ? 'text-[#214937]' : 'text-[#f7f4ed]'}`}>{track.price}</strong>
+                    </div>
+                    <a href={`mailto:oi@zems.com.br?subject=Quero%20conhecer%20o%20curso%20${encodeURIComponent(track.title)}`} className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[12px] font-extrabold transition-transform hover:scale-[1.03] ${track.tone === 'lime' || track.tone === 'paper' ? 'bg-[#214937] text-[#f5f3ec]' : 'bg-[#d8e86c] text-[#214937]'}`} data-testid={`link-course-interest-${track.index}`}>Quero conhecer <ArrowRight size={14} /></a>
+                  </div>
                 </div>
                 {track.tone === 'dark' && <div className="absolute -bottom-16 -right-10 h-64 w-64 rounded-full border-[38px] border-[#315b44] transition-transform duration-500 group-hover:scale-110" />}
               </article>
