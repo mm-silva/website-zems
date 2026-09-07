@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Clock3, GraduationCap, Layers3, Mail, Menu, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Clock3, GraduationCap, Layers3, Mail, Menu, MonitorPlay, X } from 'lucide-react';
 import { Link } from 'wouter';
 
 const courseNavItems = [
@@ -12,7 +12,7 @@ const tracks = [
   {
     index: '01',
     tone: 'dark',
-    label: 'Trilha essencial',
+    label: 'Curso gravado · Essencial',
     title: 'Finanças para quem decide',
     description: 'O repertório para ler os números com segurança, fazer as perguntas certas e decidir sem depender de tradução.',
     details: '6 encontros · 6h',
@@ -21,7 +21,7 @@ const tracks = [
   {
     index: '02',
     tone: 'lime',
-    label: 'Trilha de caixa',
+    label: 'Curso gravado · Caixa',
     title: 'Caixa em movimento',
     description: 'Uma visão prática do dinheiro que entra, sai e precisa estar disponível para o próximo passo.',
     details: '4 encontros · 4h',
@@ -30,7 +30,7 @@ const tracks = [
   {
     index: '03',
     tone: 'paper',
-    label: 'Trilha de margem',
+    label: 'Curso gravado · Margem',
     title: 'Margem sem mistério',
     description: 'Como proteger resultado, precificar melhor e enxergar onde a operação cria — ou perde — valor.',
     details: '4 encontros · 4h',
@@ -39,7 +39,7 @@ const tracks = [
   {
     index: '04',
     tone: 'outline',
-    label: 'Trilha de gestão',
+    label: 'Curso gravado · Gestão',
     title: 'Ritual financeiro para equipes',
     description: 'A estrutura mínima para transformar finanças em uma conversa frequente, objetiva e compartilhada.',
     details: '4 encontros · 4h',
@@ -49,9 +49,9 @@ const tracks = [
 
 const faqs = [
   ['Preciso ser da área financeira para participar?', 'Não. As trilhas foram desenhadas para quem toma decisão, lidera uma área ou precisa conversar melhor com o financeiro. O conteúdo parte do zero necessário e chega ao que importa na prática.'],
-  ['As aulas são ao vivo ou gravadas?', 'As turmas acontecem ao vivo, em encontros objetivos e com espaço para perguntas. Você recebe os materiais de apoio para revisar e aplicar entre uma aula e outra.'],
+  ['As aulas são ao vivo ou gravadas?', 'Os cursos são gravados para você assistir no seu ritmo, voltar aos pontos mais importantes e aplicar o conteúdo na rotina da empresa.'],
   ['Posso fazer uma trilha com o meu time?', 'Sim. A formação funciona muito bem para sócios, gestores e pessoas do financeiro na mesma sala. Também ajustamos exemplos e exercícios ao contexto da empresa.'],
-  ['Como funciona a inscrição?', 'A gente começa com uma conversa breve para entender o momento e indicar a melhor trilha. Depois, enviamos as próximas datas, investimento e formato da turma sem compromisso.'],
+  ['Como funciona a inscrição e o acesso?', 'A gente começa com uma conversa breve para entender o momento e indicar o curso mais útil. Depois, enviamos as informações de investimento e acesso sem compromisso.'],
 ];
 
 function CourseLogo() {
@@ -128,16 +128,16 @@ function Cursos() {
 
         <div className="relative z-10 mx-auto grid max-w-[1320px] gap-12 px-5 pb-16 pt-16 md:px-10 md:pb-24 md:pt-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-24 lg:pt-28">
           <div className="flex flex-col justify-center">
-            <CourseSectionLabel light>Educação financeira Zems</CourseSectionLabel>
+            <CourseSectionLabel light>Educação financeira Zems · cursos gravados</CourseSectionLabel>
             <h1 className="reveal reveal-delay-1 mt-7 max-w-[760px] text-balance text-[clamp(3.3rem,7.2vw,7.5rem)] font-normal leading-[.9] tracking-[-0.07em]">
               Finanças que o time entende. <em className="font-display text-[#d8e86c]">Decisões que sustentam.</em>
             </h1>
             <p className="reveal reveal-delay-2 mt-8 max-w-[505px] text-[16px] leading-[1.65] text-[#c8d8c8]">
-              Cursos para donos, gestores e equipes que querem sair do improviso, ler a operação com mais precisão e agir antes do problema aparecer.
+              Conteúdo gravado para donos, gestores e equipes que querem sair do improviso, ler a operação com mais precisão e agir antes do problema aparecer.
             </p>
             <div className="reveal reveal-delay-3 mt-9 flex flex-wrap items-center gap-5">
               <a href="#catalogo" className="group flex items-center gap-3 rounded-full bg-[#d8e86c] px-6 py-3.5 text-[13px] font-extrabold text-[#183b2d] transition-transform hover:scale-[1.03]" data-testid="link-cursos-hero-catalogo">
-                Ver as trilhas <span className="grid h-6 w-6 place-items-center rounded-full bg-[#1d4333] text-[#d8e86c] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
+                Ver os cursos <span className="grid h-6 w-6 place-items-center rounded-full bg-[#1d4333] text-[#d8e86c] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
               </a>
               <a href="#metodo" className="line-link text-[13px] font-semibold text-[#d8e2d5]" data-testid="link-cursos-hero-metodo">Como funciona</a>
             </div>
@@ -163,7 +163,7 @@ function Cursos() {
               </div>
               <div className="mt-5 grid grid-cols-3 gap-3">
                 {[
-                  ['04', 'trilhas'],
+                  ['04', 'cursos gravados'],
                   ['18h', 'conteúdo'],
                   ['100%', 'aplicável'],
                 ].map(([value, label]) => (
@@ -199,10 +199,10 @@ function Cursos() {
         <div className="mx-auto max-w-[1320px]">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
-              <CourseSectionLabel>Catálogo de formação</CourseSectionLabel>
-              <h2 className="mt-7 max-w-[730px] text-balance text-[clamp(2.8rem,5.8vw,6rem)] font-normal leading-[.91] tracking-[-.065em] text-[#214937]">Escolha o próximo assunto que precisa sair do <em className="font-display text-[#8a9e47]">escuro.</em></h2>
+              <CourseSectionLabel>Catálogo de cursos gravados</CourseSectionLabel>
+              <h2 className="mt-7 max-w-[730px] text-balance text-[clamp(2.8rem,5.8vw,6rem)] font-normal leading-[.91] tracking-[-.065em] text-[#214937]">Aprenda no seu ritmo. Decida com mais <em className="font-display text-[#8a9e47]">clareza.</em></h2>
             </div>
-            <p className="max-w-[290px] text-sm leading-[1.65] text-[#61766a] md:pb-2">Trilhas independentes ou uma jornada completa para o seu time.</p>
+            <p className="max-w-[290px] text-sm leading-[1.65] text-[#61766a] md:pb-2">Cursos objetivos, gravados e feitos para virar aplicação na rotina — sem depender de agenda ou turma aberta.</p>
           </div>
           <div className="mt-16 grid gap-4 lg:grid-cols-12 lg:grid-rows-[280px_250px]">
             {tracks.map((track) => (
@@ -212,10 +212,16 @@ function Cursos() {
                   <ArrowUpRight className={`transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${track.tone === 'paper' ? 'text-[#728b75]' : ''}`} size={19} />
                 </div>
                 <div className={`${track.tone === 'dark' ? 'mt-28 lg:mt-48' : 'mt-12'}`}>
-                  <div className={`font-mono-custom text-[10px] uppercase tracking-[.16em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a8bfaa]'}`}>{track.label}</div>
+                  <div className={`flex items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.16em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a8bfaa]'}`}><MonitorPlay size={13} />{track.label}</div>
                   <h3 className="mt-3 max-w-[420px] text-2xl font-extrabold leading-[1.02] tracking-[-.055em] lg:text-3xl">{track.title}</h3>
                   <p className={`mt-3 max-w-[420px] text-sm leading-[1.65] ${track.tone === 'lime' ? 'text-[#526b4d]' : track.tone === 'paper' ? 'text-[#667c70]' : 'text-[#c0d0c1]'}`}>{track.description}</p>
                   <div className={`mt-5 flex items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.12em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a9c0aa]'}`}><Clock3 size={13} /> {track.details}</div>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {track.topics.map((topic) => (
+                      <span key={topic} className={`rounded-full border px-2.5 py-1 font-mono-custom text-[9px] uppercase tracking-[.08em] ${track.tone === 'lime' ? 'border-[#91a646] text-[#536b37]' : track.tone === 'paper' ? 'border-[#c4d0c1] text-[#718571]' : 'border-[#607f68] text-[#b9cab9]'}`}>{topic}</span>
+                    ))}
+                  </div>
+                  <a href={`mailto:oi@zems.com.br?subject=Quero%20conhecer%20o%20curso%20${encodeURIComponent(track.title)}`} className={`mt-6 inline-flex items-center gap-2 text-[12px] font-extrabold underline-offset-4 hover:underline ${track.tone === 'lime' ? 'text-[#214937]' : track.tone === 'paper' ? 'text-[#214937]' : 'text-[#d8e86c]'}`} data-testid={`link-course-interest-${track.index}`}>Quero conhecer este curso <ArrowRight size={14} /></a>
                 </div>
                 {track.tone === 'dark' && <div className="absolute -bottom-16 -right-10 h-64 w-64 rounded-full border-[38px] border-[#315b44] transition-transform duration-500 group-hover:scale-110" />}
               </article>
