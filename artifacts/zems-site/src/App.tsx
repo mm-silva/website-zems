@@ -5,6 +5,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
+import Cursos from '@/pages/cursos';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import './index.css';
 
@@ -14,6 +15,7 @@ const navItems = [
   { label: 'O que fazemos', href: '#solucoes' },
   { label: 'Como trabalhamos', href: '#metodo' },
   { label: 'Sobre a Zems', href: '#sobre' },
+  { label: 'Cursos', href: '/cursos' },
 ];
 
 function Logo({ light = false }: { light?: boolean }) {
@@ -286,7 +288,7 @@ function Home() {
 }
 
 function Router() {
-  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
+  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/cursos" component={Cursos} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
 }
 
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {
