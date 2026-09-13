@@ -225,7 +225,7 @@ function Home() {
         <div className="mx-auto grid max-w-[1320px] items-center gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-28">
           <div className="relative min-h-[480px]">
             <div className="absolute bottom-0 left-0 h-[82%] w-[82%] overflow-hidden rounded-t-[10rem] rounded-br-[2rem] bg-[#9caf82]">
-              <img src="/zems-portrait.jpg" alt="Empresário em momento de reflexão no escritório" className="h-full w-full object-cover mix-blend-multiply opacity-90" data-testid="img-about-founder" />
+              <img src="/zems-about-team.jpg" alt="Equipe da Zems analisando a operação em uma reunião" className="h-full w-full object-cover object-center mix-blend-multiply opacity-90" data-testid="img-about-founder" />
             </div>
             <div className="absolute right-0 top-8 grid h-36 w-36 place-items-center rounded-full border border-[#214937] text-center font-mono-custom text-[10px] uppercase leading-[1.25] tracking-[.12em] text-[#214937]">feito para<br />o mundo real</div>
             <div className="absolute bottom-7 right-[10%] rounded-xl bg-[#214937] px-4 py-3 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#d8e86c]">Desde 2017</div>
