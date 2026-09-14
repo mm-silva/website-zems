@@ -22,81 +22,81 @@ const navItems = [
 ];
 
 const problemCards = [
-  ['01', 'Custos que poderiam ser menores', 'Identificamos despesas, contratos, tarifas, desperdícios e processos que podem ser otimizados.'],
-  ['02', 'Processos que consomem tempo', 'Encontramos atividades manuais e gargalos que podem ser simplificados, automatizados ou eliminados.'],
-  ['03', 'Oportunidades que não estão sendo aproveitadas', 'Analisamos tecnologia, dados, canais digitais e processos comerciais para encontrar novas oportunidades.'],
+  ['01', 'Custos no caminho', 'O que está pesando sem necessidade.'],
+  ['02', 'Tempo desperdiçado', 'O que poderia fluir melhor.'],
+  ['03', 'Oportunidades em aberto', 'O que ainda pode acontecer.'],
 ];
 
 const solutionAreas = [
-  { number: '01', title: 'Eficiência', copy: 'Redução de custos, eliminação de desperdícios e melhoria da produtividade.', icon: BarChart3 },
-  { number: '02', title: 'Tecnologia', copy: 'Sistemas, automação, integrações, dados, IA e infraestrutura para uma operação mais inteligente.', icon: Cpu },
-  { number: '03', title: 'Gestão', copy: 'Processos, indicadores, organização, governança e tomada de decisão.', icon: WalletCards },
-  { number: '04', title: 'Presença digital', copy: 'Site, Google, redes sociais, canais digitais, posicionamento e estrutura para transformar presença em oportunidades.', icon: Globe2 },
+  { number: '01', title: 'Eficiência', copy: 'Mais clareza para operar melhor.', icon: BarChart3 },
+  { number: '02', title: 'Tecnologia', copy: 'Ferramentas que fazem sentido.', icon: Cpu },
+  { number: '03', title: 'Gestão', copy: 'Decisões com mais direção.', icon: WalletCards },
+  { number: '04', title: 'Presença digital', copy: 'Ser encontrado. Ser lembrado.', icon: Globe2 },
 ];
 
 const packs = [
   {
     number: '01',
     title: 'Pack Eficiência',
-    headline: 'Descubra onde sua empresa está perdendo dinheiro.',
-    copy: 'Analisamos sua operação para identificar desperdícios, gargalos, retrabalho e oportunidades de redução de custos.',
-    items: ['Processos e desperdícios', 'Tarefas manuais e retrabalho', 'Custos operacionais', 'Plano de melhorias priorizado'],
-    result: 'Diagnóstico + oportunidades de economia + plano de ação.',
+    headline: 'Veja o que pode funcionar melhor.',
+    copy: 'Um olhar de fora para encontrar espaço.',
+    items: ['Operação', 'Clareza', 'Próximo passo'],
+    result: 'Comece por onde importa.',
     tone: 'dark',
     icon: Search,
   },
   {
     number: '02',
     title: 'Pack Automação',
-    headline: 'Elimine tarefas manuais e faça sua equipe produzir mais.',
-    copy: 'Transformamos processos demorados e repetitivos em operações automatizadas.',
-    items: ['Processos administrativos', 'Relatórios e aprovações', 'Planilhas e notificações', 'Rotinas com IA'],
-    result: 'Menos trabalho manual + menos erros + mais produtividade.',
+    headline: 'Deixe o repetitivo para trás.',
+    copy: 'Tecnologia aplicada ao que trava.',
+    items: ['Fluxo', 'Tempo', 'Ritmo'],
+    result: 'Mais espaço para o que importa.',
     tone: 'lime',
     icon: Zap,
   },
   {
     number: '03',
     title: 'Pack Integração',
-    headline: 'Faça seus sistemas trabalharem juntos.',
-    copy: 'Conectamos seus sistemas, plataformas e processos para que os dados fluam automaticamente.',
-    items: ['ERP, CRM e financeiro', 'Bancos e e-commerce', 'APIs e sistemas internos', 'Bases de dados'],
-    result: 'Menos retrabalho + menos erros + informações integradas.',
+    headline: 'Quando tudo conversa, tudo muda.',
+    copy: 'Conexões para uma operação mais leve.',
+    items: ['Conexão', 'Visão', 'Continuidade'],
+    result: 'Menos ruído. Mais movimento.',
     tone: 'paper',
     icon: Workflow,
   },
   {
     number: '04',
     title: 'Pack Performance',
-    headline: 'Para empresas que querem ir além.',
-    copy: 'Depois de identificar e corrigir os principais problemas, evoluímos a operação com gestão por dados e melhoria contínua.',
-    items: ['Dashboards e indicadores', 'Gestão por dados', 'Sistemas personalizados', 'Segurança e monitoramento'],
-    result: 'Melhorias pontuais que viram uma operação continuamente mais eficiente.',
+    headline: 'Para quem quer continuar avançando.',
+    copy: 'A evolução começa depois da primeira mudança.',
+    items: ['Ritmo', 'Direção', 'Evolução'],
+    result: 'O próximo passo aparece no caminho.',
     tone: 'outline',
     icon: BarChart3,
   },
 ];
 
 const methodSteps = [
-  ['01', 'Entender', 'Conhecemos sua empresa, seus objetivos, seus processos e seus principais desafios.'],
-  ['02', 'Organizar', 'Mapeamos processos, custos, tecnologia, presença digital e oportunidades.'],
-  ['03', 'Implementar', 'Transformamos o diagnóstico em ações práticas e mensuráveis.'],
-  ['04', 'Acompanhar', 'Monitoramos os resultados e buscamos continuamente novas oportunidades de melhoria.'],
+  ['01', 'Entender', 'Começamos pela conversa.'],
+  ['02', 'Organizar', 'Damos forma ao que importa.'],
+  ['03', 'Implementar', 'Colocamos em movimento.'],
+  ['04', 'Acompanhar', 'Seguimos juntos.'],
 ];
 
 const economySteps = [
-  ['01', 'Diagnosticar', 'Entendemos como sua empresa gasta, opera e gera valor.'],
-  ['02', 'Encontrar', 'Identificamos desperdícios, custos desnecessários, gargalos e oportunidades.'],
-  ['03', 'Implementar', 'Transformamos as oportunidades encontradas em ações práticas.'],
-  ['04', 'Acompanhar', 'Monitoramos os resultados para garantir que as melhorias continuem gerando valor.'],
+  ['01', 'Olhar', 'Entender o que está acontecendo.'],
+  ['02', 'Escolher', 'Encontrar o que merece atenção.'],
+  ['03', 'Mudar', 'Fazer o próximo movimento.'],
+  ['04', 'Evoluir', 'Continuar melhorando.'],
 ];
 
 const digitalPillars = [
-  ['01', 'Marca', 'Posicionamento, identidade visual e comunicação mais clara.'],
-  ['02', 'Presença', 'Site, Google, redes sociais e canais digitais estruturados.'],
-  ['03', 'Conteúdo', 'Conteúdo estratégico para comunicar autoridade, confiança e diferenciais.'],
-  ['04', 'Conversão', 'WhatsApp, landing pages, formulários e jornadas pensadas para gerar oportunidades.'],
-  ['05', 'Performance', 'Dados e indicadores para entender o que funciona e onde melhorar.'],
+  ['01', 'Marca', 'Uma presença com intenção.'],
+  ['02', 'Presença', 'Mais fácil de encontrar.'],
+  ['03', 'Conteúdo', 'Uma voz que faz sentido.'],
+  ['04', 'Conversão', 'Atenção que vira conversa.'],
+  ['05', 'Performance', 'O que funciona, continua.'],
 ];
 
 const technologyItems = [
@@ -150,14 +150,12 @@ function Home() {
   };
 
   const faqs = [
-    ['O que a Zems faz?', 'A Zems combina estratégia, tecnologia e gestão para reduzir desperdícios, melhorar processos e ajudar empresas a operar com mais eficiência.'],
-    ['Que tipo de empresa pode contratar a Zems?', 'Empresas que já têm uma operação rodando e querem organizar custos, processos, tecnologia, dados ou presença digital para crescer melhor.'],
-    ['A Zems trabalha apenas com tecnologia?', 'Não. Tecnologia é uma das frentes. Também atuamos com eficiência, redução de custos, gestão, processos e presença digital.'],
-    ['Como funciona o diagnóstico?', 'Começamos entendendo sua operação, seus objetivos e os principais desafios. Depois, mapeamos custos, gargalos e oportunidades para priorizar ações práticas.'],
-    ['Vocês trabalham com redução de custos?', 'Sim. Buscamos oportunidades reais e mensuráveis de economia, sem prometer um percentual fixo antes de conhecer a operação.'],
-    ['Vocês também cuidam da presença digital?', 'Sim. Estruturamos marca, site, Google, conteúdo, canais digitais e conversão como parte de uma estratégia maior de crescimento empresarial.'],
-    ['Vocês podem automatizar processos da minha empresa?', 'Sim. Mapeamos tarefas manuais, conectamos sistemas e implementamos automações que reduzem retrabalho e liberam o time para atividades mais importantes.'],
-    ['Como vocês medem os resultados?', 'Definimos indicadores coerentes com o objetivo do projeto e acompanhamos o que mudou em eficiência, economia, organização e capacidade de decisão.'],
+    ['O que a Zems faz?', 'A gente ajuda empresas a encontrar um jeito melhor de funcionar.'],
+    ['Por onde começar?', 'Por uma conversa. O resto aparece a partir dela.'],
+    ['É só tecnologia?', 'Não. Tecnologia é parte da mudança.'],
+    ['Como funciona o diagnóstico?', 'Ouvimos, observamos e organizamos os próximos passos.'],
+    ['Vocês trabalham com redução de custos?', 'Sim. Sem prometer antes de entender.'],
+    ['A Zems atende qualquer empresa?', 'Cada conversa começa de um ponto diferente.'],
   ];
 
   return (
@@ -201,7 +199,7 @@ function Home() {
               Mais eficiência.<br /><em className="font-display text-[#d8e86c]">Mais economia.<br />Mais negócio.</em>
             </h1>
             <p className="reveal reveal-delay-2 mt-8 max-w-[500px] text-[16px] leading-[1.65] text-[#c8d8c8]">
-              Identificamos onde sua empresa perde tempo, dinheiro e oportunidades — e transformamos esses pontos em melhorias concretas.
+              Sua empresa pode funcionar melhor. A primeira conversa mostra por onde começar.
             </p>
             <div className="reveal reveal-delay-3 mt-9 flex flex-wrap items-center gap-5">
               <button onClick={scrollToContact} className="group flex items-center gap-3 rounded-full bg-[#d8e86c] px-6 py-3.5 text-[13px] font-extrabold text-[#183b2d] transition-transform hover:scale-[1.03]" data-testid="button-hero-contact">
@@ -234,7 +232,7 @@ function Home() {
         <div>
           <SectionLabel>O problema</SectionLabel>
           <h2 className="mt-7 max-w-[520px] text-balance text-[clamp(2.8rem,5vw,5.7rem)] font-normal leading-[.94] tracking-[-.06em] text-[#214937]">Sua empresa pode estar perdendo dinheiro <em className="font-display text-[#8a9e47]">sem perceber.</em></h2>
-          <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#557064]">Custos desnecessários, processos manuais, sistemas desconectados, falhas operacionais e uma presença digital pouco eficiente podem consumir recursos todos os meses.</p>
+          <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#557064]">Nem sempre o problema aparece onde parece.</p>
         </div>
         <div className="relative">
           <div className="grid gap-5 border-t border-[#cbd7c8] pt-6 sm:grid-cols-3">
@@ -260,7 +258,7 @@ function Home() {
               <SectionLabel>Nossas soluções</SectionLabel>
               <h2 className="mt-6 max-w-[720px] text-balance text-[clamp(2.8rem,5.6vw,6rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Um negócio mais <em className="font-display text-[#8a9e47]">inteligente</em> por inteiro.</h2>
             </div>
-            <p className="max-w-[310px] text-sm leading-[1.65] text-[#61766a] md:pb-2">A Zems olha para a empresa como um sistema: dinheiro, pessoas, processos, tecnologia e clientes conectados.</p>
+             <p className="max-w-[310px] text-sm leading-[1.65] text-[#61766a] md:pb-2">Cada empresa pede uma combinação diferente. A gente começa entendendo.</p>
           </div>
           <div className="mt-16 grid gap-4 lg:grid-cols-12 lg:grid-rows-[250px_250px]">
             {solutionAreas.map((solution, index) => {
@@ -291,8 +289,8 @@ function Home() {
           <div>
             <SectionLabel light>Eficiência e redução de custos</SectionLabel>
             <h2 className="mt-7 max-w-[520px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em]">Encontrar economia é só o <em className="font-display text-[#d8e86c]">começo.</em></h2>
-            <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#b9cab9]">Mapeamos os custos da operação, identificamos oportunidades e ajudamos sua empresa a transformar desperdícios em economia real.</p>
-            <p className="mt-6 max-w-[380px] font-mono-custom text-[10px] uppercase leading-[1.7] tracking-[.12em] text-[#d8e86c]">Economia que pode ser medida — sem promessa de percentual fixo.</p>
+             <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#b9cab9]">Às vezes, economizar começa por enxergar melhor.</p>
+             <p className="mt-6 max-w-[380px] font-mono-custom text-[10px] uppercase leading-[1.7] tracking-[.12em] text-[#d8e86c]">Sem promessa pronta. Sem fórmula fechada.</p>
           </div>
           <div className="border-t border-[#4f7058]">
             {economySteps.map(([number, title, copy]) => (
@@ -340,7 +338,7 @@ function Home() {
             })}
           </div>
           <div className="mt-10 flex flex-col items-start justify-between gap-5 border-t border-[#cbd7c8] pt-6 md:flex-row md:items-center">
-            <p className="max-w-[560px] text-sm leading-[1.65] text-[#667c70]">Os três primeiros packs podem ser combinados para descobrir, eliminar e conectar os pontos que travam a operação. O Pack Performance sustenta a evolução.</p>
+             <p className="max-w-[560px] text-sm leading-[1.65] text-[#667c70]">Quatro caminhos. Um ponto de partida: a sua realidade.</p>
             <a href="#contato" className="line-link inline-flex items-center gap-2 text-[13px] font-extrabold text-[#214937]" data-testid="link-packs-diagnostico">Encontrar o pack certo <ArrowRight size={16} /></a>
           </div>
         </div>
@@ -352,7 +350,7 @@ function Home() {
             <div>
               <SectionLabel>Presença digital</SectionLabel>
               <h2 className="mt-7 max-w-[600px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em] text-[#214937]">Sua empresa precisa ser encontrada, entendida e <em className="font-display">lembrada.</em></h2>
-              <p className="mt-8 max-w-[450px] text-[15px] leading-[1.7] text-[#385b42]">Construímos uma presença digital estratégica para transmitir confiança, ser encontrada pelos clientes certos e transformar atenção em oportunidades comerciais.</p>
+               <p className="mt-8 max-w-[450px] text-[15px] leading-[1.7] text-[#385b42]">O que sua empresa comunica também faz parte do negócio.</p>
             </div>
             <div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-[#a8bb76] bg-[#a8bb76] sm:grid-cols-2">
               {digitalPillars.map(([number, title, copy]) => (
@@ -372,8 +370,8 @@ function Home() {
           <div>
             <SectionLabel>Tecnologia aplicada</SectionLabel>
             <h2 className="mt-7 max-w-[500px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em] text-[#214937]">Quando a tecnologia trabalha, sua empresa <em className="font-display text-[#8a9e47]">avança.</em></h2>
-            <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#667c70]">Automatizamos tarefas, conectamos sistemas e transformamos dados em ferramentas para decisões melhores.</p>
-            <p className="mt-6 max-w-[390px] text-sm font-extrabold leading-[1.7] text-[#214937]">Tecnologia não deve complicar sua operação. Deve fazer sua empresa funcionar melhor.</p>
+             <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#667c70]">A tecnologia certa aparece no momento certo.</p>
+             <p className="mt-6 max-w-[390px] text-sm font-extrabold leading-[1.7] text-[#214937]">Sem complicar.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {technologyItems.map(({ label, icon: IconComponent }) => {
@@ -393,7 +391,7 @@ function Home() {
           <div>
             <SectionLabel>Como trabalhamos</SectionLabel>
             <h2 className="mt-7 max-w-[440px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em] text-[#214937]">Menos promessa.<br /><em className="font-display text-[#8a9e47]">Mais prática.</em></h2>
-            <p className="mt-8 max-w-[350px] text-sm leading-[1.7] text-[#667c70]">Entramos para deixar uma capacidade instalada — não uma apresentação bonita para guardar.</p>
+             <p className="mt-8 max-w-[350px] text-sm leading-[1.7] text-[#667c70]">Um jeito simples de começar a organizar o próximo passo.</p>
             <a href="#contato" className="line-link mt-8 inline-flex items-center gap-2 text-[13px] font-extrabold text-[#214937]" data-testid="link-method-contact">Quero começar pela conversa <ArrowRight size={16} /></a>
           </div>
           <div className="border-t border-[#cbd7c8]">
@@ -420,8 +418,8 @@ function Home() {
           <div>
             <SectionLabel>Relacionamento contínuo</SectionLabel>
             <h2 className="mt-7 max-w-[620px] text-balance text-[clamp(2.8rem,5vw,5.5rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Não somos apenas um projeto. Somos parte da evolução da sua <em className="font-display">empresa.</em></h2>
-            <p className="mt-8 max-w-[490px] text-[15px] leading-[1.75] text-[#385b42]">A melhoria de uma empresa não termina quando um projeto acaba. Acompanhamos resultados, identificamos novas oportunidades e ajudamos sua operação a evoluir continuamente.</p>
-            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[12px] font-extrabold text-[#214937]"><span className="flex items-center gap-2"><Check size={15} /> Melhoria contínua</span><span className="flex items-center gap-2"><Check size={15} /> Acompanhamento</span><span className="flex items-center gap-2"><Check size={15} /> Indicadores</span><span className="flex items-center gap-2"><Check size={15} /> Crescimento</span></div>
+             <p className="mt-8 max-w-[490px] text-[15px] leading-[1.75] text-[#385b42]">O trabalho continua enquanto fizer sentido para a sua empresa.</p>
+             <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[12px] font-extrabold text-[#214937]"><span className="flex items-center gap-2"><Check size={15} /> Presença</span><span className="flex items-center gap-2"><Check size={15} /> Clareza</span><span className="flex items-center gap-2"><Check size={15} /> Evolução</span></div>
           </div>
         </div>
       </section>
@@ -432,8 +430,8 @@ function Home() {
           <div className="mt-16 grid gap-6 lg:grid-cols-[1.3fr_.7fr]">
             <div className="rounded-[1.5rem] border border-[#4f7058] bg-[#28523e] p-7 md:p-10">
               <div className="flex gap-1 text-[#d8e86c]">{[1, 2, 3, 4, 5].map((item) => <span key={item} className="text-lg">•</span>)}</div>
-              <p className="mt-8 max-w-[750px] text-[clamp(1.7rem,3.2vw,3.1rem)] font-normal leading-[1.08] tracking-[-.04em] text-[#f7f4ed]">Estamos organizando os primeiros relatos de clientes para mostrar, com contexto, como eficiência, economia e tecnologia mudam a rotina.</p>
-              <div className="mt-10 border-t border-[#4f7058] pt-5 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#a9c0aa]">Depoimentos reais serão publicados nesta área</div>
+               <p className="mt-8 max-w-[750px] text-[clamp(1.7rem,3.2vw,3.1rem)] font-normal leading-[1.08] tracking-[-.04em] text-[#f7f4ed]">Cada empresa tem uma história. A sua pode ser a próxima.</p>
+               <div className="mt-10 border-t border-[#4f7058] pt-5 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#a9c0aa]">Cases reais em construção</div>
             </div>
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-1">
               <div className="rounded-[1.5rem] bg-[#d8e86c] p-6 text-[#214937]"><span className="font-mono-custom text-[10px] uppercase tracking-[.14em]">O que acompanhamos</span><strong className="mt-9 block text-3xl font-extrabold tracking-[-.08em]">Eficiência</strong><p className="mt-2 text-xs leading-[1.45]">custos, processos e capacidade de execução</p></div>
@@ -457,9 +455,9 @@ function Home() {
 
       <section id="contato" className="bg-[#d8e86c] px-5 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[1fr_.8fr] lg:gap-28">
-          <div><SectionLabel>Diagnóstico Zems</SectionLabel><h2 className="mt-7 max-w-[700px] text-balance text-[clamp(3.3rem,7vw,7.7rem)] font-normal leading-[.88] tracking-[-.07em] text-[#214937]">Antes de mudar, é preciso <em className="font-display">entender.</em></h2><p className="mt-8 max-w-[480px] text-[15px] leading-[1.7] text-[#385b42]">Começamos pelo diagnóstico. Analisamos sua operação para entender onde estão os custos, gargalos, desperdícios e oportunidades que podem fazer sua empresa funcionar melhor.</p><div className="mt-10 flex flex-col gap-3 text-sm font-extrabold text-[#214937]"><a href="mailto:oi@zems.com.br" className="flex items-center gap-3 hover:underline" data-testid="link-contact-email"><Mail size={16} /> oi@zems.com.br</a><a href="tel:+551130301717" className="flex items-center gap-3 hover:underline" data-testid="link-contact-phone"><Phone size={16} /> +55 11 3030 1717</a></div></div>
+          <div><SectionLabel>Diagnóstico Zems</SectionLabel><h2 className="mt-7 max-w-[700px] text-balance text-[clamp(3.3rem,7vw,7.7rem)] font-normal leading-[.88] tracking-[-.07em] text-[#214937]">Antes de mudar, é preciso <em className="font-display">entender.</em></h2><p className="mt-8 max-w-[480px] text-[15px] leading-[1.7] text-[#385b42]">Conte onde sua empresa está hoje. A conversa começa daí.</p><div className="mt-10 flex flex-col gap-3 text-sm font-extrabold text-[#214937]"><a href="mailto:oi@zems.com.br" className="flex items-center gap-3 hover:underline" data-testid="link-contact-email"><Mail size={16} /> oi@zems.com.br</a><a href="tel:+551130301717" className="flex items-center gap-3 hover:underline" data-testid="link-contact-phone"><Phone size={16} /> +55 11 3030 1717</a></div></div>
           <form onSubmit={submitForm} className="rounded-[1.5rem] bg-[#f5f3ec] p-6 shadow-[0_20px_60px_rgba(34,70,49,.12)] md:p-8" data-testid="form-contact">
-            {!formSent ? <><div className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#718571]">Solicitar diagnóstico</div><label className="mt-8 block text-xs font-bold text-[#557064]">Seu nome<input required name="name" type="text" placeholder="Como podemos te chamar?" className="mt-2 w-full border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-name" /></label><label className="mt-7 block text-xs font-bold text-[#557064]">Seu melhor e-mail<input required name="email" type="email" placeholder="voce@empresa.com.br" className="mt-2 w-full border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-email" /></label><label className="mt-7 block text-xs font-bold text-[#557064]">Onde estão as oportunidades?<textarea required name="message" rows={3} placeholder="Conte um pouco sobre sua operação..." className="mt-2 w-full resize-none border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-message" /></label><button type="submit" className="group mt-8 flex w-full items-center justify-between rounded-full bg-[#214937] px-5 py-3.5 text-[13px] font-extrabold text-[#f5f3ec] transition-colors hover:bg-[#2d6048]" data-testid="button-submit-contact">Solicitar diagnóstico <span className="grid h-7 w-7 place-items-center rounded-full bg-[#d8e86c] text-[#214937] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span></button><p className="mt-4 text-center text-[11px] text-[#819385]">A conversa inicial é sem compromisso.</p></> : <div className="flex min-h-[390px] flex-col justify-center"><span className="grid h-12 w-12 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><Check size={22} /></span><h3 className="mt-7 text-3xl font-extrabold tracking-[-.06em] text-[#214937]">Mensagem recebida.</h3><p className="mt-4 max-w-[300px] text-sm leading-[1.7] text-[#667c70]">Obrigado por abrir essa conversa. A gente retorna em até um dia útil.</p><button type="button" onClick={() => setFormSent(false)} className="line-link mt-8 w-fit text-xs font-extrabold text-[#214937]" data-testid="button-send-another">Enviar outra mensagem</button></div>}
+             {!formSent ? <><div className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#718571]">Começar uma conversa</div><label className="mt-8 block text-xs font-bold text-[#557064]">Seu nome<input required name="name" type="text" placeholder="Como podemos te chamar?" className="mt-2 w-full border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-name" /></label><label className="mt-7 block text-xs font-bold text-[#557064]">Seu melhor e-mail<input required name="email" type="email" placeholder="voce@empresa.com.br" className="mt-2 w-full border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-email" /></label><label className="mt-7 block text-xs font-bold text-[#557064]">Onde podemos ajudar?<textarea required name="message" rows={3} placeholder="Conte só o necessário..." className="mt-2 w-full resize-none border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-message" /></label><button type="submit" className="group mt-8 flex w-full items-center justify-between rounded-full bg-[#214937] px-5 py-3.5 text-[13px] font-extrabold text-[#f5f3ec] transition-colors hover:bg-[#2d6048]" data-testid="button-submit-contact">Começar a conversa <span className="grid h-7 w-7 place-items-center rounded-full bg-[#d8e86c] text-[#214937] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span></button><p className="mt-4 text-center text-[11px] text-[#819385]">Sem compromisso.</p></> : <div className="flex min-h-[390px] flex-col justify-center"><span className="grid h-12 w-12 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><Check size={22} /></span><h3 className="mt-7 text-3xl font-extrabold tracking-[-.06em] text-[#214937]">Mensagem recebida.</h3><p className="mt-4 max-w-[300px] text-sm leading-[1.7] text-[#667c70]">A conversa continua em breve.</p><button type="button" onClick={() => setFormSent(false)} className="line-link mt-8 w-fit text-xs font-extrabold text-[#214937]" data-testid="button-send-another">Enviar outra mensagem</button></div>}
           </form>
         </div>
       </section>
