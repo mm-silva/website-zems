@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from 'react';
-import { ArrowRight, ArrowUpRight, BarChart3, Check, ChevronDown, Cpu, Instagram, Linkedin, Mail, MapPin, Menu, Phone, WalletCards, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, Cpu, Database, Globe2, Instagram, Linkedin, Mail, MapPin, Menu, Phone, Search, Settings2, ShieldCheck, WalletCards, Workflow, X, Zap } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -13,16 +13,105 @@ import './index.css';
 const queryClient = new QueryClient();
 
 const navItems = [
-  { label: 'O que fazemos', href: '#solucoes' },
+  { label: 'Soluções', href: '#solucoes' },
+  { label: 'Packs', href: '#packs' },
   { label: 'Como trabalhamos', href: '#metodo' },
-  { label: 'Sobre a Zems', href: '#sobre' },
+  { label: 'Presença digital', href: '#presenca' },
+  { label: 'Diagnóstico', href: '#contato' },
   { label: 'Cursos', href: '/cursos' },
+];
+
+const problemCards = [
+  ['01', 'Custos que poderiam ser menores', 'Identificamos despesas, contratos, tarifas, desperdícios e processos que podem ser otimizados.'],
+  ['02', 'Processos que consomem tempo', 'Encontramos atividades manuais e gargalos que podem ser simplificados, automatizados ou eliminados.'],
+  ['03', 'Oportunidades que não estão sendo aproveitadas', 'Analisamos tecnologia, dados, canais digitais e processos comerciais para encontrar novas oportunidades.'],
+];
+
+const solutionAreas = [
+  { number: '01', title: 'Eficiência', copy: 'Redução de custos, eliminação de desperdícios e melhoria da produtividade.', icon: BarChart3 },
+  { number: '02', title: 'Tecnologia', copy: 'Sistemas, automação, integrações, dados, IA e infraestrutura para uma operação mais inteligente.', icon: Cpu },
+  { number: '03', title: 'Gestão', copy: 'Processos, indicadores, organização, governança e tomada de decisão.', icon: WalletCards },
+  { number: '04', title: 'Presença digital', copy: 'Site, Google, redes sociais, canais digitais, posicionamento e estrutura para transformar presença em oportunidades.', icon: Globe2 },
+];
+
+const packs = [
+  {
+    number: '01',
+    title: 'Pack Eficiência',
+    headline: 'Descubra onde sua empresa está perdendo dinheiro.',
+    copy: 'Analisamos sua operação para identificar desperdícios, gargalos, retrabalho e oportunidades de redução de custos.',
+    items: ['Processos e desperdícios', 'Tarefas manuais e retrabalho', 'Custos operacionais', 'Plano de melhorias priorizado'],
+    result: 'Diagnóstico + oportunidades de economia + plano de ação.',
+    tone: 'dark',
+    icon: Search,
+  },
+  {
+    number: '02',
+    title: 'Pack Automação',
+    headline: 'Elimine tarefas manuais e faça sua equipe produzir mais.',
+    copy: 'Transformamos processos demorados e repetitivos em operações automatizadas.',
+    items: ['Processos administrativos', 'Relatórios e aprovações', 'Planilhas e notificações', 'Rotinas com IA'],
+    result: 'Menos trabalho manual + menos erros + mais produtividade.',
+    tone: 'lime',
+    icon: Zap,
+  },
+  {
+    number: '03',
+    title: 'Pack Integração',
+    headline: 'Faça seus sistemas trabalharem juntos.',
+    copy: 'Conectamos seus sistemas, plataformas e processos para que os dados fluam automaticamente.',
+    items: ['ERP, CRM e financeiro', 'Bancos e e-commerce', 'APIs e sistemas internos', 'Bases de dados'],
+    result: 'Menos retrabalho + menos erros + informações integradas.',
+    tone: 'paper',
+    icon: Workflow,
+  },
+  {
+    number: '04',
+    title: 'Pack Performance',
+    headline: 'Para empresas que querem ir além.',
+    copy: 'Depois de identificar e corrigir os principais problemas, evoluímos a operação com gestão por dados e melhoria contínua.',
+    items: ['Dashboards e indicadores', 'Gestão por dados', 'Sistemas personalizados', 'Segurança e monitoramento'],
+    result: 'Melhorias pontuais que viram uma operação continuamente mais eficiente.',
+    tone: 'outline',
+    icon: BarChart3,
+  },
+];
+
+const methodSteps = [
+  ['01', 'Entender', 'Conhecemos sua empresa, seus objetivos, seus processos e seus principais desafios.'],
+  ['02', 'Organizar', 'Mapeamos processos, custos, tecnologia, presença digital e oportunidades.'],
+  ['03', 'Implementar', 'Transformamos o diagnóstico em ações práticas e mensuráveis.'],
+  ['04', 'Acompanhar', 'Monitoramos os resultados e buscamos continuamente novas oportunidades de melhoria.'],
+];
+
+const economySteps = [
+  ['01', 'Diagnosticar', 'Entendemos como sua empresa gasta, opera e gera valor.'],
+  ['02', 'Encontrar', 'Identificamos desperdícios, custos desnecessários, gargalos e oportunidades.'],
+  ['03', 'Implementar', 'Transformamos as oportunidades encontradas em ações práticas.'],
+  ['04', 'Acompanhar', 'Monitoramos os resultados para garantir que as melhorias continuem gerando valor.'],
+];
+
+const digitalPillars = [
+  ['01', 'Marca', 'Posicionamento, identidade visual e comunicação mais clara.'],
+  ['02', 'Presença', 'Site, Google, redes sociais e canais digitais estruturados.'],
+  ['03', 'Conteúdo', 'Conteúdo estratégico para comunicar autoridade, confiança e diferenciais.'],
+  ['04', 'Conversão', 'WhatsApp, landing pages, formulários e jornadas pensadas para gerar oportunidades.'],
+  ['05', 'Performance', 'Dados e indicadores para entender o que funciona e onde melhorar.'],
+];
+
+const technologyItems = [
+  { label: 'Automação', icon: Zap },
+  { label: 'Sistemas empresariais', icon: Settings2 },
+  { label: 'Integrações e APIs', icon: Workflow },
+  { label: 'IA e dados', icon: Database },
+  { label: 'Cloud', icon: Cloud },
+  { label: 'Segurança', icon: ShieldCheck },
 ];
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
     <a href="#inicio" className={`flex items-center gap-2.5 ${light ? 'text-[#f7f4ed]' : 'text-[#1d4333]'}`} data-testid="link-logo">
-      <span className={`grid h-8 w-8 place-items-center rounded-full text-[15px] font-extrabold ${light ? 'bg-[#d8e86c] text-[#183b2d]' : 'bg-[#d8e86c] text-[#183b2d]'}`}>Z</span>
+      <span className="grid h-8 w-8 place-items-center rounded-full bg-[#d8e86c] text-[15px] font-extrabold text-[#183b2d]">Z</span>
       <span className="text-xl font-extrabold tracking-[-0.07em]">zems</span>
     </a>
   );
@@ -61,10 +150,14 @@ function Home() {
   };
 
   const faqs = [
-    ['A Zems atende empresas de qual porte?', 'Trabalhamos com negócios que já têm operação rodando e querem ganhar clareza para crescer. Atendemos desde empresas familiares até operações com equipes maiores — o que importa é a disposição para organizar a casa.'],
-    ['Quanto tempo leva para enxergar os primeiros resultados?', 'O diagnóstico inicial acontece em até duas semanas. A partir dele, priorizamos ações que geram efeito rápido e construímos um plano para as mudanças que sustentam o resultado.'],
-    ['A consultoria é presencial ou online?', 'As duas coisas. A maior parte do trabalho acontece online, com encontros presenciais quando estar lado a lado fizer diferença para o seu time e para a implementação.'],
-    ['Vocês executam ou apenas recomendam?', 'Recomendação sem acompanhamento vira gaveta. A Zems trabalha junto com o time: desenha, implementa, mede e ajusta até a melhoria fazer parte da rotina.'],
+    ['O que a Zems faz?', 'A Zems combina estratégia, tecnologia e gestão para reduzir desperdícios, melhorar processos e ajudar empresas a operar com mais eficiência.'],
+    ['Que tipo de empresa pode contratar a Zems?', 'Empresas que já têm uma operação rodando e querem organizar custos, processos, tecnologia, dados ou presença digital para crescer melhor.'],
+    ['A Zems trabalha apenas com tecnologia?', 'Não. Tecnologia é uma das frentes. Também atuamos com eficiência, redução de custos, gestão, processos e presença digital.'],
+    ['Como funciona o diagnóstico?', 'Começamos entendendo sua operação, seus objetivos e os principais desafios. Depois, mapeamos custos, gargalos e oportunidades para priorizar ações práticas.'],
+    ['Vocês trabalham com redução de custos?', 'Sim. Buscamos oportunidades reais e mensuráveis de economia, sem prometer um percentual fixo antes de conhecer a operação.'],
+    ['Vocês também cuidam da presença digital?', 'Sim. Estruturamos marca, site, Google, conteúdo, canais digitais e conversão como parte de uma estratégia maior de crescimento empresarial.'],
+    ['Vocês podem automatizar processos da minha empresa?', 'Sim. Mapeamos tarefas manuais, conectamos sistemas e implementamos automações que reduzem retrabalho e liberam o time para atividades mais importantes.'],
+    ['Como vocês medem os resultados?', 'Definimos indicadores coerentes com o objetivo do projeto e acompanhamos o que mudou em eficiência, economia, organização e capacidade de decisão.'],
   ];
 
   return (
@@ -73,7 +166,7 @@ function Home() {
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 70% 30%, #bbd878 0, transparent 27%), linear-gradient(115deg, transparent 40%, rgba(216,232,108,.18) 40.2%, transparent 40.5%)' }} />
         <header className="relative z-10 mx-auto flex max-w-[1320px] items-center justify-between px-5 py-6 md:px-10 lg:py-8">
           <Logo light />
-          <nav className="hidden items-center gap-9 md:flex" aria-label="Navegação principal">
+          <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
             {navItems.map((item) => (
               <a href={item.href} key={item.href} className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid={`link-nav-${item.label.toLowerCase().replaceAll(' ', '-')}`}>
                 {item.label}
@@ -81,7 +174,7 @@ function Home() {
             ))}
           </nav>
           <button onClick={scrollToContact} className="hidden items-center gap-3 rounded-full border border-[#75977a] px-5 py-2.5 text-[12px] font-bold text-[#f7f4ed] transition-all hover:border-[#d8e86c] hover:bg-[#d8e86c] hover:text-[#1d4333] md:flex" data-testid="button-header-contact">
-            Fale com a Zems <ArrowUpRight size={15} />
+            Quero melhorar minha empresa <ArrowUpRight size={15} />
           </button>
           <button onClick={() => setMenuOpen((value) => !value)} className="grid h-10 w-10 place-items-center rounded-full border border-[#75977a] md:hidden" aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} data-testid="button-mobile-menu">
             {menuOpen ? <X size={19} /> : <Menu size={19} />}
@@ -96,26 +189,27 @@ function Home() {
                   {item.label} <ArrowUpRight size={15} />
                 </a>
               ))}
-              <button onClick={scrollToContact} className="flex items-center justify-between pt-1 text-sm font-bold text-[#d8e86c]" data-testid="button-mobile-contact">Fale com a Zems <ArrowRight size={16} /></button>
+              <button onClick={scrollToContact} className="flex items-center justify-between pt-1 text-sm font-bold text-[#d8e86c]" data-testid="button-mobile-contact">Quero melhorar minha empresa <ArrowRight size={16} /></button>
             </nav>
           </div>
         )}
 
         <div className="relative z-10 mx-auto grid max-w-[1320px] gap-12 px-5 pb-16 pt-16 md:px-10 md:pt-20 lg:grid-cols-[.92fr_1.08fr] lg:gap-20 lg:pb-20 lg:pt-24">
           <div className="flex flex-col justify-center">
-            <SectionLabel light>Eficiência que se sustenta</SectionLabel>
-            <h1 className="reveal reveal-delay-1 mt-7 max-w-[620px] text-balance text-[clamp(3.5rem,7.3vw,7.6rem)] font-normal leading-[.91] tracking-[-0.065em] text-[#f7f4ed]">
-              Mais clareza.<br /><em className="font-display text-[#d8e86c]">Mais negócio.</em>
+            <SectionLabel light>Consultoria empresarial · tecnologia · gestão</SectionLabel>
+            <h1 className="reveal reveal-delay-1 mt-7 max-w-[650px] text-balance text-[clamp(3.5rem,7.3vw,7.6rem)] font-normal leading-[.91] tracking-[-0.065em] text-[#f7f4ed]">
+              Mais eficiência.<br /><em className="font-display text-[#d8e86c]">Mais economia.<br />Mais negócio.</em>
             </h1>
-            <p className="reveal reveal-delay-2 mt-8 max-w-[440px] text-[16px] leading-[1.65] text-[#c8d8c8]">
-              A Zems organiza a operação, fortalece as decisões e transforma números em próximos passos que cabem na realidade da sua empresa.
+            <p className="reveal reveal-delay-2 mt-8 max-w-[500px] text-[16px] leading-[1.65] text-[#c8d8c8]">
+              Identificamos onde sua empresa perde tempo, dinheiro e oportunidades — e transformamos esses pontos em melhorias concretas.
             </p>
             <div className="reveal reveal-delay-3 mt-9 flex flex-wrap items-center gap-5">
               <button onClick={scrollToContact} className="group flex items-center gap-3 rounded-full bg-[#d8e86c] px-6 py-3.5 text-[13px] font-extrabold text-[#183b2d] transition-transform hover:scale-[1.03]" data-testid="button-hero-contact">
-                Vamos conversar <span className="grid h-6 w-6 place-items-center rounded-full bg-[#1d4333] text-[#d8e86c] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
+                Quero melhorar minha empresa <span className="grid h-6 w-6 place-items-center rounded-full bg-[#1d4333] text-[#d8e86c] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
               </button>
-              <a href="#solucoes" className="line-link text-[13px] font-semibold text-[#d8e2d5]" data-testid="link-hero-services">Conheça nosso trabalho</a>
+              <a href="#sobre" className="line-link text-[13px] font-semibold text-[#d8e2d5]" data-testid="link-hero-about">Conhecer a Zems</a>
             </div>
+            <div className="mt-8 font-mono-custom text-[10px] uppercase tracking-[.14em] text-[#9eb89f]">Consultoria em tecnologia, gestão e eficiência empresarial.</div>
           </div>
           <div className="relative min-h-[450px] lg:min-h-[555px]">
             <div className="absolute -right-12 top-0 h-28 w-28 rounded-full border border-[#6d9272] lg:-right-4 lg:top-3" />
@@ -132,32 +226,29 @@ function Home() {
         </div>
         <div className="relative z-10 mx-auto flex max-w-[1320px] items-center justify-between border-t border-[#52735c] px-5 py-5 md:px-10">
           <span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#9eb89f]">São Paulo · Brasil</span>
-          <ScrollArrow href="#clareza" light />
+          <ScrollArrow href="#problema" light />
         </div>
       </section>
 
-      <section id="clareza" className="mx-auto grid max-w-[1320px] gap-14 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-[.8fr_1.2fr] lg:gap-28">
+      <section id="problema" className="mx-auto grid max-w-[1320px] gap-14 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-[.8fr_1.2fr] lg:gap-28">
         <div>
-          <SectionLabel>O ponto de partida</SectionLabel>
-          <h2 className="mt-7 max-w-[470px] text-balance text-[clamp(2.8rem,5vw,5.7rem)] font-normal leading-[.94] tracking-[-.06em] text-[#214937]">Sua empresa não precisa de mais <em className="font-display text-[#8a9e47]">pressa.</em></h2>
-          <p className="mt-8 max-w-[360px] text-sm leading-[1.7] text-[#557064]">Precisa enxergar melhor. Quando a gestão deixa de apagar incêndios, o negócio recupera energia para fazer o que importa.</p>
+          <SectionLabel>O problema</SectionLabel>
+          <h2 className="mt-7 max-w-[520px] text-balance text-[clamp(2.8rem,5vw,5.7rem)] font-normal leading-[.94] tracking-[-.06em] text-[#214937]">Sua empresa pode estar perdendo dinheiro <em className="font-display text-[#8a9e47]">sem perceber.</em></h2>
+          <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#557064]">Custos desnecessários, processos manuais, sistemas desconectados, falhas operacionais e uma presença digital pouco eficiente podem consumir recursos todos os meses.</p>
         </div>
         <div className="relative">
-          <div className="grid gap-5 border-t border-[#cbd7c8] pt-6 sm:grid-cols-2">
-            <div className="sm:pt-12">
-              <div className="font-display text-[4.5rem] leading-none text-[#214937]">01</div>
-              <h3 className="mt-5 text-xl font-extrabold tracking-[-.04em] text-[#214937]">Diagnóstico sem maquiagem</h3>
-              <p className="mt-3 text-sm leading-[1.65] text-[#667c70]">A realidade dos dados, dos processos e das pessoas. Sem achismos, sem receita pronta.</p>
-            </div>
-            <div className="border-l border-[#cbd7c8] pl-5 sm:pl-8">
-              <div className="font-display text-[4.5rem] leading-none text-[#214937]">02</div>
-              <h3 className="mt-5 text-xl font-extrabold tracking-[-.04em] text-[#214937]">Decisão que destrava</h3>
-              <p className="mt-3 text-sm leading-[1.65] text-[#667c70]">Prioridades claras para seu time agir agora e construir um próximo trimestre mais leve.</p>
-            </div>
+          <div className="grid gap-5 border-t border-[#cbd7c8] pt-6 sm:grid-cols-3">
+            {problemCards.map(([number, title, copy]) => (
+              <article key={number} className={`group ${number !== '01' ? 'border-l border-[#cbd7c8] pl-5 sm:pl-7' : ''}`}>
+                <div className="font-display text-[4.5rem] leading-none text-[#214937]">{number}</div>
+                <h3 className="mt-5 text-xl font-extrabold tracking-[-.04em] text-[#214937] transition-colors group-hover:text-[#8a9e47]">{title}</h3>
+                <p className="mt-3 text-sm leading-[1.65] text-[#667c70]">{copy}</p>
+              </article>
+            ))}
           </div>
           <div className="mt-12 flex items-center justify-between border-y border-[#cbd7c8] py-5">
-            <p className="max-w-[390px] text-[13px] font-semibold leading-[1.6] text-[#557064]">Tecnologia, administração e finanças trabalhando na mesma direção.</p>
-            <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><ArrowUpRight size={16} /></div>
+            <p className="max-w-[420px] text-[13px] font-semibold leading-[1.6] text-[#557064]">Antes de mudar, é preciso entender onde a operação está perdendo energia.</p>
+            <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><Search size={16} /></div>
           </div>
         </div>
       </section>
@@ -166,32 +257,133 @@ function Home() {
         <div className="mx-auto max-w-[1320px]">
           <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
             <div>
-              <SectionLabel>Soluções Zems</SectionLabel>
-              <h2 className="mt-6 max-w-[680px] text-balance text-[clamp(2.8rem,5.6vw,6rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Um negócio mais <em className="font-display text-[#8a9e47]">inteligente</em> por inteiro.</h2>
+              <SectionLabel>Nossas soluções</SectionLabel>
+              <h2 className="mt-6 max-w-[720px] text-balance text-[clamp(2.8rem,5.6vw,6rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Um negócio mais <em className="font-display text-[#8a9e47]">inteligente</em> por inteiro.</h2>
             </div>
-            <p className="max-w-[280px] text-sm leading-[1.65] text-[#61766a] md:pb-2">A combinação certa de visão, método e ferramentas para a operação respirar.</p>
+            <p className="max-w-[310px] text-sm leading-[1.65] text-[#61766a] md:pb-2">A Zems olha para a empresa como um sistema: dinheiro, pessoas, processos, tecnologia e clientes conectados.</p>
           </div>
-          <div className="mt-16 grid gap-4 lg:grid-cols-12 lg:grid-rows-[260px_220px]">
-            <article className="magnetic-card group relative overflow-hidden rounded-[1.5rem] bg-[#214937] p-7 text-[#f7f4ed] lg:col-span-7 lg:row-span-2 lg:p-10" data-testid="card-solution-gestao">
-              <div className="flex items-start justify-between">
-                <span className="grid h-12 w-12 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><BarChart3 size={21} /></span>
-                <ArrowUpRight className="text-[#b9ccaf] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <div className="mt-16 grid gap-4 lg:grid-cols-12 lg:grid-rows-[250px_250px]">
+            {solutionAreas.map((solution, index) => {
+              const { number, title, copy, icon: IconComponent } = solution;
+              const dark = index === 0;
+              const lime = index === 1;
+              return (
+                <article key={number} className={`magnetic-card group relative overflow-hidden rounded-[1.5rem] p-7 ${dark ? 'bg-[#214937] text-[#f7f4ed] lg:col-span-6' : lime ? 'bg-[#d8e86c] text-[#214937] lg:col-span-6' : 'border border-[#c4d0c1] bg-[#f5f3ec] text-[#214937] lg:col-span-6'} lg:p-8`}>
+                  <div className="flex items-start justify-between">
+                    <span className={`grid h-11 w-11 place-items-center rounded-full ${dark ? 'bg-[#d8e86c] text-[#214937]' : lime ? 'border border-[#8b9d43]' : 'bg-[#e5eadf]'}`}><IconComponent size={20} /></span>
+                    <span className={`font-mono-custom text-[10px] ${dark ? 'text-[#b9ccaf]' : lime ? 'text-[#536b37]' : 'text-[#8a9e47]'}`}>{number}</span>
+                  </div>
+                  <div className="mt-12 max-w-[430px]">
+                    <span className={`font-mono-custom text-[10px] uppercase tracking-[.16em] ${dark ? 'text-[#a8bfaa]' : lime ? 'text-[#536b37]' : 'text-[#718571]'}`}>Zems · frente de atuação</span>
+                    <h3 className="mt-3 text-2xl font-extrabold tracking-[-.05em] lg:text-3xl">{title}</h3>
+                    <p className={`mt-3 max-w-[400px] text-sm leading-[1.6] ${dark ? 'text-[#c0d0c1]' : lime ? 'text-[#526b4d]' : 'text-[#667c70]'}`}>{copy}</p>
+                  </div>
+                  {dark && <div className="absolute -bottom-12 -right-10 h-56 w-56 rounded-full border-[34px] border-[#315b44] transition-transform duration-500 group-hover:scale-110" />}
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="economia" className="bg-[#214937] px-5 py-24 text-[#f7f4ed] md:px-10 md:py-32">
+        <div className="mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-28">
+          <div>
+            <SectionLabel light>Eficiência e redução de custos</SectionLabel>
+            <h2 className="mt-7 max-w-[520px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em]">Encontrar economia é só o <em className="font-display text-[#d8e86c]">começo.</em></h2>
+            <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#b9cab9]">Mapeamos os custos da operação, identificamos oportunidades e ajudamos sua empresa a transformar desperdícios em economia real.</p>
+            <p className="mt-6 max-w-[380px] font-mono-custom text-[10px] uppercase leading-[1.7] tracking-[.12em] text-[#d8e86c]">Economia que pode ser medida — sem promessa de percentual fixo.</p>
+          </div>
+          <div className="border-t border-[#4f7058]">
+            {economySteps.map(([number, title, copy]) => (
+              <div key={number} className="group grid gap-4 border-b border-[#4f7058] py-7 sm:grid-cols-[70px_190px_1fr] sm:items-start">
+                <span className="font-mono-custom text-[11px] text-[#d8e86c]">{number}</span>
+                <h3 className="text-2xl font-extrabold tracking-[-.05em] transition-colors group-hover:text-[#d8e86c]">{title}</h3>
+                <p className="max-w-[350px] text-sm leading-[1.65] text-[#b9cab9]">{copy}</p>
               </div>
-              <div className="absolute -bottom-12 -right-10 h-64 w-64 rounded-full border-[38px] border-[#315b44] transition-transform duration-500 group-hover:scale-110" />
-              <div className="relative mt-28 max-w-[430px] lg:mt-44">
-                <span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#a8bfaa]">Gestão & estratégia</span>
-                <h3 className="mt-4 text-3xl font-extrabold tracking-[-.06em] text-[#f7f4ed] lg:text-4xl">O mapa para parar de operar no escuro.</h3>
-                <p className="mt-4 max-w-[370px] text-sm leading-[1.7] text-[#c0d0c1]">Indicadores que contam uma história, rituais de gestão que o time sustenta e decisões que deixam de depender do feeling.</p>
-              </div>
-            </article>
-            <article className="magnetic-card group rounded-[1.5rem] bg-[#d8e86c] p-7 text-[#214937] lg:col-span-5 lg:p-8" data-testid="card-solution-tech">
-              <div className="flex items-start justify-between"><span className="grid h-11 w-11 place-items-center rounded-full border border-[#8b9d43]"><Cpu size={20} /></span><ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
-              <div className="mt-12"><span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#536b37]">Tecnologia aplicada</span><h3 className="mt-3 text-2xl font-extrabold tracking-[-.05em]">Ferramenta boa é a que o time usa.</h3><p className="mt-3 max-w-[330px] text-sm leading-[1.6] text-[#526b4d]">Automação e sistemas escolhidos para reduzir retrabalho — não para adicionar mais uma senha.</p></div>
-            </article>
-            <article className="magnetic-card group rounded-[1.5rem] border border-[#c4d0c1] bg-[#f5f3ec] p-7 text-[#214937] lg:col-span-5 lg:p-8" data-testid="card-solution-finance">
-              <div className="flex items-start justify-between"><span className="grid h-11 w-11 place-items-center rounded-full bg-[#e5eadf]"><WalletCards size={20} /></span><ArrowUpRight className="text-[#728b75] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
-              <div className="mt-12"><span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#718571]">Finanças & formação</span><h3 className="mt-3 text-2xl font-extrabold tracking-[-.05em]">Números que viram autonomia.</h3><p className="mt-3 max-w-[330px] text-sm leading-[1.6] text-[#667c70]">Treinamento prático para seu time ler o caixa, proteger margem e fazer escolhas mais seguras.</p></div>
-            </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="packs" className="bg-[#f5f3ec] px-5 py-24 md:px-10 md:py-32">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
+            <div>
+              <SectionLabel>Packs Zems</SectionLabel>
+              <h2 className="mt-7 max-w-[720px] text-balance text-[clamp(2.8rem,5.6vw,6rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Um próximo passo claro para cada <em className="font-display text-[#8a9e47]">desafio.</em></h2>
+            </div>
+            <p className="max-w-[310px] text-sm leading-[1.65] text-[#61766a] md:pb-2">Frentes de trabalho que podem ser combinadas para transformar a operação por inteiro.</p>
+          </div>
+          <div className="mt-16 grid gap-4 md:grid-cols-2">
+            {packs.map((pack) => {
+              const IconComponent = pack.icon;
+              const dark = pack.tone === 'dark';
+              const lime = pack.tone === 'lime';
+              return (
+                <article key={pack.number} className={`magnetic-card group relative overflow-hidden rounded-[1.5rem] p-7 ${dark ? 'bg-[#214937] text-[#f7f4ed]' : lime ? 'bg-[#d8e86c] text-[#214937]' : pack.tone === 'paper' ? 'border border-[#c4d0c1] bg-[#f5f3ec] text-[#214937]' : 'border border-[#52735c] bg-[#28523e] text-[#f7f4ed]'} lg:p-8`}>
+                  <div className="flex items-start justify-between">
+                    <span className={`grid h-11 w-11 place-items-center rounded-full ${dark ? 'bg-[#d8e86c] text-[#214937]' : lime ? 'border border-[#8b9d43]' : pack.tone === 'paper' ? 'bg-[#e5eadf]' : 'border border-[#6b8a70]'}`}><IconComponent size={20} /></span>
+                    <span className={`font-mono-custom text-[10px] ${dark || pack.tone === 'outline' ? 'text-[#d8e86c]' : 'text-[#8a9e47]'}`}>{pack.number}</span>
+                  </div>
+                  <div className="mt-10">
+                    <span className={`font-mono-custom text-[10px] uppercase tracking-[.16em] ${dark || pack.tone === 'outline' ? 'text-[#a8bfaa]' : 'text-[#718571]'}`}>{pack.title}</span>
+                    <h3 className="mt-4 max-w-[500px] text-3xl font-extrabold leading-[1] tracking-[-.06em]">{pack.headline}</h3>
+                    <p className={`mt-4 max-w-[500px] text-sm leading-[1.7] ${dark || pack.tone === 'outline' ? 'text-[#b9cab9]' : 'text-[#667c70]'}`}>{pack.copy}</p>
+                    <div className="mt-7 flex flex-wrap gap-2">
+                      {pack.items.map((item) => <span key={item} className={`rounded-full border px-2.5 py-1 font-mono-custom text-[9px] uppercase tracking-[.08em] ${dark || pack.tone === 'outline' ? 'border-[#607f68] text-[#b9cab9]' : 'border-[#c4d0c1] text-[#718571]'}`}>{item}</span>)}
+                    </div>
+                    <div className={`mt-8 border-t pt-5 text-sm font-extrabold leading-[1.45] ${dark || pack.tone === 'outline' ? 'border-[#4f7058] text-[#d8e86c]' : 'border-[#cbd7c8] text-[#536b37]'}`}>{pack.result}</div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+          <div className="mt-10 flex flex-col items-start justify-between gap-5 border-t border-[#cbd7c8] pt-6 md:flex-row md:items-center">
+            <p className="max-w-[560px] text-sm leading-[1.65] text-[#667c70]">Os três primeiros packs podem ser combinados para descobrir, eliminar e conectar os pontos que travam a operação. O Pack Performance sustenta a evolução.</p>
+            <a href="#contato" className="line-link inline-flex items-center gap-2 text-[13px] font-extrabold text-[#214937]" data-testid="link-packs-diagnostico">Encontrar o pack certo <ArrowRight size={16} /></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="presenca" className="bg-[#d8e86c] px-5 py-24 md:px-10 md:py-32">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="grid gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-28">
+            <div>
+              <SectionLabel>Presença digital</SectionLabel>
+              <h2 className="mt-7 max-w-[600px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em] text-[#214937]">Sua empresa precisa ser encontrada, entendida e <em className="font-display">lembrada.</em></h2>
+              <p className="mt-8 max-w-[450px] text-[15px] leading-[1.7] text-[#385b42]">Construímos uma presença digital estratégica para transmitir confiança, ser encontrada pelos clientes certos e transformar atenção em oportunidades comerciais.</p>
+            </div>
+            <div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-[#a8bb76] bg-[#a8bb76] sm:grid-cols-2">
+              {digitalPillars.map(([number, title, copy]) => (
+                <div key={number} className={`bg-[#d8e86c] p-6 transition-colors hover:bg-[#e1ef8b] md:p-8 ${number === '05' ? 'sm:col-span-2' : ''}`}>
+                  <span className="font-mono-custom text-[10px] text-[#536b37]">{number}</span>
+                  <h3 className="mt-10 text-xl font-extrabold tracking-[-.04em] text-[#214937]">{title}</h3>
+                  <p className="mt-3 max-w-[330px] text-sm leading-[1.65] text-[#526b4d]">{copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tecnologia" className="fintech-grid-light bg-[#e5eadf] px-5 py-24 md:px-10 md:py-32">
+        <div className="mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-28">
+          <div>
+            <SectionLabel>Tecnologia aplicada</SectionLabel>
+            <h2 className="mt-7 max-w-[500px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em] text-[#214937]">Quando a tecnologia trabalha, sua empresa <em className="font-display text-[#8a9e47]">avança.</em></h2>
+            <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#667c70]">Automatizamos tarefas, conectamos sistemas e transformamos dados em ferramentas para decisões melhores.</p>
+            <p className="mt-6 max-w-[390px] text-sm font-extrabold leading-[1.7] text-[#214937]">Tecnologia não deve complicar sua operação. Deve fazer sua empresa funcionar melhor.</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {technologyItems.map(({ label, icon: IconComponent }) => {
+              return (
+                <div key={label} className="magnetic-card flex min-h-[150px] flex-col justify-between rounded-[1.5rem] border border-[#c4d0c1] bg-[#f5f3ec] p-6 text-[#214937]">
+                  <IconComponent size={20} className="text-[#8a9e47]" />
+                  <div className="flex items-end justify-between gap-4"><h3 className="text-xl font-extrabold tracking-[-.05em]">{label}</h3><ArrowUpRight size={17} className="text-[#728b75]" /></div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -205,12 +397,7 @@ function Home() {
             <a href="#contato" className="line-link mt-8 inline-flex items-center gap-2 text-[13px] font-extrabold text-[#214937]" data-testid="link-method-contact">Quero começar pela conversa <ArrowRight size={16} /></a>
           </div>
           <div className="border-t border-[#cbd7c8]">
-            {[
-              ['01', 'Entender', 'Mergulhamos na operação para separar sintoma de causa e oportunidade de urgência.'],
-              ['02', 'Organizar', 'Colocamos dados, responsabilidades e prioridades no mesmo campo de visão.'],
-              ['03', 'Implementar', 'Construímos com quem faz. Cada mudança precisa funcionar na terça-feira de manhã.'],
-              ['04', 'Acompanhar', 'Medimos o que mudou, aprendemos com o caminho e ajustamos o próximo passo.'],
-            ].map(([number, title, copy]) => (
+            {methodSteps.map(([number, title, copy]) => (
               <div key={number} className="group grid gap-4 border-b border-[#cbd7c8] py-7 sm:grid-cols-[70px_180px_1fr] sm:items-start">
                 <span className="font-mono-custom text-[11px] text-[#8a9e47]">{number}</span>
                 <h3 className="text-2xl font-extrabold tracking-[-.05em] text-[#214937] transition-colors group-hover:text-[#8a9e47]">{title}</h3>
@@ -228,30 +415,29 @@ function Home() {
               <img src="/zems-about-team.jpg" alt="Equipe da Zems analisando a operação em uma reunião" className="h-full w-full object-cover object-center mix-blend-multiply opacity-90" data-testid="img-about-founder" />
             </div>
             <div className="absolute right-0 top-8 grid h-36 w-36 place-items-center rounded-full border border-[#214937] text-center font-mono-custom text-[10px] uppercase leading-[1.25] tracking-[.12em] text-[#214937]">feito para<br />o mundo real</div>
-            <div className="absolute bottom-7 right-[10%] rounded-xl bg-[#214937] px-4 py-3 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#d8e86c]">Desde 2017</div>
+            <div className="absolute bottom-7 right-[10%] rounded-xl bg-[#214937] px-4 py-3 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#d8e86c]">junto da operação</div>
           </div>
           <div>
-            <SectionLabel>Sobre a Zems</SectionLabel>
-            <h2 className="mt-7 max-w-[590px] text-balance text-[clamp(2.8rem,5vw,5.5rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Clareza também é uma forma de <em className="font-display">cuidado.</em></h2>
-            <p className="mt-8 max-w-[490px] text-[15px] leading-[1.75] text-[#385b42]">A Zems nasceu entre planilhas, conversas francas e a vontade de fazer a gestão caber na vida real de quem empreende no Brasil.</p>
-            <p className="mt-5 max-w-[490px] text-[15px] leading-[1.75] text-[#385b42]">A gente acredita em negócios que sabem onde estão, para onde vão e por que cada escolha importa. E em consultoria que não cria dependência: cria repertório.</p>
-            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[12px] font-extrabold text-[#214937]"><span className="flex items-center gap-2"><Check size={15} /> Direto ao ponto</span><span className="flex items-center gap-2"><Check size={15} /> Próximo do time</span><span className="flex items-center gap-2"><Check size={15} /> Orientado a resultado</span></div>
+            <SectionLabel>Relacionamento contínuo</SectionLabel>
+            <h2 className="mt-7 max-w-[620px] text-balance text-[clamp(2.8rem,5vw,5.5rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Não somos apenas um projeto. Somos parte da evolução da sua <em className="font-display">empresa.</em></h2>
+            <p className="mt-8 max-w-[490px] text-[15px] leading-[1.75] text-[#385b42]">A melhoria de uma empresa não termina quando um projeto acaba. Acompanhamos resultados, identificamos novas oportunidades e ajudamos sua operação a evoluir continuamente.</p>
+            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[12px] font-extrabold text-[#214937]"><span className="flex items-center gap-2"><Check size={15} /> Melhoria contínua</span><span className="flex items-center gap-2"><Check size={15} /> Acompanhamento</span><span className="flex items-center gap-2"><Check size={15} /> Indicadores</span><span className="flex items-center gap-2"><Check size={15} /> Crescimento</span></div>
           </div>
         </div>
       </section>
 
       <section className="bg-[#214937] px-5 py-24 text-[#f7f4ed] md:px-10 md:py-32">
         <div className="mx-auto max-w-[1320px]">
-          <div className="flex items-end justify-between gap-8"><div><SectionLabel light>O que muda na prática</SectionLabel><h2 className="mt-7 max-w-[590px] text-balance text-[clamp(2.8rem,5vw,5.4rem)] font-normal leading-[.92] tracking-[-.06em]">Quando a gestão clareia, o negócio <em className="font-display text-[#d8e86c]">anda.</em></h2></div><span className="hidden font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#9bb49c] md:block">Relatos de quem já virou a chave</span></div>
+          <div className="flex items-end justify-between gap-8"><div><SectionLabel light>O que acreditamos</SectionLabel><h2 className="mt-7 max-w-[660px] text-balance text-[clamp(2.8rem,5vw,5.4rem)] font-normal leading-[.92] tracking-[-.06em]">Melhorias pontuais viram uma operação mais <em className="font-display text-[#d8e86c]">forte.</em></h2></div><span className="hidden font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#9bb49c] md:block">Cases reais em construção</span></div>
           <div className="mt-16 grid gap-6 lg:grid-cols-[1.3fr_.7fr]">
-            <blockquote className="rounded-[1.5rem] border border-[#4f7058] bg-[#28523e] p-7 md:p-10">
+            <div className="rounded-[1.5rem] border border-[#4f7058] bg-[#28523e] p-7 md:p-10">
               <div className="flex gap-1 text-[#d8e86c]">{[1, 2, 3, 4, 5].map((item) => <span key={item} className="text-lg">•</span>)}</div>
-              <p className="mt-8 max-w-[750px] text-[clamp(1.7rem,3.2vw,3.1rem)] font-normal leading-[1.08] tracking-[-.04em] text-[#f7f4ed]">“A Zems nos ajudou a trocar a sensação de estar sempre correndo por uma visão muito mais segura do que fazer primeiro.”</p>
-              <footer className="mt-10 flex items-center gap-4 border-t border-[#4f7058] pt-5"><span className="grid h-10 w-10 place-items-center rounded-full bg-[#d8e86c] font-extrabold text-[#214937]">MC</span><div><div className="text-sm font-extrabold">Marina Costa</div><div className="mt-1 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#a9c0aa]">Sócia · Estúdio Vértice</div></div></footer>
-            </blockquote>
+              <p className="mt-8 max-w-[750px] text-[clamp(1.7rem,3.2vw,3.1rem)] font-normal leading-[1.08] tracking-[-.04em] text-[#f7f4ed]">Estamos organizando os primeiros relatos de clientes para mostrar, com contexto, como eficiência, economia e tecnologia mudam a rotina.</p>
+              <div className="mt-10 border-t border-[#4f7058] pt-5 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#a9c0aa]">Depoimentos reais serão publicados nesta área</div>
+            </div>
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-1">
-              <div className="rounded-[1.5rem] bg-[#d8e86c] p-6 text-[#214937]"><span className="font-mono-custom text-[10px] uppercase tracking-[.14em]">Visão de caixa</span><strong className="mt-9 block text-4xl font-extrabold tracking-[-.08em]">+31<span className="text-xl">%</span></strong><p className="mt-2 text-xs leading-[1.45]">de previsibilidade financeira em 90 dias</p></div>
-              <div className="rounded-[1.5rem] border border-[#4f7058] p-6"><span className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[#a9c0aa]">Modo de fazer</span><strong className="mt-9 block font-display text-4xl text-[#d8e86c]">junto</strong><p className="mt-2 text-xs leading-[1.45] text-[#b9cab9]">com pessoas, não apenas processos</p></div>
+              <div className="rounded-[1.5rem] bg-[#d8e86c] p-6 text-[#214937]"><span className="font-mono-custom text-[10px] uppercase tracking-[.14em]">O que acompanhamos</span><strong className="mt-9 block text-3xl font-extrabold tracking-[-.08em]">Eficiência</strong><p className="mt-2 text-xs leading-[1.45]">custos, processos e capacidade de execução</p></div>
+              <div className="rounded-[1.5rem] border border-[#4f7058] p-6"><span className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[#a9c0aa]">Como trabalhamos</span><strong className="mt-9 block font-display text-3xl text-[#d8e86c]">junto</strong><p className="mt-2 text-xs leading-[1.45] text-[#b9cab9]">com pessoas, dados e a operação real</p></div>
             </div>
           </div>
         </div>
@@ -271,17 +457,28 @@ function Home() {
 
       <section id="contato" className="bg-[#d8e86c] px-5 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[1fr_.8fr] lg:gap-28">
-          <div><SectionLabel>O próximo capítulo</SectionLabel><h2 className="mt-7 max-w-[700px] text-balance text-[clamp(3.3rem,7vw,7.7rem)] font-normal leading-[.88] tracking-[-.07em] text-[#214937]">Vamos colocar sua empresa <em className="font-display">em ordem?</em></h2><p className="mt-8 max-w-[420px] text-[15px] leading-[1.7] text-[#385b42]">Conte um pouco do momento da sua empresa. A primeira conversa é sem compromisso e já pode organizar algumas ideias.</p><div className="mt-10 flex flex-col gap-3 text-sm font-extrabold text-[#214937]"><a href="mailto:oi@zems.com.br" className="flex items-center gap-3 hover:underline" data-testid="link-contact-email"><Mail size={16} /> oi@zems.com.br</a><a href="tel:+551130301717" className="flex items-center gap-3 hover:underline" data-testid="link-contact-phone"><Phone size={16} /> +55 11 3030 1717</a></div></div>
+          <div><SectionLabel>Diagnóstico Zems</SectionLabel><h2 className="mt-7 max-w-[700px] text-balance text-[clamp(3.3rem,7vw,7.7rem)] font-normal leading-[.88] tracking-[-.07em] text-[#214937]">Antes de mudar, é preciso <em className="font-display">entender.</em></h2><p className="mt-8 max-w-[480px] text-[15px] leading-[1.7] text-[#385b42]">Começamos pelo diagnóstico. Analisamos sua operação para entender onde estão os custos, gargalos, desperdícios e oportunidades que podem fazer sua empresa funcionar melhor.</p><div className="mt-10 flex flex-col gap-3 text-sm font-extrabold text-[#214937]"><a href="mailto:oi@zems.com.br" className="flex items-center gap-3 hover:underline" data-testid="link-contact-email"><Mail size={16} /> oi@zems.com.br</a><a href="tel:+551130301717" className="flex items-center gap-3 hover:underline" data-testid="link-contact-phone"><Phone size={16} /> +55 11 3030 1717</a></div></div>
           <form onSubmit={submitForm} className="rounded-[1.5rem] bg-[#f5f3ec] p-6 shadow-[0_20px_60px_rgba(34,70,49,.12)] md:p-8" data-testid="form-contact">
-            {!formSent ? <><div className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#718571]">Fale com a gente</div><label className="mt-8 block text-xs font-bold text-[#557064]">Seu nome<input required name="name" type="text" placeholder="Como podemos te chamar?" className="mt-2 w-full border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-name" /></label><label className="mt-7 block text-xs font-bold text-[#557064]">Seu melhor e-mail<input required name="email" type="email" placeholder="voce@empresa.com.br" className="mt-2 w-full border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-email" /></label><label className="mt-7 block text-xs font-bold text-[#557064]">O que está acontecendo?<textarea required name="message" rows={3} placeholder="Quero falar sobre..." className="mt-2 w-full resize-none border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-message" /></label><button type="submit" className="group mt-8 flex w-full items-center justify-between rounded-full bg-[#214937] px-5 py-3.5 text-[13px] font-extrabold text-[#f5f3ec] transition-colors hover:bg-[#2d6048]" data-testid="button-submit-contact">Enviar mensagem <span className="grid h-7 w-7 place-items-center rounded-full bg-[#d8e86c] text-[#214937] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span></button><p className="mt-4 text-center text-[11px] text-[#819385]">Respondemos em até um dia útil.</p></> : <div className="flex min-h-[390px] flex-col justify-center"><span className="grid h-12 w-12 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><Check size={22} /></span><h3 className="mt-7 text-3xl font-extrabold tracking-[-.06em] text-[#214937]">Mensagem recebida.</h3><p className="mt-4 max-w-[300px] text-sm leading-[1.7] text-[#667c70]">Obrigado por abrir essa conversa. A gente retorna em até um dia útil.</p><button type="button" onClick={() => setFormSent(false)} className="line-link mt-8 w-fit text-xs font-extrabold text-[#214937]" data-testid="button-send-another">Enviar outra mensagem</button></div>}
+            {!formSent ? <><div className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#718571]">Solicitar diagnóstico</div><label className="mt-8 block text-xs font-bold text-[#557064]">Seu nome<input required name="name" type="text" placeholder="Como podemos te chamar?" className="mt-2 w-full border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-name" /></label><label className="mt-7 block text-xs font-bold text-[#557064]">Seu melhor e-mail<input required name="email" type="email" placeholder="voce@empresa.com.br" className="mt-2 w-full border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-email" /></label><label className="mt-7 block text-xs font-bold text-[#557064]">Onde estão as oportunidades?<textarea required name="message" rows={3} placeholder="Conte um pouco sobre sua operação..." className="mt-2 w-full resize-none border-b border-[#b7cab8] bg-transparent py-3 text-sm text-[#214937] outline-none placeholder:text-[#9aac9e] focus:border-[#214937]" data-testid="input-contact-message" /></label><button type="submit" className="group mt-8 flex w-full items-center justify-between rounded-full bg-[#214937] px-5 py-3.5 text-[13px] font-extrabold text-[#f5f3ec] transition-colors hover:bg-[#2d6048]" data-testid="button-submit-contact">Solicitar diagnóstico <span className="grid h-7 w-7 place-items-center rounded-full bg-[#d8e86c] text-[#214937] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span></button><p className="mt-4 text-center text-[11px] text-[#819385]">A conversa inicial é sem compromisso.</p></> : <div className="flex min-h-[390px] flex-col justify-center"><span className="grid h-12 w-12 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><Check size={22} /></span><h3 className="mt-7 text-3xl font-extrabold tracking-[-.06em] text-[#214937]">Mensagem recebida.</h3><p className="mt-4 max-w-[300px] text-sm leading-[1.7] text-[#667c70]">Obrigado por abrir essa conversa. A gente retorna em até um dia útil.</p><button type="button" onClick={() => setFormSent(false)} className="line-link mt-8 w-fit text-xs font-extrabold text-[#214937]" data-testid="button-send-another">Enviar outra mensagem</button></div>}
           </form>
         </div>
       </section>
 
       <footer className="bg-[#1d4333] px-5 pb-8 pt-14 text-[#d7e2d5] md:px-10">
         <div className="mx-auto max-w-[1320px]">
-          <div className="flex flex-col justify-between gap-10 border-b border-[#52735c] pb-12 md:flex-row md:items-start"><div><Logo light /><p className="mt-5 max-w-[240px] text-sm leading-[1.6] text-[#a9c0aa]">Clareza para decidir.<br />Estrutura para crescer.</p></div><div className="grid grid-cols-2 gap-x-16 gap-y-3 text-[12px] font-semibold md:grid-cols-3"><div className="col-span-2 mb-2 font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#91ae94] md:col-span-1">Navegue</div>{navItems.map((item) => <a href={item.href} key={item.href} className="transition-colors hover:text-[#d8e86c]" data-testid={`link-footer-${item.label.toLowerCase().replaceAll(' ', '-')}`}>{item.label}</a>)}<a href="#faq" className="transition-colors hover:text-[#d8e86c]" data-testid="link-footer-faq">Perguntas</a></div><div className="flex gap-3"><a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full border border-[#52735c] transition-colors hover:bg-[#d8e86c] hover:text-[#214937]" data-testid="link-social-linkedin"><Linkedin size={15} /></a><a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full border border-[#52735c] transition-colors hover:bg-[#d8e86c] hover:text-[#214937]" data-testid="link-social-instagram"><Instagram size={15} /></a></div></div>
-          <div className="flex flex-col justify-between gap-3 pt-6 font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#91ae94] sm:flex-row"><span>© 2024 Zems consultoria</span><span className="flex items-center gap-2"><MapPin size={12} /> São Paulo, Brasil</span><span>Feito para fazer sentido.</span></div>
+          <div className="flex flex-col justify-between gap-10 border-b border-[#52735c] pb-12 md:flex-row md:items-start">
+            <div><Logo light /><p className="mt-5 max-w-[240px] text-sm leading-[1.6] text-[#a9c0aa]">Mais eficiência.<br />Mais economia.<br />Mais negócio.</p></div>
+            <div className="grid grid-cols-2 gap-x-12 gap-y-3 text-[12px] font-semibold md:grid-cols-3">
+              <div className="col-span-2 mb-2 font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#91ae94] md:col-span-1">Zems</div>
+              <a href="#sobre" className="transition-colors hover:text-[#d8e86c]">Sobre</a><a href="#solucoes" className="transition-colors hover:text-[#d8e86c]">Soluções</a><a href="#contato" className="transition-colors hover:text-[#d8e86c]">Diagnóstico</a><a href="#contato" className="transition-colors hover:text-[#d8e86c]">Contato</a>
+              <div className="col-span-2 mt-5 mb-2 font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#91ae94] md:col-span-1">Soluções</div>
+              <a href="#economia" className="transition-colors hover:text-[#d8e86c]">Eficiência e custos</a><a href="#packs" className="transition-colors hover:text-[#d8e86c]">Packs</a><a href="#tecnologia" className="transition-colors hover:text-[#d8e86c]">Tecnologia</a><a href="#metodo" className="transition-colors hover:text-[#d8e86c]">Gestão</a><a href="#presenca" className="transition-colors hover:text-[#d8e86c]">Presença digital</a>
+              <div className="col-span-2 mt-5 mb-2 font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#91ae94] md:col-span-1">Contato</div>
+              <a href="mailto:oi@zems.com.br" className="transition-colors hover:text-[#d8e86c]">E-mail</a><a href="tel:+551130301717" className="transition-colors hover:text-[#d8e86c]">WhatsApp</a>
+            </div>
+            <div className="flex gap-3"><a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full border border-[#52735c] transition-colors hover:bg-[#d8e86c] hover:text-[#214937]" data-testid="link-social-linkedin"><Linkedin size={15} /></a><a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full border border-[#52735c] transition-colors hover:bg-[#d8e86c] hover:text-[#214937]" data-testid="link-social-instagram"><Instagram size={15} /></a></div>
+          </div>
+          <div className="flex flex-col justify-between gap-3 pt-6 font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#91ae94] sm:flex-row"><span>© 2024 Zems consultoria</span><span className="flex items-center gap-2"><MapPin size={12} /> São Paulo, Brasil</span><span>Eficiência para fazer sentido.</span></div>
         </div>
       </footer>
     </main>

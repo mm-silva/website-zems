@@ -91,7 +91,7 @@ export default function CatalogoCursos() {
                   <div className="mt-8 flex flex-wrap items-end justify-between gap-4 border-t border-[#d7dfd3] pt-5">
                     <div>
                       <div className="font-mono-custom text-[9px] uppercase tracking-[.14em] text-[#8a9e47]">{track.level} · <Clock3 className="inline" size={11} /> {track.details}</div>
-                      <strong className="mt-1 block text-3xl font-extrabold tracking-[-.07em] text-[#214937]">{track.price}</strong>
+                      <strong className="mt-1 block text-2xl font-extrabold tracking-[-.07em] text-[#214937]">Conteúdo gravado</strong>
                     </div>
                     <a href={`mailto:oi@zems.com.br?subject=Quero%20conhecer%20o%20curso%20${encodeURIComponent(track.title)}`} className="inline-flex items-center gap-2 rounded-full bg-[#214937] px-4 py-2.5 text-[12px] font-extrabold text-[#f5f3ec] transition-transform hover:scale-[1.03]" data-testid={`link-catalog-interest-${track.index}`}>Quero conhecer <ArrowRight size={14} /></a>
                   </div>

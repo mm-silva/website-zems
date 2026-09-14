@@ -19,7 +19,6 @@ export const tracks = [
     description: 'O repertório para ler os números com segurança, fazer as perguntas certas e decidir sem depender de tradução.',
     details: '6 aulas · 6h',
     level: 'Intermediário',
-    price: 'R$ 197',
     topics: ['DRE que conta uma história', 'Indicadores para a rotina', 'Decisões com contexto'],
   },
   {
@@ -32,7 +31,6 @@ export const tracks = [
     description: 'Uma visão prática do dinheiro que entra, sai e precisa estar disponível para o próximo passo.',
     details: '4 aulas · 4h',
     level: 'Básico',
-    price: 'R$ 147',
     topics: ['Fluxo de caixa real', 'Cenários e previsibilidade', 'Ritual de acompanhamento'],
   },
   {
@@ -45,7 +43,6 @@ export const tracks = [
     description: 'Como proteger resultado, precificar melhor e enxergar onde a operação cria — ou perde — valor.',
     details: '4 aulas · 4h',
     level: 'Intermediário',
-    price: 'R$ 167',
     topics: ['Custo e contribuição', 'Preço com clareza', 'Mix que faz sentido'],
   },
   {
@@ -58,7 +55,6 @@ export const tracks = [
     description: 'A estrutura mínima para transformar finanças em uma conversa frequente, objetiva e compartilhada.',
     details: '4 aulas · 4h',
     level: 'Avançado',
-    price: 'R$ 197',
     topics: ['Papéis e cadências', 'Painel de gestão', 'Acordos para agir'],
   },
 ];
@@ -248,7 +244,7 @@ function Cursos() {
                   <div className="mt-auto flex flex-wrap items-end justify-between gap-4 pt-8">
                     <div>
                       <div className={`font-mono-custom text-[9px] uppercase tracking-[.14em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a9c0aa]'}`}>{track.level}</div>
-                      <strong className={`mt-1 block text-2xl font-extrabold tracking-[-.06em] ${track.tone === 'lime' || track.tone === 'paper' ? 'text-[#214937]' : 'text-[#f7f4ed]'}`}>{track.price}</strong>
+                      <strong className={`mt-1 block text-xl font-extrabold tracking-[-.06em] ${track.tone === 'lime' || track.tone === 'paper' ? 'text-[#214937]' : 'text-[#f7f4ed]'}`}>Conteúdo gravado</strong>
                     </div>
                     <a href={`mailto:oi@zems.com.br?subject=Quero%20conhecer%20o%20curso%20${encodeURIComponent(track.title)}`} className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[12px] font-extrabold transition-transform hover:scale-[1.03] ${track.tone === 'lime' || track.tone === 'paper' ? 'bg-[#214937] text-[#f5f3ec]' : 'bg-[#d8e86c] text-[#214937]'}`} data-testid={`link-course-interest-${track.index}`}>Quero conhecer <ArrowRight size={14} /></a>
                   </div>

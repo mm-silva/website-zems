@@ -1,0 +1,588 @@
+Quero atualizar o site atual da Zems.
+
+IMPORTANTE:
+- NÃO recrie o site do zero.
+- NÃO descarte o layout atual.
+- Preserve a identidade visual, estrutura, animações, responsividade, tipografia, espaçamentos, grid, componentes e estética atual.
+- O site atual já possui uma identidade visual muito boa: corporativa, sofisticada, moderna, minimalista e tecnológica.
+- Faça uma evolução do conteúdo e da proposta comercial mantendo a linguagem visual existente.
+- Não inclua preços, valores de planos ou mensalidades em nenhuma parte do site.
+
+==================================================
+POSICIONAMENTO DA ZEMS
+==================================================
+
+A Zems é uma consultoria empresarial que ajuda empresas a:
+
+- reduzir custos;
+- eliminar desperdícios;
+- melhorar processos;
+- aumentar eficiência;
+- estruturar sua presença digital;
+- melhorar sua operação através de tecnologia;
+- transformar dados em decisões;
+- automatizar tarefas;
+- organizar gestão e processos;
+- encontrar oportunidades de crescimento.
+
+A ideia central da marca é:
+
+"Fazer empresas ganharem mais e gastarem melhor."
+
+A Zems não deve parecer uma agência de marketing tradicional.
+
+Ela deve parecer uma CONSULTORIA DE NEGÓCIOS moderna, que utiliza tecnologia, gestão, dados e estratégia para tornar empresas mais eficientes e econômicas.
+
+==================================================
+NOVA MENSAGEM PRINCIPAL
+==================================================
+
+O site deve comunicar claramente:
+
+"Mais eficiência.
+Mais economia.
+Mais negócio."
+
+Sugestão de headline principal:
+
+"Uma empresa mais eficiente começa com decisões mais inteligentes."
+
+Texto de apoio:
+
+"A Zems combina estratégia, tecnologia e gestão para identificar desperdícios, melhorar processos, fortalecer a presença digital e criar operações mais eficientes."
+
+CTA principal:
+
+"Quero melhorar minha empresa"
+
+CTA secundário:
+
+"Conhecer a Zems"
+
+==================================================
+HERO
+==================================================
+
+Mantenha o hero atual visualmente.
+
+Substitua o conceito atual por uma mensagem mais forte sobre eficiência empresarial.
+
+Headline:
+
+"Mais eficiência.
+Mais economia.
+Mais negócio."
+
+Texto:
+
+"Identificamos onde sua empresa perde tempo, dinheiro e oportunidades — e transformamos esses pontos em melhorias concretas."
+
+CTA:
+
+"Quero melhorar minha empresa"
+
+Pequeno texto secundário:
+
+"Consultoria em tecnologia, gestão e eficiência empresarial."
+
+Na imagem do hero, mantenha o conceito de ambiente corporativo moderno.
+
+O visual deve transmitir:
+- gestão;
+- estratégia;
+- tecnologia;
+- tomada de decisão;
+- empresa organizada;
+- eficiência.
+
+==================================================
+SEÇÃO 01 — O PROBLEMA
+==================================================
+
+Substitua a seção atual por algo mais diretamente relacionado às dores empresariais.
+
+Título:
+
+"Sua empresa pode estar perdendo dinheiro sem perceber."
+
+Texto:
+
+"Custos desnecessários, processos manuais, sistemas desconectados, falhas operacionais e uma presença digital pouco eficiente podem consumir recursos todos os meses."
+
+Criar cards ou blocos para:
+
+01
+"Custos que poderiam ser menores"
+
+"Identificamos despesas, contratos, tarifas, desperdícios e processos que podem ser otimizados."
+
+02
+"Processos que consomem tempo"
+
+"Encontramos atividades manuais e gargalos que podem ser simplificados, automatizados ou eliminados."
+
+03
+"Oportunidades que não estão sendo aproveitadas"
+
+"Analisamos tecnologia, dados, canais digitais e processos comerciais para encontrar novas oportunidades."
+
+==================================================
+SEÇÃO 02 — NOSSA SOLUÇÃO
+==================================================
+
+Criar uma seção com o conceito:
+
+"Um negócio mais inteligente por inteiro."
+
+Texto:
+
+"A Zems olha para a empresa como um sistema. Não analisamos apenas um problema isolado. Entendemos como dinheiro, pessoas, processos, tecnologia e clientes se conectam."
+
+Criar 4 áreas principais:
+
+01 — EFICIÊNCIA
+
+"Redução de custos, eliminação de desperdícios e melhoria da produtividade."
+
+02 — TECNOLOGIA
+
+"Sistemas, automação, integrações, dados, IA e infraestrutura para uma operação mais inteligente."
+
+03 — GESTÃO
+
+"Processos, indicadores, organização, governança e tomada de decisão."
+
+04 — PRESENÇA DIGITAL
+
+"Site, Google, redes sociais, canais digitais, posicionamento e estrutura para transformar presença em oportunidades."
+
+==================================================
+SEÇÃO 03 — REDUÇÃO DE CUSTOS
+==================================================
+
+Essa deve ser uma das áreas mais importantes do site.
+
+Título:
+
+"Encontrar economia é só o começo."
+
+Texto:
+
+"Mapeamos os custos da operação, identificamos oportunidades e ajudamos sua empresa a transformar desperdícios em economia real."
+
+Mostrar um processo visual:
+
+01
+"Diagnosticar"
+
+"Entendemos como sua empresa gasta, opera e gera valor."
+
+02
+"Encontrar"
+
+"Identificamos desperdícios, custos desnecessários, gargalos e oportunidades."
+
+03
+"Implementar"
+
+"Transformamos as oportunidades encontradas em ações práticas."
+
+04
+"Acompanhar"
+
+"Monitoramos os resultados para garantir que as melhorias continuem gerando valor."
+
+Importante:
+
+NÃO PROMETER uma porcentagem fixa de economia.
+
+Não utilizar frases como "reduzimos 20% dos custos".
+
+Utilizar linguagem como:
+
+"Buscamos identificar economias mensuráveis."
+
+"Nosso objetivo é encontrar oportunidades reais de redução de custos."
+
+"Economia que pode ser medida."
+
+==================================================
+SEÇÃO 04 — PRESENÇA DIGITAL
+==================================================
+
+Criar uma seção específica para apresentar o novo produto de Presença Digital.
+
+Título:
+
+"Sua empresa precisa ser encontrada, entendida e lembrada."
+
+Texto:
+
+"Construímos uma presença digital estratégica para que sua empresa transmita confiança, seja encontrada pelos clientes certos e transforme atenção em oportunidades comerciais."
+
+Apresentar os pilares:
+
+01 — MARCA
+
+"Posicionamento, identidade visual e comunicação mais clara."
+
+02 — PRESENÇA
+
+"Site, Google, redes sociais e canais digitais estruturados."
+
+03 — CONTEÚDO
+
+"Conteúdo estratégico para comunicar autoridade, confiança e diferenciais."
+
+04 — CONVERSÃO
+
+"WhatsApp, landing pages, formulários e jornadas pensadas para gerar oportunidades."
+
+05 — PERFORMANCE
+
+"Dados e indicadores para entender o que funciona e onde melhorar."
+
+Importante:
+
+Não posicionar a Zems como uma simples agência de social media.
+
+Deixar claro que Presença Digital faz parte de uma estratégia maior de crescimento empresarial.
+
+==================================================
+SEÇÃO 05 — TECNOLOGIA
+==================================================
+
+Título:
+
+"Quando a tecnologia trabalha, sua empresa avança."
+
+Texto:
+
+"Automatizamos tarefas, conectamos sistemas e transformamos dados em ferramentas para decisões melhores."
+
+Mostrar:
+
+- Automação
+- Sistemas empresariais
+- Integrações
+- APIs
+- IA
+- Dados e BI
+- Cloud
+- Segurança
+- Infraestrutura
+
+Mensagem:
+
+"Tecnologia não deve complicar sua operação. Deve fazer sua empresa funcionar melhor."
+
+==================================================
+SEÇÃO 06 — COMO TRABALHAMOS
+==================================================
+
+Criar uma seção com quatro etapas:
+
+01 — ENTENDER
+
+"Conhecemos sua empresa, seus objetivos, seus processos e seus principais desafios."
+
+02 — ORGANIZAR
+
+"Mapeamos processos, custos, tecnologia, presença digital e oportunidades."
+
+03 — IMPLEMENTAR
+
+"Transformamos o diagnóstico em ações práticas e mensuráveis."
+
+04 — ACOMPANHAR
+
+"Monitoramos os resultados e buscamos continuamente novas oportunidades de melhoria."
+
+Título:
+
+"Menos promessa.
+Mais prática."
+
+==================================================
+SEÇÃO 07 — MODELO DE RELACIONAMENTO
+==================================================
+
+Criar uma seção destacando que a Zems não quer apenas entregar um projeto e desaparecer.
+
+Título:
+
+"Não somos apenas um projeto. Somos parte da evolução da sua empresa."
+
+Texto:
+
+"A melhoria de uma empresa não termina quando um projeto acaba. Acompanhamos resultados, identificamos novas oportunidades e ajudamos sua operação a evoluir continuamente."
+
+Destacar conceitos:
+
+- melhoria contínua;
+- acompanhamento;
+- indicadores;
+- eficiência;
+- economia;
+- tecnologia;
+- crescimento.
+
+==================================================
+SEÇÃO 08 — DIAGNÓSTICO
+==================================================
+
+Criar uma chamada comercial forte.
+
+Título:
+
+"Antes de mudar, é preciso entender."
+
+Texto:
+
+"Começamos pelo diagnóstico. Analisamos sua operação para entender onde estão os custos, gargalos, desperdícios e oportunidades que podem fazer sua empresa funcionar melhor."
+
+CTA:
+
+"Solicitar diagnóstico"
+
+Não apresentar preço.
+
+==================================================
+SEÇÃO 09 — PROVA SOCIAL
+==================================================
+
+Manter a estrutura visual atual de depoimentos.
+
+Porém, adaptar o conteúdo para reforçar:
+
+- economia;
+- eficiência;
+- organização;
+- tecnologia;
+- melhoria de processos;
+- clareza para tomada de decisão.
+
+Evitar depoimentos genéricos de marketing.
+
+Se não houver depoimentos reais disponíveis, NÃO inventar clientes, nomes, empresas ou resultados.
+
+Pode utilizar placeholders claramente identificados para posterior substituição.
+
+==================================================
+SEÇÃO 10 — FAQ
+==================================================
+
+Atualizar o FAQ para perguntas como:
+
+"O que a Zems faz?"
+
+"Que tipo de empresa pode contratar a Zems?"
+
+"A Zems trabalha apenas com tecnologia?"
+
+"Como funciona o diagnóstico?"
+
+"Vocês trabalham com redução de custos?"
+
+"Vocês também cuidam da presença digital?"
+
+"Vocês podem automatizar processos da minha empresa?"
+
+"Como vocês medem os resultados?"
+
+As respostas devem ser curtas, comerciais e objetivas.
+
+==================================================
+CTA FINAL
+==================================================
+
+Criar uma seção final forte.
+
+Headline:
+
+"Vamos colocar sua empresa em ordem?"
+
+Texto:
+
+"Conte um pouco sobre sua empresa, seus desafios e onde você acredita que existem oportunidades. A Zems pode ajudar a transformar problemas em eficiência."
+
+CTA:
+
+"Falar com a Zems"
+
+Manter formulário de contato visualmente semelhante ao atual.
+
+==================================================
+RODAPÉ
+==================================================
+
+Manter o estilo atual.
+
+Organizar links em:
+
+Zems
+- Sobre
+- Soluções
+- Diagnóstico
+- Contato
+
+Soluções
+- Eficiência e redução de custos
+- Tecnologia
+- Gestão
+- Presença digital
+
+Contato
+- E-mail
+- WhatsApp
+- Redes sociais
+
+==================================================
+DIREÇÃO DE COPY
+==================================================
+
+A linguagem deve ser:
+
+- sofisticada;
+- direta;
+- empresarial;
+- inteligente;
+- confiante;
+- humana;
+- consultiva;
+- orientada a resultados.
+
+Evitar:
+
+- linguagem exageradamente publicitária;
+- "revolucione sua empresa";
+- "transformação digital incrível";
+- frases genéricas de agência;
+- excesso de buzzwords;
+- promessas impossíveis;
+- promessas de economia garantida;
+- números inventados;
+- depoimentos inventados.
+
+A comunicação deve passar a sensação:
+
+"Esses caras entendem de empresa."
+
+==================================================
+DIREÇÃO VISUAL
+==================================================
+
+Preservar a identidade atual:
+
+- verde escuro;
+- verde/lima claro;
+- creme/off-white;
+- tipografia elegante;
+- bastante espaço negativo;
+- grids sofisticados;
+- cards;
+- bordas arredondadas;
+- microinterações;
+- animações suaves;
+- aparência premium;
+- estética de consultoria moderna.
+
+Não transformar o site em:
+- agência de marketing;
+- site de software SaaS;
+- site corporativo genérico;
+- landing page exageradamente comercial.
+
+A Zems deve parecer uma consultoria premium, moderna e tecnológica.
+
+==================================================
+IMAGENS
+==================================================
+
+Manter o estilo fotográfico atual.
+
+Priorizar imagens que transmitam:
+
+- empresários;
+- gestores;
+- reuniões;
+- análise de dados;
+- planejamento;
+- equipes trabalhando;
+- tecnologia;
+- escritórios modernos;
+- tomada de decisão;
+- eficiência operacional.
+
+Evitar imagens muito clichês de banco de imagens, como pessoas apertando mãos ou apontando para gráficos artificiais.
+
+==================================================
+RESPONSIVIDADE
+==================================================
+
+Garantir que toda a atualização funcione perfeitamente em:
+
+- desktop;
+- notebook;
+- tablet;
+- celular.
+
+Não quebrar:
+- grid;
+- animações;
+- menu;
+- formulários;
+- cards;
+- tipografia.
+
+==================================================
+SEO
+==================================================
+
+Atualizar também:
+
+<title>
+Zems | Eficiência, Tecnologia e Gestão para Empresas
+
+Meta description:
+"A Zems ajuda empresas a reduzir custos, melhorar processos, estruturar sua presença digital e utilizar tecnologia para operar de forma mais eficiente."
+
+Utilizar semanticamente termos relacionados a:
+
+- consultoria empresarial;
+- redução de custos;
+- eficiência empresarial;
+- consultoria em tecnologia;
+- automação empresarial;
+- transformação digital;
+- presença digital;
+- gestão empresarial;
+- tecnologia para empresas.
+
+==================================================
+REGRA FINAL
+==================================================
+
+O objetivo NÃO é simplesmente adicionar mais textos.
+
+O objetivo é transformar o site atual em uma apresentação comercial clara da Zems.
+
+O visitante deve entender rapidamente:
+
+1. O que é a Zems.
+2. Qual problema ela resolve.
+3. Como ela ajuda empresas a economizar e operar melhor.
+4. Que também oferece tecnologia e presença digital.
+5. Como funciona o trabalho.
+6. Que existe um diagnóstico inicial.
+7. Como entrar em contato.
+
+Preserve o design atual e evolua principalmente:
+- posicionamento;
+- copy;
+- hierarquia das informações;
+- clareza comercial;
+- apresentação das soluções;
+- conversão.
+
+Antes de alterar componentes, analise a estrutura atual do projeto e reutilize o máximo possível do código e dos componentes existentes.
