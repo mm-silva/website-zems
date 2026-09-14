@@ -7,7 +7,8 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import Cursos from '@/pages/cursos';
 import CatalogoCursos from '@/pages/catalogo-cursos';
-import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
+import { DigitalPresence, TimeIsMoney } from '@/pages/produtos';
+import { Link, Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import './index.css';
 
 const queryClient = new QueryClient();
@@ -275,6 +276,11 @@ function Home() {
                     <span className={`font-mono-custom text-[10px] uppercase tracking-[.16em] ${dark ? 'text-[#a8bfaa]' : lime ? 'text-[#536b37]' : 'text-[#718571]'}`}>Zems · frente de atuação</span>
                     <h3 className="mt-3 text-2xl font-extrabold tracking-[-.05em] lg:text-3xl">{title}</h3>
                     <p className={`mt-3 max-w-[400px] text-sm leading-[1.6] ${dark ? 'text-[#c0d0c1]' : lime ? 'text-[#526b4d]' : 'text-[#667c70]'}`}>{copy}</p>
+                    {(number === '01' || number === '04') && (
+                      <Link href={number === '01' ? '/time-is-money' : '/digital-presence'} className={`mt-5 inline-flex items-center gap-2 text-[12px] font-extrabold ${dark ? 'text-[#d8e86c]' : 'text-[#214937]'}`} data-testid={`link-solution-${number}`}>
+                        Conhecer este produto <ArrowRight size={14} />
+                      </Link>
+                    )}
                   </div>
                   {dark && <div className="absolute -bottom-12 -right-10 h-56 w-56 rounded-full border-[34px] border-[#315b44] transition-transform duration-500 group-hover:scale-110" />}
                 </article>
@@ -291,6 +297,7 @@ function Home() {
             <h2 className="mt-7 max-w-[520px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em]">Encontrar economia é só o <em className="font-display text-[#d8e86c]">começo.</em></h2>
              <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#b9cab9]">Às vezes, economizar começa por enxergar melhor.</p>
              <p className="mt-6 max-w-[380px] font-mono-custom text-[10px] uppercase leading-[1.7] tracking-[.12em] text-[#d8e86c]">Sem promessa pronta. Sem fórmula fechada.</p>
+            <Link href="/time-is-money" className="mt-8 inline-flex items-center gap-2 text-[13px] font-extrabold text-[#d8e86c]" data-testid="link-time-is-money-home">Conhecer Time is Money <ArrowRight size={16} /></Link>
           </div>
           <div className="border-t border-[#4f7058]">
             {economySteps.map(([number, title, copy]) => (
@@ -351,6 +358,7 @@ function Home() {
               <SectionLabel>Presença digital</SectionLabel>
               <h2 className="mt-7 max-w-[600px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em] text-[#214937]">Sua empresa precisa ser encontrada, entendida e <em className="font-display">lembrada.</em></h2>
                <p className="mt-8 max-w-[450px] text-[15px] leading-[1.7] text-[#385b42]">O que sua empresa comunica também faz parte do negócio.</p>
+               <Link href="/digital-presence" className="mt-8 inline-flex items-center gap-2 text-[13px] font-extrabold text-[#214937]" data-testid="link-digital-presence-home">Conhecer Digital Presence <ArrowRight size={16} /></Link>
             </div>
             <div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-[#a8bb76] bg-[#a8bb76] sm:grid-cols-2">
               {digitalPillars.map(([number, title, copy]) => (
@@ -484,7 +492,7 @@ function Home() {
 }
 
 function Router() {
-  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/cursos" component={Cursos} /><Route path="/cursos/catalogo" component={CatalogoCursos} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
+  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/time-is-money" component={TimeIsMoney} /><Route path="/digital-presence" component={DigitalPresence} /><Route path="/cursos" component={Cursos} /><Route path="/cursos/catalogo" component={CatalogoCursos} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
 }
 
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {
