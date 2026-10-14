@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from 'react';
-import { ArrowRight, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, Cpu, Database, Globe2, Instagram, Linkedin, Mail, MapPin, Menu, Phone, Search, Settings2, ShieldCheck, WalletCards, Workflow, X, Zap } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, Cpu, Database, Instagram, Linkedin, Mail, MapPin, Menu, Phone, Search, Settings2, ShieldCheck, WalletCards, Workflow, X, Zap } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -7,7 +7,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import Cursos from '@/pages/cursos';
 import CatalogoCursos from '@/pages/catalogo-cursos';
-import { DigitalPresence, TimeIsMoney } from '@/pages/produtos';
+import { TimeIsMoney } from '@/pages/produtos';
 import { Link, Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import './index.css';
 
@@ -17,7 +17,6 @@ const navItems = [
   { label: 'Soluções', href: '#solucoes' },
   { label: 'Packs', href: '#packs' },
   { label: 'Como trabalhamos', href: '#metodo' },
-  { label: 'Presença digital', href: '#presenca' },
   { label: 'Diagnóstico', href: '#contato' },
   { label: 'Cursos', href: '/cursos' },
 ];
@@ -32,7 +31,6 @@ const solutionAreas = [
   { number: '01', title: 'Eficiência', copy: 'Mais clareza para operar melhor.', icon: BarChart3 },
   { number: '02', title: 'Tecnologia', copy: 'Ferramentas que fazem sentido.', icon: Cpu },
   { number: '03', title: 'Gestão', copy: 'Decisões com mais direção.', icon: WalletCards },
-  { number: '04', title: 'Presença digital', copy: 'Ser encontrado. Ser lembrado.', icon: Globe2 },
 ];
 
 const packs = [
@@ -92,14 +90,6 @@ const economySteps = [
   ['04', 'Evoluir', 'Continuar melhorando.'],
 ];
 
-const digitalPillars = [
-  ['01', 'Marca', 'Uma presença com intenção.'],
-  ['02', 'Presença', 'Mais fácil de encontrar.'],
-  ['03', 'Conteúdo', 'Uma voz que faz sentido.'],
-  ['04', 'Conversão', 'Atenção que vira conversa.'],
-  ['05', 'Performance', 'O que funciona, continua.'],
-];
-
 const technologyItems = [
   { label: 'Automação', icon: Zap },
   { label: 'Sistemas empresariais', icon: Settings2 },
@@ -111,9 +101,8 @@ const technologyItems = [
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
-    <a href="#inicio" className={`flex items-center gap-2.5 ${light ? 'text-[#f7f4ed]' : 'text-[#1d4333]'}`} data-testid="link-logo">
-      <span className="grid h-8 w-8 place-items-center rounded-full bg-[#d8e86c] text-[15px] font-extrabold text-[#183b2d]">Z</span>
-      <span className="text-xl font-extrabold tracking-[-0.07em]">zems</span>
+    <a href="#inicio" aria-label="Z&MS" className={`flex items-center ${light ? 'text-[#f7f4ed]' : 'text-[#1d4333]'}`} data-testid="link-logo">
+      <span className="brand-wordmark">Z&MS</span>
     </a>
   );
 }
@@ -261,13 +250,13 @@ function Home() {
             </div>
              <p className="max-w-[310px] text-sm leading-[1.65] text-[#61766a] md:pb-2">Cada empresa pede uma combinação diferente. A gente começa entendendo.</p>
           </div>
-          <div className="mt-16 grid gap-4 lg:grid-cols-12 lg:grid-rows-[250px_250px]">
+          <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {solutionAreas.map((solution, index) => {
               const { number, title, copy, icon: IconComponent } = solution;
               const dark = index === 0;
               const lime = index === 1;
               return (
-                <article key={number} className={`magnetic-card group relative overflow-hidden rounded-[1.5rem] p-7 ${dark ? 'bg-[#214937] text-[#f7f4ed] lg:col-span-6' : lime ? 'bg-[#d8e86c] text-[#214937] lg:col-span-6' : 'border border-[#c4d0c1] bg-[#f5f3ec] text-[#214937] lg:col-span-6'} lg:p-8`}>
+                <article key={number} className={`magnetic-card group relative min-h-[280px] overflow-hidden rounded-[1.5rem] p-7 ${dark ? 'bg-[#214937] text-[#f7f4ed]' : lime ? 'bg-[#d8e86c] text-[#214937]' : 'border border-[#c4d0c1] bg-[#f5f3ec] text-[#214937]'} lg:p-8`}>
                   <div className="flex items-start justify-between">
                     <span className={`grid h-11 w-11 place-items-center rounded-full ${dark ? 'bg-[#d8e86c] text-[#214937]' : lime ? 'border border-[#8b9d43]' : 'bg-[#e5eadf]'}`}><IconComponent size={20} /></span>
                     <span className={`font-mono-custom text-[10px] ${dark ? 'text-[#b9ccaf]' : lime ? 'text-[#536b37]' : 'text-[#8a9e47]'}`}>{number}</span>
@@ -276,8 +265,8 @@ function Home() {
                     <span className={`font-mono-custom text-[10px] uppercase tracking-[.16em] ${dark ? 'text-[#a8bfaa]' : lime ? 'text-[#536b37]' : 'text-[#718571]'}`}>Zems · frente de atuação</span>
                     <h3 className="mt-3 text-2xl font-extrabold tracking-[-.05em] lg:text-3xl">{title}</h3>
                     <p className={`mt-3 max-w-[400px] text-sm leading-[1.6] ${dark ? 'text-[#c0d0c1]' : lime ? 'text-[#526b4d]' : 'text-[#667c70]'}`}>{copy}</p>
-                    {(number === '01' || number === '04') && (
-                      <Link href={number === '01' ? '/time-is-money' : '/digital-presence'} className={`mt-5 inline-flex items-center gap-2 text-[12px] font-extrabold ${dark ? 'text-[#d8e86c]' : 'text-[#214937]'}`} data-testid={`link-solution-${number}`}>
+                    {number === '01' && (
+                      <Link href="/time-is-money" className="mt-5 inline-flex items-center gap-2 text-[12px] font-extrabold text-[#d8e86c]" data-testid={`link-solution-${number}`}>
                         Conhecer este produto <ArrowRight size={14} />
                       </Link>
                     )}
@@ -347,28 +336,6 @@ function Home() {
           <div className="mt-10 flex flex-col items-start justify-between gap-5 border-t border-[#cbd7c8] pt-6 md:flex-row md:items-center">
              <p className="max-w-[560px] text-sm leading-[1.65] text-[#667c70]">Quatro caminhos. Um ponto de partida: a sua realidade.</p>
             <a href="#contato" className="line-link inline-flex items-center gap-2 text-[13px] font-extrabold text-[#214937]" data-testid="link-packs-diagnostico">Encontrar o pack certo <ArrowRight size={16} /></a>
-          </div>
-        </div>
-      </section>
-
-      <section id="presenca" className="bg-[#d8e86c] px-5 py-24 md:px-10 md:py-32">
-        <div className="mx-auto max-w-[1320px]">
-          <div className="grid gap-14 lg:grid-cols-[.9fr_1.1fr] lg:gap-28">
-            <div>
-              <SectionLabel>Presença digital</SectionLabel>
-              <h2 className="mt-7 max-w-[600px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em] text-[#214937]">Sua empresa precisa ser encontrada, entendida e <em className="font-display">lembrada.</em></h2>
-               <p className="mt-8 max-w-[450px] text-[15px] leading-[1.7] text-[#385b42]">O que sua empresa comunica também faz parte do negócio.</p>
-               <Link href="/digital-presence" className="mt-8 inline-flex items-center gap-2 text-[13px] font-extrabold text-[#214937]" data-testid="link-digital-presence-home">Conhecer Digital Presence <ArrowRight size={16} /></Link>
-            </div>
-            <div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-[#a8bb76] bg-[#a8bb76] sm:grid-cols-2">
-              {digitalPillars.map(([number, title, copy]) => (
-                <div key={number} className={`bg-[#d8e86c] p-6 transition-colors hover:bg-[#e1ef8b] md:p-8 ${number === '05' ? 'sm:col-span-2' : ''}`}>
-                  <span className="font-mono-custom text-[10px] text-[#536b37]">{number}</span>
-                  <h3 className="mt-10 text-xl font-extrabold tracking-[-.04em] text-[#214937]">{title}</h3>
-                  <p className="mt-3 max-w-[330px] text-sm leading-[1.65] text-[#526b4d]">{copy}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -478,7 +445,7 @@ function Home() {
               <div className="col-span-2 mb-2 font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#91ae94] md:col-span-1">Zems</div>
               <a href="#sobre" className="transition-colors hover:text-[#d8e86c]">Sobre</a><a href="#solucoes" className="transition-colors hover:text-[#d8e86c]">Soluções</a><a href="#contato" className="transition-colors hover:text-[#d8e86c]">Diagnóstico</a><a href="#contato" className="transition-colors hover:text-[#d8e86c]">Contato</a>
               <div className="col-span-2 mt-5 mb-2 font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#91ae94] md:col-span-1">Soluções</div>
-              <a href="#economia" className="transition-colors hover:text-[#d8e86c]">Eficiência e custos</a><a href="#packs" className="transition-colors hover:text-[#d8e86c]">Packs</a><a href="#tecnologia" className="transition-colors hover:text-[#d8e86c]">Tecnologia</a><a href="#metodo" className="transition-colors hover:text-[#d8e86c]">Gestão</a><a href="#presenca" className="transition-colors hover:text-[#d8e86c]">Presença digital</a>
+              <a href="#economia" className="transition-colors hover:text-[#d8e86c]">Eficiência e custos</a><a href="#packs" className="transition-colors hover:text-[#d8e86c]">Packs</a><a href="#tecnologia" className="transition-colors hover:text-[#d8e86c]">Tecnologia</a><a href="#metodo" className="transition-colors hover:text-[#d8e86c]">Gestão</a>
               <div className="col-span-2 mt-5 mb-2 font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#91ae94] md:col-span-1">Contato</div>
               <a href="mailto:oi@zems.com.br" className="transition-colors hover:text-[#d8e86c]">E-mail</a><a href="tel:+551130301717" className="transition-colors hover:text-[#d8e86c]">WhatsApp</a>
             </div>
@@ -492,7 +459,7 @@ function Home() {
 }
 
 function Router() {
-  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/time-is-money" component={TimeIsMoney} /><Route path="/digital-presence" component={DigitalPresence} /><Route path="/cursos" component={Cursos} /><Route path="/cursos/catalogo" component={CatalogoCursos} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
+  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/time-is-money" component={TimeIsMoney} /><Route path="/cursos" component={Cursos} /><Route path="/cursos/catalogo" component={CatalogoCursos} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
 }
 
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {

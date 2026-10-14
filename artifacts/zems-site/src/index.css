@@ -88,6 +88,13 @@
     font-family: var(--app-font-mono);
     font-feature-settings: "tnum" 1;
   }
+  .brand-wordmark {
+    font-family: "Stream BC", "Manrope", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -.07em;
+    line-height: 1;
+  }
   .text-balance { text-wrap: balance; }
   .fintech-grid {
     background-image:

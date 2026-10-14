@@ -68,9 +68,8 @@ const faqs = [
 
 function CourseLogo() {
   return (
-    <Link href="/" className="flex items-center gap-2.5 text-[#f7f4ed]" data-testid="link-cursos-logo">
-      <span className="grid h-8 w-8 place-items-center rounded-full bg-[#d8e86c] text-[15px] font-extrabold text-[#183b2d]">Z</span>
-      <span className="text-xl font-extrabold tracking-[-0.07em]">zems</span>
+    <Link href="/" aria-label="Z&MS" className="flex items-center text-[#f7f4ed]" data-testid="link-cursos-logo">
+      <span className="brand-wordmark">Z&MS</span>
     </Link>
   );
 }

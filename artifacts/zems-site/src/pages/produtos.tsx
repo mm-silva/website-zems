@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Mail, Menu, Phone, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Mail, Menu, Phone, X } from 'lucide-react';
 import { Link } from 'wouter';
-
-type ProductKey = 'time' | 'digital';
 
 type Product = {
   name: string;
@@ -25,8 +23,7 @@ type Product = {
   metaDescription: string;
 };
 
-const products: Record<ProductKey, Product> = {
-  time: {
+const product: Product = {
     name: 'Time is Money',
     eyebrow: 'Produto Zems · eficiência',
     title: 'O tempo da sua empresa também custa.',
@@ -58,47 +55,12 @@ const products: Record<ProductKey, Product> = {
       ['Por onde começamos?', 'Por uma conversa sobre o momento atual da empresa.'],
     ],
     metaDescription: 'Time is Money: um produto Zems para encontrar espaço, clareza e eficiência na operação da sua empresa.',
-  },
-  digital: {
-    name: 'Digital Presence',
-    eyebrow: 'Produto Zems · presença digital',
-    title: 'Ser bom também é ser encontrado.',
-    lead: 'Digital Presence organiza a presença da sua empresa para que ela seja percebida, lembrada e procurada.',
-    image: '/zems-about-team.jpg',
-    imageAlt: 'Equipe da Zems reunida em uma conversa de trabalho',
-    introLabel: 'O ponto de partida',
-    introTitle: 'Antes de aparecer, é preciso fazer sentido.',
-    introCopy: 'Presença digital não é estar em todo lugar. É estar nos lugares certos, com uma mensagem que conversa com as pessoas certas.',
-    signals: [
-      ['01', 'Mensagem dispersa', 'Quando a empresa fala, mas não é entendida.'],
-      ['02', 'Presença sem direção', 'Quando existe movimento, mas falta caminho.'],
-      ['03', 'Oportunidade distante', 'Quando quem procura não encontra.'],
-    ],
-    steps: [
-      ['01', 'Entender', 'Ouvir a empresa e o mercado ao redor.'],
-      ['02', 'Organizar', 'Dar forma ao que precisa ser percebido.'],
-      ['03', 'Construir', 'Criar presença com intenção.'],
-      ['04', 'Acompanhar', 'Aprender com cada resposta.'],
-    ],
-    offerLabel: 'O que pode acontecer',
-    offerTitle: 'Mais presença. Menos improviso.',
-    offerCopy: 'A gente encontra o tom, os pontos de contato e o próximo passo sem transformar sua empresa em outra coisa.',
-    offerItems: ['Mais clareza', 'Mais confiança', 'Mais conversa'],
-    closing: 'A próxima oportunidade pode começar com uma busca.',
-    faqs: [
-      ['É só criar um site?', 'Não. O site é uma parte de uma presença que precisa fazer sentido.'],
-      ['Preciso estar em todas as redes?', 'Não. A presença certa vale mais do que estar em todo lugar.'],
-      ['Como começamos?', 'Ouvindo o momento da empresa e o que ela quer provocar.'],
-    ],
-    metaDescription: 'Digital Presence: um produto Zems para construir uma presença digital clara, relevante e com direção.',
-  },
 };
 
 function ProductLogo() {
   return (
-    <Link href="/" className="flex items-center gap-2.5 text-[#f7f4ed]" data-testid="link-product-logo">
-      <span className="grid h-8 w-8 place-items-center rounded-full bg-[#d8e86c] text-[15px] font-extrabold text-[#183b2d]">Z</span>
-      <span className="text-xl font-extrabold tracking-[-0.07em]">zems</span>
+    <Link href="/" aria-label="Z&MS" className="flex items-center text-[#f7f4ed]" data-testid="link-product-logo">
+      <span className="brand-wordmark">Z&MS</span>
     </Link>
   );
 }
@@ -112,8 +74,7 @@ function ProductLabel({ children, light = false }: { children: React.ReactNode; 
   );
 }
 
-function ProductPage({ kind }: { kind: ProductKey }) {
-  const product = products[kind];
+function ProductPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
@@ -130,10 +91,6 @@ function ProductPage({ kind }: { kind: ProductKey }) {
     };
   }, [product]);
 
-  const otherProduct = kind === 'time'
-    ? { href: '/digital-presence', label: 'Digital Presence' }
-    : { href: '/time-is-money', label: 'Time is Money' };
-
   return (
     <main className="grain overflow-hidden bg-[#f5f3ec] text-[#214937]">
       <section className="fintech-grid relative bg-[#1d4333] text-[#f7f4ed]">
@@ -142,7 +99,6 @@ function ProductPage({ kind }: { kind: ProductKey }) {
           <ProductLogo />
           <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação do produto">
             <Link href="/" className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid="link-product-home">Início</Link>
-            <Link href={otherProduct.href} className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid="link-product-other">{otherProduct.label}</Link>
             <a href="#como-funciona" className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid="link-product-method">Como funciona</a>
             <a href="#conversa" className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid="link-product-contact">Conversar</a>
           </nav>
@@ -158,7 +114,6 @@ function ProductPage({ kind }: { kind: ProductKey }) {
           <div className="absolute inset-x-4 top-[76px] z-20 rounded-2xl border border-[#6b8a70] bg-[#214a39] p-5 shadow-2xl md:hidden">
             <nav className="grid gap-5">
               <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center justify-between border-b border-[#52735c] pb-4 text-sm font-semibold" data-testid="link-product-mobile-home">Voltar para a home <ArrowUpRight size={15} /></Link>
-              <Link href={otherProduct.href} onClick={() => setMenuOpen(false)} className="flex items-center justify-between border-b border-[#52735c] pb-4 text-sm font-semibold" data-testid="link-product-mobile-other">{otherProduct.label} <ArrowUpRight size={15} /></Link>
               <a href="#como-funciona" onClick={() => setMenuOpen(false)} className="flex items-center justify-between border-b border-[#52735c] pb-4 text-sm font-semibold" data-testid="link-product-mobile-method">Como funciona <ArrowUpRight size={15} /></a>
               <a href="#conversa" onClick={() => setMenuOpen(false)} className="pt-1 text-sm font-bold text-[#d8e86c]" data-testid="link-product-mobile-contact">Quero conversar <ArrowRight size={16} /></a>
             </nav>
@@ -297,7 +252,6 @@ function ProductPage({ kind }: { kind: ProductKey }) {
           <ProductLogo />
           <div className="flex flex-wrap gap-x-6 gap-y-3">
             <Link href="/" className="transition-colors hover:text-[#d8e86c]" data-testid="link-product-footer-home">Início</Link>
-            <Link href={otherProduct.href} className="transition-colors hover:text-[#d8e86c]" data-testid="link-product-footer-other">{otherProduct.label}</Link>
             <a href="#conversa" className="transition-colors hover:text-[#d8e86c]" data-testid="link-product-footer-contact">Conversar</a>
           </div>
         </div>
@@ -307,9 +261,5 @@ function ProductPage({ kind }: { kind: ProductKey }) {
 }
 
 export function TimeIsMoney() {
-  return <ProductPage kind="time" />;
-}
-
-export function DigitalPresence() {
-  return <ProductPage kind="digital" />;
+  return <ProductPage />;
 }
