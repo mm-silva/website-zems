@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from 'react';
-import { ArrowRight, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, Cpu, Database, Instagram, Linkedin, Mail, MapPin, Menu, MessageCircle, Phone, Search, Settings2, ShieldCheck, WalletCards, Workflow, X, Zap } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BarChart3, Check, ChevronDown, Cpu, Database, Instagram, Linkedin, Mail, MapPin, Menu, MessageCircle, Phone, Search, Settings2, WalletCards, Workflow, X, Zap } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -7,7 +7,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import Cursos from '@/pages/cursos';
 import CatalogoCursos from '@/pages/catalogo-cursos';
-import { TimeIsMoney } from '@/pages/produtos';
+import { CrmWhatsAppPage, ErpPage, TimeIsMoney } from '@/pages/produtos';
 import { Link, Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import './index.css';
 
@@ -91,14 +91,12 @@ const economySteps = [
 ];
 
 const technologyItems = [
-  { label: 'ERP', icon: Settings2 },
-  { label: 'CRM', icon: WalletCards },
-  { label: 'WhatsApp', icon: MessageCircle },
+  { label: 'ERP', icon: Settings2, href: '/erp' },
+  { label: 'CRM', icon: WalletCards, href: '/crm-whatsapp' },
+  { label: 'WhatsApp', icon: MessageCircle, href: '/crm-whatsapp' },
   { label: 'Automações', icon: Zap },
   { label: 'Integrações e APIs', icon: Workflow },
   { label: 'IA e dados', icon: Database },
-  { label: 'Cloud', icon: Cloud },
-  { label: 'Segurança', icon: ShieldCheck },
 ];
 
 function Logo({ light = false }: { light?: boolean }) {
@@ -351,12 +349,18 @@ function Home() {
              <p className="mt-6 max-w-[390px] text-sm font-extrabold leading-[1.7] text-[#214937]">Sem complicar.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {technologyItems.map(({ label, icon: IconComponent }) => {
-              return (
-                <div key={label} className="magnetic-card flex min-h-[150px] flex-col justify-between rounded-[1.5rem] border border-[#c4d0c1] bg-[#f5f3ec] p-6 text-[#214937]">
+            {technologyItems.map(({ label, icon: IconComponent, href }) => {
+              const cardClass = "magnetic-card flex min-h-[150px] flex-col justify-between rounded-[1.5rem] border border-[#c4d0c1] bg-[#f5f3ec] p-6 text-[#214937]";
+              const cardContent = (
+                <>
                   <IconComponent size={20} className="text-[#8a9e47]" />
-                  <div className="flex items-end justify-between gap-4"><h3 className="text-xl font-extrabold tracking-[-.05em]">{label}</h3><ArrowUpRight size={17} className="text-[#728b75]" /></div>
-                </div>
+                  <div className="flex items-end justify-between gap-4"><h3 className="text-xl font-extrabold tracking-[-.05em]">{label}</h3>{href && <ArrowUpRight size={17} className="text-[#728b75]" />}</div>
+                </>
+              );
+              return (
+                href
+                  ? <Link key={label} href={href} className={cardClass} aria-label={`Conhecer solução de ${label}`} data-testid={`link-technology-${label.toLowerCase().replaceAll(' ', '-')}`}>{cardContent}</Link>
+                  : <div key={label} className={cardClass}>{cardContent}</div>
               );
             })}
           </div>
@@ -461,7 +465,7 @@ function Home() {
 }
 
 function Router() {
-  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/time-is-money" component={TimeIsMoney} /><Route path="/cursos" component={Cursos} /><Route path="/cursos/catalogo" component={CatalogoCursos} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
+  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/time-is-money" component={TimeIsMoney} /><Route path="/erp" component={ErpPage} /><Route path="/crm-whatsapp" component={CrmWhatsAppPage} /><Route path="/cursos" component={Cursos} /><Route path="/cursos/catalogo" component={CatalogoCursos} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
 }
 
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {

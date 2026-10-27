@@ -23,7 +23,10 @@ type Product = {
   metaDescription: string;
 };
 
-const product: Product = {
+type ProductKey = 'time' | 'erp' | 'crmWhatsApp';
+
+const products: Record<ProductKey, Product> = {
+  time: {
     name: 'Time is Money',
     eyebrow: 'Produto Zems · eficiência',
     title: 'O tempo da sua empresa também custa.',
@@ -55,6 +58,73 @@ const product: Product = {
       ['Por onde começamos?', 'Por uma conversa sobre o momento atual da empresa.'],
     ],
     metaDescription: 'Time is Money: um produto Zems para encontrar espaço, clareza e eficiência na operação da sua empresa.',
+  },
+  erp: {
+    name: 'ERP',
+    eyebrow: 'Produto Zems · gestão empresarial',
+    title: 'Mais clareza para a operação inteira.',
+    lead: 'Um ERP bem estruturado reúne processos e informações para a empresa funcionar com mais visão.',
+    image: '/zems-hero.jpg',
+    imageAlt: 'Empresária analisando documentos em uma mesa de trabalho',
+    introLabel: 'ERP na prática',
+    introTitle: 'Sua gestão não precisa ficar espalhada.',
+    introCopy: 'O ERP certo aproxima áreas, rotinas e informações que hoje pedem organização.',
+    signals: [
+      ['01', 'Informações espalhadas', 'Dados em lugares diferentes.'],
+      ['02', 'Rotinas que não conversam', 'Etapas que dependem de controles paralelos.'],
+      ['03', 'Decisão sem contexto', 'O que você precisa saber fica difícil de encontrar.'],
+    ],
+    steps: [
+      ['01', 'Entender', 'Mapear como o negócio funciona.'],
+      ['02', 'Estruturar', 'Definir processos e prioridades.'],
+      ['03', 'Implantar', 'Colocar a solução em uso.'],
+      ['04', 'Acompanhar', 'Ajustar à rotina real.'],
+    ],
+    offerLabel: 'ERP para sua operação',
+    offerTitle: 'Um sistema que acompanha o negócio.',
+    offerCopy: 'A conversa começa pelos seus processos e pelo que precisa funcionar melhor.',
+    offerItems: ['Processos organizados', 'Informação centralizada', 'Mais clareza para decidir'],
+    closing: 'Tudo começa pela sua operação.',
+    faqs: [
+      ['ERP é igual para toda empresa?', 'Não. A estrutura precisa fazer sentido para os processos e o momento de cada negócio.'],
+      ['Vocês ajudam na implantação?', 'Sim. O trabalho começa entendendo a operação e definindo o caminho adequado.'],
+      ['Por onde começamos?', 'Por uma conversa sobre a sua rotina e seus objetivos.'],
+    ],
+    metaDescription: 'Conheça a solução ERP da Zems para organizar processos e informações da sua empresa.',
+  },
+  crmWhatsApp: {
+    name: 'CRM + WhatsApp',
+    eyebrow: 'Produto Zems · relacionamento',
+    title: 'Suas conversas, com próximo passo.',
+    lead: 'CRM com WhatsApp para organizar contatos, conversas e oportunidades ao longo do atendimento.',
+    image: '/zems-about-team.jpg',
+    imageAlt: 'Equipe da Zems reunida em uma conversa de trabalho',
+    introLabel: 'CRM + WhatsApp na prática',
+    introTitle: 'Atendimento bom não termina no primeiro oi.',
+    introCopy: 'Quando histórico e retornos ficam espalhados, oportunidades podem se perder pelo caminho.',
+    signals: [
+      ['01', 'Conversa sem histórico', 'Fica difícil retomar com contexto.'],
+      ['02', 'Contato sem retorno', 'O próximo passo passa despercebido.'],
+      ['03', 'Oportunidade sem acompanhamento', 'A equipe não sabe onde cada conversa parou.'],
+    ],
+    steps: [
+      ['01', 'Entender', 'Conhecer a jornada dos seus clientes.'],
+      ['02', 'Organizar', 'Dar contexto aos contatos e oportunidades.'],
+      ['03', 'Conectar', 'Juntar CRM e WhatsApp no fluxo de atendimento.'],
+      ['04', 'Acompanhar', 'Manter visível o próximo passo.'],
+    ],
+    offerLabel: 'CRM + WhatsApp',
+    offerTitle: 'Mais contexto em cada conversa.',
+    offerCopy: 'Um fluxo organizado ajuda a equipe a manter o relacionamento e saber como continuar.',
+    offerItems: ['Contatos organizados', 'Conversas com contexto', 'Acompanhamento claro'],
+    closing: 'A conversa continua.',
+    faqs: [
+      ['CRM e WhatsApp funcionam juntos?', 'Sim. A proposta é manter contatos, conversas e próximos passos no mesmo fluxo de atendimento.'],
+      ['Serve para equipe comercial?', 'Sim. Ajuda a organizar os contatos e acompanhamentos da equipe.'],
+      ['Por onde começamos?', 'Por uma conversa sobre como sua equipe atende hoje.'],
+    ],
+    metaDescription: 'Conheça a solução CRM com WhatsApp da Zems para organizar contatos, conversas e oportunidades.',
+  },
 };
 
 function ProductLogo() {
@@ -74,7 +144,8 @@ function ProductLabel({ children, light = false }: { children: React.ReactNode; 
   );
 }
 
-function ProductPage() {
+function ProductPage({ kind }: { kind: ProductKey }) {
+  const product = products[kind];
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
@@ -261,5 +332,13 @@ function ProductPage() {
 }
 
 export function TimeIsMoney() {
-  return <ProductPage />;
+  return <ProductPage kind="time" />;
+}
+
+export function ErpPage() {
+  return <ProductPage kind="erp" />;
+}
+
+export function CrmWhatsAppPage() {
+  return <ProductPage kind="crmWhatsApp" />;
 }
