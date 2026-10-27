@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: 42 36% 96%;
+  --foreground: 154 31% 15%;
+  --border: 41 19% 84%;
+  --input: 41 19% 84%;
+  --ring: 154 53% 32%;
+  --card: 40 33% 98%;
+  --card-foreground: 154 31% 15%;
+  --primary: 154 53% 32%;
+  --primary-foreground: 42 36% 96%;
+  --secondary: 42 30% 91%;
+  --secondary-foreground: 154 31% 15%;
+  --muted: 39 20% 89%;
+  --muted-foreground: 154 12% 39%;
+  --accent: 39 83% 60%;
+  --accent-foreground: 154 31% 15%;
+  --app-font-sans: 'Manrope', sans-serif;
+  --app-font-serif: 'Space Grotesk', 'Manrope', sans-serif;
+  --app-font-mono: 'DM Mono', monospace;
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --radius: 1rem;
+  --shadow-soft: 0 24px 70px rgba(28, 56, 43, .10);
+}
+
+.dark {
+  --background: 154 31% 15%;
+  --foreground: 42 36% 96%;
+  --border: 154 18% 27%;
+  --input: 154 18% 27%;
+  --ring: 39 83% 60%;
+  --card: 154 25% 19%;
+  --card-foreground: 42 36% 96%;
+  --primary: 39 83% 60%;
+  --primary-foreground: 154 31% 15%;
+  --secondary: 154 22% 24%;
+  --secondary-foreground: 42 36% 96%;
+  --muted: 154 22% 24%;
+  --muted-foreground: 42 14% 73%;
+  --accent: 154 53% 32%;
+  --accent-foreground: 42 36% 96%;
+}
+
+.font-display {
+  font-family: var(--app-font-serif);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -.065em;
+}
+
+.font-mono-custom {
+  font-family: var(--app-font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+.brand-wordmark {
+  font-family: "Stream BC", "Manrope", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -.07em;
+  line-height: 1;
+}
+
+.text-balance { text-wrap: balance; }
+
+.fintech-grid {
+  background-image:
+    linear-gradient(rgba(216, 232, 108, .055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 232, 108, .055) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.fintech-grid-light {
+  background-image:
+    linear-gradient(rgba(33, 73, 55, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33, 73, 55, .045) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.reveal { opacity: 0; transform: translateY(24px); animation: reveal-in .8s cubic-bezier(.2,.8,.2,1) forwards; }
+.reveal-delay-1 { animation-delay: .1s; }
+.reveal-delay-2 { animation-delay: .2s; }
+.reveal-delay-3 { animation-delay: .3s; }
+.reveal-delay-4 { animation-delay: .4s; }
+
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .035;
+  z-index: 50;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.line-link { position: relative; }
+.line-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px; background: currentColor; transform: scaleX(.25); transform-origin: left; transition: transform .3s ease; }
+.line-link:hover::after { transform: scaleX(1); }
+.magnetic-card { transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
+.magnetic-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); }
+
+@keyframes reveal-in { to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
