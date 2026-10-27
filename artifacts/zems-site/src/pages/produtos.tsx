@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Mail, Menu, Phone, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Mail, Menu, Phone, Play, X } from 'lucide-react';
 import { Link } from 'wouter';
 
 type Product = {
@@ -21,6 +21,7 @@ type Product = {
   closing: string;
   faqs: [string, string][];
   metaDescription: string;
+  videoSrc?: string;
 };
 
 type ProductKey = 'time' | 'erp' | 'crmWhatsApp';
@@ -305,6 +306,48 @@ function ProductSystemShowcase({ kind }: { kind: ProductKey }) {
   );
 }
 
+function ProductVideoSection({ kind, product }: { kind: ProductKey; product: Product }) {
+  if (kind === 'time') return null;
+
+  const isErp = kind === 'erp';
+  return (
+    <section id="video-explicativo" className="bg-[#e5eadf] px-5 py-20 md:px-10 md:py-28" data-testid={`section-${kind}-video`}>
+      <div className="mx-auto grid max-w-[1320px] items-center gap-10 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
+        <div>
+          <ProductLabel>Conheça em vídeo</ProductLabel>
+          <h2 className="mt-6 max-w-[480px] text-balance text-[clamp(2.6rem,5vw,5rem)] font-normal leading-[.94] tracking-[-.06em]">
+            Veja como funciona <em className="font-display text-[#8a9e47]">na prática.</em>
+          </h2>
+          <p className="mt-6 max-w-[420px] text-sm leading-[1.7] text-[#667c70]">
+            {isErp
+              ? 'Um espaço para apresentar o ERP e mostrar como ele se encaixa na rotina da empresa.'
+              : 'Um espaço para mostrar como CRM e WhatsApp ajudam a conduzir cada conversa.'}
+          </p>
+        </div>
+        <div className="relative aspect-video overflow-hidden rounded-[1.5rem] bg-[#1d4333] shadow-[0_25px_70px_rgba(29,67,51,.16)] sm:rounded-[2rem]" data-testid="product-video-player">
+          {product.videoSrc ? (
+            <video className="absolute inset-0 h-full w-full object-cover" controls playsInline preload="metadata" poster={product.image}>
+              <source src={product.videoSrc} />
+              Seu navegador não consegue reproduzir este vídeo.
+            </video>
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center" aria-label="Área reservada para o vídeo explicativo" role="status">
+              <img src={product.image} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-35" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#1d4333]/45 via-[#1d4333]/75 to-[#10281d]/90" />
+              <span className="relative grid h-16 w-16 place-items-center rounded-full bg-[#d8e86c] text-[#214937] shadow-xl sm:h-20 sm:w-20">
+                <Play size={24} fill="currentColor" className="ml-1 sm:h-7 sm:w-7" />
+              </span>
+              <span className="relative rounded-full border border-white/25 bg-[#173b2d]/65 px-4 py-2 font-mono-custom text-[9px] uppercase tracking-[.15em] text-[#f7f4ed] sm:text-[10px]">
+                Vídeo explicativo em breve
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProductPage({ kind }: { kind: ProductKey }) {
   const product = products[kind];
   const [menuOpen, setMenuOpen] = useState(false);
@@ -332,6 +375,7 @@ function ProductPage({ kind }: { kind: ProductKey }) {
           <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação do produto">
             <Link href="/" className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid="link-product-home">Início</Link>
             <a href="#como-funciona" className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid="link-product-method">Como funciona</a>
+            {kind !== 'time' && <a href="#video-explicativo" className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid="link-product-video">Vídeo</a>}
             <a href="#conversa" className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid="link-product-contact">Conversar</a>
           </nav>
           <a href="#conversa" className="hidden items-center gap-3 rounded-full border border-[#75977a] px-5 py-2.5 text-[12px] font-bold text-[#f7f4ed] transition-all hover:border-[#d8e86c] hover:bg-[#d8e86c] hover:text-[#1d4333] md:flex" data-testid="link-product-header-cta">
@@ -347,6 +391,7 @@ function ProductPage({ kind }: { kind: ProductKey }) {
             <nav className="grid gap-5">
               <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center justify-between border-b border-[#52735c] pb-4 text-sm font-semibold" data-testid="link-product-mobile-home">Voltar para a home <ArrowUpRight size={15} /></Link>
               <a href="#como-funciona" onClick={() => setMenuOpen(false)} className="flex items-center justify-between border-b border-[#52735c] pb-4 text-sm font-semibold" data-testid="link-product-mobile-method">Como funciona <ArrowUpRight size={15} /></a>
+              {kind !== 'time' && <a href="#video-explicativo" onClick={() => setMenuOpen(false)} className="flex items-center justify-between border-b border-[#52735c] pb-4 text-sm font-semibold" data-testid="link-product-mobile-video">Vídeo <ArrowUpRight size={15} /></a>}
               <a href="#conversa" onClick={() => setMenuOpen(false)} className="pt-1 text-sm font-bold text-[#d8e86c]" data-testid="link-product-mobile-contact">Quero conversar <ArrowRight size={16} /></a>
             </nav>
           </div>
@@ -401,6 +446,8 @@ function ProductPage({ kind }: { kind: ProductKey }) {
       </section>
 
       <ProductSystemShowcase kind={kind} />
+
+      <ProductVideoSection kind={kind} product={product} />
 
       <section id="como-funciona" className="bg-[#214937] px-5 py-24 text-[#f7f4ed] md:px-10 md:py-32">
         <div className="mx-auto grid max-w-[1320px] gap-16 lg:grid-cols-[.72fr_1.28fr] lg:gap-28">
