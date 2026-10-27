@@ -1,0 +1,1 @@
+- [Zems service scope](zems-service-scope.md) — Zems offers ERP, CRM, WhatsApp and automation; do not present digital presence as an offer.

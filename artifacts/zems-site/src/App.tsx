@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from 'react';
-import { ArrowRight, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, Cpu, Database, Instagram, Linkedin, Mail, MapPin, Menu, Phone, Search, Settings2, ShieldCheck, WalletCards, Workflow, X, Zap } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BarChart3, Check, ChevronDown, Cloud, Cpu, Database, Instagram, Linkedin, Mail, MapPin, Menu, MessageCircle, Phone, Search, Settings2, ShieldCheck, WalletCards, Workflow, X, Zap } from 'lucide-react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -29,7 +29,7 @@ const problemCards = [
 
 const solutionAreas = [
   { number: '01', title: 'Eficiência', copy: 'Mais clareza para operar melhor.', icon: BarChart3 },
-  { number: '02', title: 'Tecnologia', copy: 'Ferramentas que fazem sentido.', icon: Cpu },
+  { number: '02', title: 'Tecnologia', copy: 'ERP, CRM, WhatsApp e automações.', icon: Cpu },
   { number: '03', title: 'Gestão', copy: 'Decisões com mais direção.', icon: WalletCards },
 ];
 
@@ -48,8 +48,8 @@ const packs = [
     number: '02',
     title: 'Pack Automação',
     headline: 'Deixe o repetitivo para trás.',
-    copy: 'Tecnologia aplicada ao que trava.',
-    items: ['Fluxo', 'Tempo', 'Ritmo'],
+    copy: 'Automações para conectar ERP, CRM e WhatsApp ao dia a dia da empresa.',
+    items: ['ERP', 'CRM', 'WhatsApp', 'Automações'],
     result: 'Mais espaço para o que importa.',
     tone: 'lime',
     icon: Zap,
@@ -91,8 +91,10 @@ const economySteps = [
 ];
 
 const technologyItems = [
-  { label: 'Automação', icon: Zap },
-  { label: 'Sistemas empresariais', icon: Settings2 },
+  { label: 'ERP', icon: Settings2 },
+  { label: 'CRM', icon: WalletCards },
+  { label: 'WhatsApp', icon: MessageCircle },
+  { label: 'Automações', icon: Zap },
   { label: 'Integrações e APIs', icon: Workflow },
   { label: 'IA e dados', icon: Database },
   { label: 'Cloud', icon: Cloud },
@@ -345,10 +347,10 @@ function Home() {
           <div>
             <SectionLabel>Tecnologia aplicada</SectionLabel>
             <h2 className="mt-7 max-w-[500px] text-balance text-[clamp(2.8rem,5vw,5.6rem)] font-normal leading-[.92] tracking-[-.06em] text-[#214937]">Quando a tecnologia trabalha, sua empresa <em className="font-display text-[#8a9e47]">avança.</em></h2>
-             <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#667c70]">A tecnologia certa aparece no momento certo.</p>
+              <p className="mt-8 max-w-[390px] text-sm leading-[1.7] text-[#667c70]">ERP, CRM, WhatsApp e automações para apoiar a operação.</p>
              <p className="mt-6 max-w-[390px] text-sm font-extrabold leading-[1.7] text-[#214937]">Sem complicar.</p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {technologyItems.map(({ label, icon: IconComponent }) => {
               return (
                 <div key={label} className="magnetic-card flex min-h-[150px] flex-col justify-between rounded-[1.5rem] border border-[#c4d0c1] bg-[#f5f3ec] p-6 text-[#214937]">
