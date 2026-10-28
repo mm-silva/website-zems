@@ -1,2 +1,1 @@
 - [Zems service scope](zems-service-scope.md) — Zems offers ERP, CRM, WhatsApp and automation; do not offer digital presence, Cloud or Security.
-- [Zems brand tone](zems-brand-tone.md) — Keep marketing copy concise; let prospective clients discover details through a conversation.

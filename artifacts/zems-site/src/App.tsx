@@ -15,6 +15,8 @@ const queryClient = new QueryClient();
 
 const navItems = [
   { label: 'Soluções', href: '#solucoes' },
+  { label: 'ERP', href: '/erp' },
+  { label: 'CRM + WhatsApp', href: '/crm-whatsapp' },
   { label: 'Packs', href: '#packs' },
   { label: 'Como trabalhamos', href: '#metodo' },
   { label: 'Diagnóstico', href: '#contato' },
