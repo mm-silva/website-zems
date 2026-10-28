@@ -22,6 +22,8 @@ type Product = {
   faqs: [string, string][];
   metaDescription: string;
   videoSrc?: string;
+  systemScreenshot?: string;
+  systemScreenshotAlt?: string;
 };
 
 type ProductKey = 'time' | 'erp' | 'crmWhatsApp';
@@ -34,6 +36,8 @@ const products: Record<ProductKey, Product> = {
     lead: 'Time is Money é um olhar direto para descobrir onde a operação pode ficar mais leve, clara e eficiente.',
     image: '/zems-hero.jpg',
     imageAlt: 'Empresária analisando documentos em uma mesa de trabalho',
+    systemScreenshot: '/erp-system.png',
+    systemScreenshotAlt: 'Captura do sistema ERP exibindo a área de contatos e módulos de gestão',
     introLabel: 'O ponto de partida',
     introTitle: 'Antes de cortar, é preciso enxergar.',
     introCopy: 'Nem sempre o custo aparece como uma linha na planilha. Às vezes ele está no tempo, no retrabalho ou no jeito de fazer.',
@@ -100,6 +104,8 @@ const products: Record<ProductKey, Product> = {
     lead: 'CRM com WhatsApp para organizar contatos, conversas e oportunidades ao longo do atendimento.',
     image: '/zems-about-team.jpg',
     imageAlt: 'Equipe da Zems reunida em uma conversa de trabalho',
+    systemScreenshot: '/crm-whatsapp-system.png',
+    systemScreenshotAlt: 'Captura do CRM integrado ao WhatsApp com perfil e conversa de atendimento',
     introLabel: 'CRM + WhatsApp na prática',
     introTitle: 'Atendimento bom não termina no primeiro oi.',
     introCopy: 'Quando histórico e retornos ficam espalhados, oportunidades podem se perder pelo caminho.',
@@ -145,138 +151,36 @@ function ProductLabel({ children, light = false }: { children: React.ReactNode; 
   );
 }
 
-function PreviewWindow({ title, children }: { title: string; children: React.ReactNode }) {
+function PreviewWindow({ children }: { children: React.ReactNode }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#cbd5ca] bg-white shadow-[0_25px_70px_rgba(29,67,51,.12)]" data-testid="system-preview-window">
-      <div className="flex h-11 items-center gap-1.5 border-b border-[#e4e9e2] bg-[#f8f9f6] px-4">
-        <span className="h-2 w-2 rounded-full bg-[#e5a9a1]" />
-        <span className="h-2 w-2 rounded-full bg-[#e9d47a]" />
-        <span className="h-2 w-2 rounded-full bg-[#a8c79d]" />
-        <span className="ml-3 truncate rounded-md bg-white px-3 py-1 font-mono-custom text-[9px] text-[#809085]">{title}</span>
-      </div>
+    <figure className="overflow-hidden rounded-2xl border border-[#cbd5ca] bg-white shadow-[0_25px_70px_rgba(29,67,51,.12)]" data-testid="system-preview-window">
       {children}
-    </div>
+    </figure>
   );
 }
 
-function ErpSystemPreview() {
-  const bars = [38, 56, 44, 72, 60, 84, 66, 96, 73, 88, 69, 100];
+function ErpSystemPreview({ product }: { product: Product }) {
+  if (!product.systemScreenshot) return null;
 
   return (
-    <PreviewWindow title="Z&MS · Gestão empresarial">
-      <div className="grid grid-cols-[42px_minmax(0,1fr)] sm:grid-cols-[58px_minmax(0,1fr)]">
-        <aside className="flex min-h-[330px] flex-col items-center gap-4 border-r border-[#edf0eb] bg-[#fbfcfa] py-4 sm:min-h-[390px] sm:gap-5 sm:py-5">
-          <span className="grid h-7 w-7 place-items-center rounded-lg bg-[#214937] text-[10px] font-extrabold text-[#d8e86c]">Z</span>
-          {['▦', '◫', '↗', '□', '⚙'].map((icon, index) => (
-            <span key={icon} className={`grid h-7 w-7 place-items-center rounded-lg text-[13px] ${index === 0 ? 'bg-[#e9efdf] text-[#214937]' : 'text-[#9aa69a]'}`}>{icon}</span>
-          ))}
-        </aside>
-        <div className="min-w-0 bg-white p-3 sm:p-6">
-          <div className="flex items-start justify-between gap-2">
-            <div>
-              <div className="text-[8px] font-semibold uppercase tracking-[.12em] text-[#87968a] sm:text-[10px]">Visão geral</div>
-              <div className="mt-1 text-sm font-bold tracking-[-.03em] text-[#214937] sm:text-xl">Bom dia, equipe</div>
-            </div>
-            <span className="rounded-full bg-[#f0f4eb] px-2 py-1 text-[8px] font-semibold text-[#65806a] sm:px-3 sm:text-[10px]">Este mês</span>
-          </div>
-
-          <div className="mt-4 grid grid-cols-2 gap-2 sm:mt-6 sm:grid-cols-3 sm:gap-3">
-            {[
-              ['Vendas no mês', 'R$ 82.450', '+12,8%'],
-              ['Pedidos', '128', '+8,4%'],
-              ['Em aberto', '14', 'Acompanhar'],
-            ].map(([label, value, note]) => (
-              <div key={label} className="rounded-xl border border-[#e8ede6] p-2.5 sm:p-4">
-                <div className="text-[8px] text-[#829084] sm:text-[10px]">{label}</div>
-                <div className="mt-1 text-[13px] font-extrabold tracking-[-.04em] text-[#214937] sm:text-xl">{value}</div>
-                <div className="mt-1 text-[8px] font-semibold text-[#718e54] sm:text-[10px]">{note}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-3 grid gap-3 sm:mt-4 sm:grid-cols-[1.5fr_.8fr]">
-            <div className="rounded-xl border border-[#e8ede6] p-3 sm:p-4">
-              <div className="flex items-center justify-between">
-                <span className="text-[9px] font-bold text-[#355643] sm:text-xs">Movimento de vendas</span>
-                <span className="text-[8px] text-[#9aa69a] sm:text-[10px]">Últimos 12 meses</span>
-              </div>
-              <div className="mt-4 flex h-[82px] items-end gap-1 border-b border-[#edf0eb] px-1 sm:h-[110px] sm:gap-2">
-                {bars.map((height, index) => (
-                  <span key={index} className={`flex-1 rounded-t-sm ${index === 7 ? 'bg-[#a8c345]' : 'bg-[#dfe8cf]'}`} style={{ height: `${height}%` }} />
-                ))}
-              </div>
-              <div className="mt-2 flex justify-between font-mono-custom text-[7px] text-[#9aa69a] sm:text-[9px]">
-                <span>JAN</span><span>MAR</span><span>MAI</span><span>JUL</span><span>SET</span><span>DEZ</span>
-              </div>
-            </div>
-            <div className="hidden rounded-xl border border-[#e8ede6] p-4 sm:block">
-              <div className="text-[10px] font-bold text-[#355643]">Resumo da operação</div>
-              <div className="mt-5 space-y-4">
-                {[['Financeiro', 'Em dia'], ['Estoque', 'Atualizado'], ['Equipe', '12 pessoas']].map(([label, value]) => (
-                  <div key={label} className="flex items-center justify-between gap-2 border-b border-[#edf0eb] pb-3 text-[9px]">
-                    <span className="text-[#829084]">{label}</span>
-                    <span className="font-semibold text-[#355643]">{value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <PreviewWindow>
+      <img src={product.systemScreenshot} alt={product.systemScreenshotAlt ?? 'Captura do sistema ERP'} className="block h-auto w-full" loading="lazy" />
     </PreviewWindow>
   );
 }
 
-function CrmWhatsAppSystemPreview() {
+function CrmWhatsAppSystemPreview({ product }: { product: Product }) {
+  if (!product.systemScreenshot) return null;
+
   return (
-    <PreviewWindow title="Z&MS · CRM + WhatsApp">
-      <div className="grid min-h-[330px] grid-cols-[92px_minmax(0,1fr)] bg-white sm:min-h-[390px] sm:grid-cols-[180px_minmax(0,1fr)] lg:grid-cols-[220px_minmax(0,1fr)]">
-        <aside className="border-r border-[#edf0eb] bg-[#fbfcfa]">
-          <div className="border-b border-[#edf0eb] p-2.5 sm:p-4">
-            <div className="text-[8px] font-bold text-[#214937] sm:text-sm">Conversas</div>
-            <div className="mt-2 rounded-md border border-[#e5eae3] bg-white px-2 py-1.5 text-[7px] text-[#99a49b] sm:text-[9px]">Buscar contato</div>
-          </div>
-          {[
-            ['MA', 'Marina', 'Pode me enviar?'],
-            ['RC', 'Rafael', 'Vamos avançar'],
-            ['AL', 'Ana', 'Obrigada!'],
-          ].map(([initials, name, message], index) => (
-            <div key={name} className={`flex gap-1.5 border-b border-[#edf0eb] p-2 sm:gap-3 sm:p-3 ${index === 0 ? 'bg-[#edf3e7]' : ''}`}>
-              <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#dfe9d5] text-[7px] font-bold text-[#41604b] sm:h-8 sm:w-8 sm:text-[9px]">{initials}</span>
-              <div className="min-w-0">
-                <div className="truncate text-[7px] font-bold text-[#355643] sm:text-[10px]">{name}</div>
-                <div className="mt-1 hidden truncate text-[8px] text-[#8a988d] sm:block">{message}</div>
-              </div>
-            </div>
-          ))}
-        </aside>
-        <div className="flex min-w-0 flex-col">
-          <div className="flex items-center justify-between border-b border-[#edf0eb] px-2.5 py-2 sm:px-5 sm:py-3">
-            <div className="flex min-w-0 items-center gap-2">
-              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#dfe9d5] text-[8px] font-bold text-[#41604b] sm:h-9 sm:w-9 sm:text-[10px]">MA</span>
-              <div className="min-w-0">
-                <div className="truncate text-[8px] font-bold text-[#355643] sm:text-[11px]">Marina Alves</div>
-                <div className="text-[7px] text-[#829084] sm:text-[9px]">Lead · Em negociação</div>
-              </div>
-            </div>
-            <span className="rounded-full bg-[#e7f3e6] px-2 py-1 text-[7px] font-semibold text-[#53815a] sm:text-[9px]">WhatsApp conectado</span>
-          </div>
-          <div className="flex flex-1 flex-col gap-2 bg-[#f6f8f3] p-2.5 sm:gap-3 sm:p-5">
-            <div className="max-w-[78%] self-start rounded-xl rounded-tl-sm bg-white px-2.5 py-2 text-[8px] leading-relaxed text-[#53685a] shadow-sm sm:px-3 sm:text-[10px]">Olá! Quero entender melhor como funciona.</div>
-            <div className="max-w-[78%] self-end rounded-xl rounded-tr-sm bg-[#dceccf] px-2.5 py-2 text-[8px] leading-relaxed text-[#355643] shadow-sm sm:px-3 sm:text-[10px]">Claro, Marina. Vou te mostrar as possibilidades para sua equipe.</div>
-            <div className="self-center rounded-full bg-white/80 px-2.5 py-1 text-[7px] text-[#829084] sm:text-[9px]">Próximo passo: agendar demonstração</div>
-            <div className="mt-auto flex items-center justify-between gap-2 rounded-lg border border-[#e3e9df] bg-white px-2.5 py-2 text-[7px] text-[#9aa69a] sm:px-3 sm:text-[9px]">
-              <span>Escreva uma mensagem...</span><span className="grid h-5 w-5 place-items-center rounded-md bg-[#214937] text-[9px] text-white">↗</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <PreviewWindow>
+      <img src={product.systemScreenshot} alt={product.systemScreenshotAlt ?? 'Captura do sistema CRM com WhatsApp'} className="block h-auto w-full" loading="lazy" />
     </PreviewWindow>
   );
 }
 
-function ProductSystemShowcase({ kind }: { kind: ProductKey }) {
-  if (kind === 'time') return null;
+function ProductSystemShowcase({ kind, product }: { kind: ProductKey; product: Product }) {
+  if (kind === 'time' || !product.systemScreenshot) return null;
 
   const isErp = kind === 'erp';
   return (
@@ -284,22 +188,22 @@ function ProductSystemShowcase({ kind }: { kind: ProductKey }) {
       <div className="mx-auto max-w-[1320px]">
         <div className="mb-10 grid gap-5 md:mb-12 md:grid-cols-[1fr_.55fr] md:items-end md:gap-12">
           <div>
-            <ProductLabel>Prévia ilustrativa do sistema</ProductLabel>
+            <ProductLabel>Por dentro do sistema</ProductLabel>
             <h2 className="mt-6 max-w-[700px] text-balance text-[clamp(2.5rem,5vw,5rem)] font-normal leading-[.94] tracking-[-.06em]">
               {isErp ? 'Sua gestão, em uma só visão.' : 'Cada conversa tem contexto.'}
             </h2>
           </div>
           <p className="max-w-[390px] text-sm leading-[1.7] text-[#667c70]">
             {isErp
-              ? 'Uma amostra de como informações e rotinas podem ficar mais próximas no dia a dia.'
-              : 'Uma amostra de como contatos, mensagens e próximos passos podem trabalhar juntos.'}
+              ? 'Veja uma captura da interface de gestão.'
+              : 'Veja o CRM integrado ao atendimento pelo WhatsApp.'}
           </p>
         </div>
         <div className="rounded-[1.5rem] bg-[#e5eadf] p-2.5 sm:rounded-[2rem] sm:p-5 md:p-8">
-          {isErp ? <ErpSystemPreview /> : <CrmWhatsAppSystemPreview />}
+          {isErp ? <ErpSystemPreview product={product} /> : <CrmWhatsAppSystemPreview product={product} />}
         </div>
         <div className="mt-4 text-right font-mono-custom text-[9px] uppercase tracking-[.14em] text-[#829084]">
-          Interface ilustrativa
+          Captura do sistema
         </div>
       </div>
     </section>
@@ -338,7 +242,7 @@ function ProductVideoSection({ kind, product }: { kind: ProductKey; product: Pro
                 <Play size={24} fill="currentColor" className="ml-1 sm:h-7 sm:w-7" />
               </span>
               <span className="relative rounded-full border border-white/25 bg-[#173b2d]/65 px-4 py-2 font-mono-custom text-[9px] uppercase tracking-[.15em] text-[#f7f4ed] sm:text-[10px]">
-                Vídeo explicativo em breve
+                Em breve
               </span>
             </div>
           )}
@@ -445,7 +349,7 @@ function ProductPage({ kind }: { kind: ProductKey }) {
         </div>
       </section>
 
-      <ProductSystemShowcase kind={kind} />
+      <ProductSystemShowcase kind={kind} product={product} />
 
       <ProductVideoSection kind={kind} product={product} />
 
