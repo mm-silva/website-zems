@@ -1,3 +1,55 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b3d2f" />
+      <stop offset="100%" stop-color="#122a20" />
+    </linearGradient>
+
+    <!-- Z Main Accent Lime Gradient -->
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbe843" />
+      <stop offset="50%" stop-color="#bce32e" />
+      <stop offset="100%" stop-color="#9fc41a" />
+    </linearGradient>
+
+    <!-- Inner Overlay / Shadow Gradient for Depth -->
+    <linearGradient id="shadowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b3d2f" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0a1712" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Soft Drop Shadow -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Rounded App Icon Background -->
+  <rect x="32" y="32" width="448" height="448" rx="96" fill="url(#bgGrad)" filter="url(#dropShadow)" />
+
+  <!-- Integrated Stylized 'Z' Mark with Sharp/Square Geometry -->
+  <g id="z-logo">
+    <!-- Outer Lime Shape (Geometric Z base with sharp corners) -->
+    <path d="M 145 155 
+             L 145 130 
+             L 367 130 
+             L 367 155 
+             L 215 357 
+             L 367 357 
+             L 367 382 
+             L 145 382 
+             L 145 357 
+             L 297 155 Z" fill="url(#limeGrad)" />
+
+    <!-- Inner Dynamic Ribbons / Fold Shadows for 3D/Tech Feel -->
+    <!-- Top Horizontal Inner Shadow -->
+    <path d="M 215 155 L 297 155 L 256 205 L 175 205 Z" fill="url(#shadowGrad)" opacity="0.65" />
+
+    <!-- Bottom Horizontal Inner Layer -->
+    <path d="M 367 357 L 285 357 L 326 307 L 407 307 Z" fill="url(#shadowGrad)" opacity="0.65" />
+
+    <!-- Central Diagonal Ribbon Accent -->
+    <path d="M 215 357 L 340 185 L 367 185 L 242 357 Z" fill="#e1f56e" opacity="0.4" />
+  </g>
 </svg>
