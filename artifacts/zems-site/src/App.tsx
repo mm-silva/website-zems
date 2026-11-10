@@ -8,6 +8,9 @@ import NotFound from '@/pages/not-found';
 import Cursos from '@/pages/cursos';
 import CatalogoCursos from '@/pages/catalogo-cursos';
 import { CrmWhatsAppPage, ErpPage, TimeIsMoney } from '@/pages/produtos';
+import QuemSomos from '@/pages/quem-somos';
+import TermosDeUso from '@/pages/termos-de-uso';
+import Privacidade from '@/pages/privacidade';
 import { Link, Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import './index.css';
 
@@ -17,7 +20,7 @@ const navItems = [
   { label: 'Soluções', href: '#solucoes' },
   { label: 'ERP', href: '/erp' },
   { label: 'CRM + WhatsApp', href: '/crm-whatsapp' },
-  { label: 'Packs', href: '#packs' },
+  { label: 'Quem somos?', href: '/quem-somos' },
   { label: 'Como trabalhamos', href: '#metodo' },
   { label: 'Diagnóstico', href: '#contato' },
   { label: 'Cursos', href: '/cursos' },
@@ -399,10 +402,11 @@ function Home() {
             <div className="absolute bottom-7 right-[10%] rounded-xl bg-[#214937] px-4 py-3 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#d8e86c]">junto da operação</div>
           </div>
           <div>
-            <SectionLabel>Relacionamento contínuo</SectionLabel>
-            <h2 className="mt-7 max-w-[620px] text-balance text-[clamp(2.8rem,5vw,5.5rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Não somos apenas um projeto. Somos parte da evolução da sua <em className="font-display">empresa.</em></h2>
-             <p className="mt-8 max-w-[490px] text-[15px] leading-[1.75] text-[#385b42]">O trabalho continua enquanto fizer sentido para a sua empresa.</p>
-             <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[12px] font-extrabold text-[#214937]"><span className="flex items-center gap-2"><Check size={15} /> Presença</span><span className="flex items-center gap-2"><Check size={15} /> Clareza</span><span className="flex items-center gap-2"><Check size={15} /> Evolução</span></div>
+            <SectionLabel>Nossa visão</SectionLabel>
+            <h2 className="mt-7 max-w-[620px] text-balance text-[clamp(2.8rem,5vw,5.5rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Ajudamos empresas a <em className="font-display">evoluir.</em></h2>
+             <p className="mt-8 max-w-[490px] text-[15px] leading-[1.75] text-[#385b42]">Unimos tecnologia, inovação e gestão para transformar desafios em processos mais eficientes e resultados sustentáveis.</p>
+             <div className="mt-7 font-mono-custom text-[10px] uppercase leading-[1.8] tracking-[.1em] text-[#385b42]">Inovação que transforma. Tecnologia que impulsiona. Gestão que gera resultados.</div>
+             <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[12px] font-extrabold text-[#214937]"><span className="flex items-center gap-2"><Check size={15} /> Inovação</span><span className="flex items-center gap-2"><Check size={15} /> Eficiência</span><span className="flex items-center gap-2"><Check size={15} /> Resultados</span></div>
           </div>
         </div>
       </section>
@@ -459,7 +463,7 @@ function Home() {
             </div>
             <div className="flex gap-3"><a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full border border-[#52735c] transition-colors hover:bg-[#d8e86c] hover:text-[#214937]" data-testid="link-social-linkedin"><Linkedin size={15} /></a><a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full border border-[#52735c] transition-colors hover:bg-[#d8e86c] hover:text-[#214937]" data-testid="link-social-instagram"><Instagram size={15} /></a></div>
           </div>
-          <div className="flex flex-col justify-between gap-3 pt-6 font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#91ae94] sm:flex-row"><span>© 2024 Zems consultoria</span><span className="flex items-center gap-2"><MapPin size={12} /> São Paulo, Brasil</span><span>Eficiência para fazer sentido.</span></div>
+          <div className="flex flex-col justify-between gap-3 pt-6 font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#91ae94] sm:flex-row"><span>© 2024 Zems consultoria</span><span className="flex items-center gap-2"><MapPin size={12} /> São Paulo, Brasil</span><span>Eficiência para fazer sentido.</span><span className="flex gap-4"><a href="/termos-de-uso" className="hover:text-[#d8e86c]">Termos de uso</a><a href="/privacidade" className="hover:text-[#d8e86c]">Privacidade</a></span></div>
         </div>
       </footer>
     </main>
@@ -467,7 +471,7 @@ function Home() {
 }
 
 function Router() {
-  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/time-is-money" component={TimeIsMoney} /><Route path="/erp" component={ErpPage} /><Route path="/crm-whatsapp" component={CrmWhatsAppPage} /><Route path="/cursos" component={Cursos} /><Route path="/cursos/catalogo" component={CatalogoCursos} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
+  return <RoutedErrorBoundary><Switch><Route path="/" component={Home} /><Route path="/quem-somos" component={QuemSomos} /><Route path="/termos-de-uso" component={TermosDeUso} /><Route path="/privacidade" component={Privacidade} /><Route path="/time-is-money" component={TimeIsMoney} /><Route path="/erp" component={ErpPage} /><Route path="/crm-whatsapp" component={CrmWhatsAppPage} /><Route path="/cursos" component={Cursos} /><Route path="/cursos/catalogo" component={CatalogoCursos} /><Route component={NotFound} /></Switch></RoutedErrorBoundary>;
 }
 
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {

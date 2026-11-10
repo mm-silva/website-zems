@@ -36,8 +36,6 @@ const products: Record<ProductKey, Product> = {
     lead: 'Time is Money é um olhar direto para descobrir onde a operação pode ficar mais leve, clara e eficiente.',
     image: '/zems-hero.jpg',
     imageAlt: 'Empresária analisando documentos em uma mesa de trabalho',
-    systemScreenshot: '/erp-system.png',
-    systemScreenshotAlt: 'Captura do sistema ERP exibindo a área de contatos e módulos de gestão',
     introLabel: 'O ponto de partida',
     introTitle: 'Antes de cortar, é preciso enxergar.',
     introCopy: 'Nem sempre o custo aparece como uma linha na planilha. Às vezes ele está no tempo, no retrabalho ou no jeito de fazer.',
@@ -71,6 +69,8 @@ const products: Record<ProductKey, Product> = {
     lead: 'Um ERP bem estruturado reúne processos e informações para a empresa funcionar com mais visão.',
     image: '/zems-hero.jpg',
     imageAlt: 'Empresária analisando documentos em uma mesa de trabalho',
+    systemScreenshot: '/erp-system.png',
+    systemScreenshotAlt: 'Captura do sistema ERP exibindo a área de contatos e módulos de gestão',
     introLabel: 'ERP na prática',
     introTitle: 'Sua gestão não precisa ficar espalhada.',
     introCopy: 'O ERP certo aproxima áreas, rotinas e informações que hoje pedem organização.',
@@ -164,7 +164,7 @@ function ErpSystemPreview({ product }: { product: Product }) {
 
   return (
     <PreviewWindow>
-      <img src={product.systemScreenshot} alt={product.systemScreenshotAlt ?? 'Captura do sistema ERP'} className="block h-auto w-full" loading="lazy" />
+      <img src={product.systemScreenshot} alt={product.systemScreenshotAlt ?? 'Captura do sistema ERP'} className="block h-auto w-full" loading="eager" />
     </PreviewWindow>
   );
 }
@@ -174,7 +174,7 @@ function CrmWhatsAppSystemPreview({ product }: { product: Product }) {
 
   return (
     <PreviewWindow>
-      <img src={product.systemScreenshot} alt={product.systemScreenshotAlt ?? 'Captura do sistema CRM com WhatsApp'} className="block h-auto w-full" loading="lazy" />
+      <img src={product.systemScreenshot} alt={product.systemScreenshotAlt ?? 'Captura do sistema CRM com WhatsApp'} className="block h-auto w-full" loading="eager" />
     </PreviewWindow>
   );
 }
