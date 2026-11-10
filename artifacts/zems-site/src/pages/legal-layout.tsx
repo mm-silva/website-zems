@@ -38,9 +38,6 @@ export function LegalLayout({ title, description, children }: LegalLayoutProps) 
       </header>
 
       <article className="mx-auto max-w-[820px] px-5 py-10 md:px-10 md:py-16">
-        <aside role="note" className="mb-10 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">
-          Este texto-base é informativo e não constitui aconselhamento jurídico. Revise-o com um advogado antes de publicar.
-        </aside>
         <p className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#718571]">Última atualização: 10 de novembro de 2026</p>
         <h1 className="mt-4 text-[clamp(2.6rem,6vw,4.5rem)] font-normal leading-[.95] tracking-[-.065em]">{title}</h1>
         <p className="mt-5 max-w-[700px] text-base leading-7 text-[#526b5a]">{description}</p>
