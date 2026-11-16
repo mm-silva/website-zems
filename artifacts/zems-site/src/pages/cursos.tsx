@@ -1,87 +1,33 @@
-import { useEffect, useState, type ReactNode } from 'react';
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Clock3, GraduationCap, Layers3, Mail, Menu, MonitorPlay, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, ArrowUpRight, Award, Check, ChevronDown, Infinity as InfinityIcon, Mail, Menu, MonitorPlay, Phone, PlayCircle, Smartphone, X } from 'lucide-react';
 import { Link } from 'wouter';
+import { CourseCard, CourseLogo, CourseSectionLabel, external } from '@/components/course-ui';
+import { PLAN_URL, STORE_URL, areaUrl, courseImage, coursePrice, courses, planPrice, platformStats, storeAreas } from '@/data/cursos';
+
+const CONTACT_EMAIL = 'oi@zems.com.br';
+const mailto = (subject: string) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
 
 const courseNavItems = [
-  { label: 'Catálogo', href: '#catalogo' },
-  { label: 'Método', href: '#metodo' },
+  { label: 'Cursos', href: '#catalogo' },
+  { label: 'Plano Ilimitado', href: '#plano' },
   { label: 'Dúvidas', href: '#duvidas' },
 ];
 
-export const tracks = [
-  {
-    index: '01',
-    tone: 'dark',
-    thumbnail: '/zems-hero.jpg',
-    thumbnailPosition: 'object-center',
-    label: 'Curso gravado · Essencial',
-    title: 'Finanças para quem decide',
-    description: 'O repertório para ler os números com segurança, fazer as perguntas certas e decidir sem depender de tradução.',
-    details: '6 aulas · 6h',
-    level: 'Intermediário',
-    topics: ['DRE que conta uma história', 'Indicadores para a rotina', 'Decisões com contexto'],
-  },
-  {
-    index: '02',
-    tone: 'lime',
-    thumbnail: '/zems-portrait.jpg',
-    thumbnailPosition: 'object-[center_35%]',
-    label: 'Curso gravado · Caixa',
-    title: 'Caixa em movimento',
-    description: 'Uma visão prática do dinheiro que entra, sai e precisa estar disponível para o próximo passo.',
-    details: '4 aulas · 4h',
-    level: 'Básico',
-    topics: ['Fluxo de caixa real', 'Cenários e previsibilidade', 'Ritual de acompanhamento'],
-  },
-  {
-    index: '03',
-    tone: 'paper',
-    thumbnail: '/zems-hero.jpg',
-    thumbnailPosition: 'object-[70%_center]',
-    label: 'Curso gravado · Margem',
-    title: 'Margem sem mistério',
-    description: 'Como proteger resultado, precificar melhor e enxergar onde a operação cria — ou perde — valor.',
-    details: '4 aulas · 4h',
-    level: 'Intermediário',
-    topics: ['Custo e contribuição', 'Preço com clareza', 'Mix que faz sentido'],
-  },
-  {
-    index: '04',
-    tone: 'outline',
-    thumbnail: '/zems-portrait.jpg',
-    thumbnailPosition: 'object-[35%_center]',
-    label: 'Curso gravado · Gestão',
-    title: 'Ritual financeiro para equipes',
-    description: 'A estrutura mínima para transformar finanças em uma conversa frequente, objetiva e compartilhada.',
-    details: '4 aulas · 4h',
-    level: 'Avançado',
-    topics: ['Papéis e cadências', 'Painel de gestão', 'Acordos para agir'],
-  },
+const featured = courses.filter((course) => course.featured);
+const heroCourse = courses.find((course) => course.id === 65806) ?? courses[0];
+
+const steps = [
+  ['01', 'Escolha', 'Um curso avulso ou o Plano Ilimitado.'],
+  ['02', 'Matricule-se', 'Direto na nossa plataforma de cursos.'],
+  ['03', 'Estude', 'No computador ou no app, quando quiser.'],
 ];
 
 const faqs = [
-  ['Preciso ser da área financeira para participar?', 'Não. As trilhas foram desenhadas para quem toma decisão, lidera uma área ou precisa conversar melhor com o financeiro. O conteúdo parte do zero necessário e chega ao que importa na prática.'],
-  ['As aulas são ao vivo ou gravadas?', 'Os cursos são gravados para você assistir no seu ritmo, voltar aos pontos mais importantes e aplicar o conteúdo na rotina da empresa.'],
-  ['Posso fazer uma trilha com o meu time?', 'Sim. A formação funciona muito bem para sócios, gestores e pessoas do financeiro na mesma sala. Também ajustamos exemplos e exercícios ao contexto da empresa.'],
-  ['Como funciona a inscrição e o acesso?', 'A gente começa com uma conversa breve para entender o momento e indicar o curso mais útil. Depois, enviamos as informações de investimento e acesso sem compromisso.'],
+  ['Os cursos são gravados?', 'Sim. São 100% em vídeo, disponíveis 24h — no computador ou no app para Android e iOS.'],
+  ['Tem certificado?', 'Sim, digital e gratuito, com número de autenticidade. Há uma versão impressa opcional, paga à parte. São cursos livres, sem reconhecimento do MEC.'],
+  ['Curso avulso ou Plano Ilimitado?', `Cada curso sai por ${coursePrice.cash} à vista. O plano dá acesso a todos os cursos por um ano por ${planPrice.cash} — compensa a partir do quinto curso.`],
+  ['Dá para inscrever o meu time?', 'Sim. Fale com a Zems e a gente indica a combinação de cursos certa para cada função.'],
 ];
-
-function CourseLogo() {
-  return (
-    <Link href="/" aria-label="Z&MS" className="flex items-center text-[#f7f4ed]" data-testid="link-cursos-logo">
-      <span className="brand-wordmark">Z&MS</span>
-    </Link>
-  );
-}
-
-function CourseSectionLabel({ children, light = false }: { children: ReactNode; light?: boolean }) {
-  return (
-    <div className={`flex items-center gap-3 font-mono-custom text-[10px] uppercase tracking-[0.18em] ${light ? 'text-[#b8c8a6]' : 'text-[#62806d]'}`}>
-      <span className={`h-1.5 w-1.5 rounded-full ${light ? 'bg-[#d8e86c]' : 'bg-[#d0dd55]'}`} />
-      {children}
-    </div>
-  );
-}
 
 function Cursos() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -91,34 +37,42 @@ function Cursos() {
     const previousTitle = document.title;
     const description = document.querySelector('meta[name="description"]');
     const previousDescription = description?.getAttribute('content');
-    document.title = 'Cursos Zems | Educação financeira para quem decide';
-    description?.setAttribute('content', 'Formação financeira prática para donos, gestores e times que querem decidir com mais clareza.');
+    document.title = 'Cursos Zems | Gestão, finanças e vendas';
+    description?.setAttribute('content', `Mais de ${platformStats.courses} cursos online com certificado: gestão, finanças, vendas e tecnologia para quem decide.`);
     return () => {
       document.title = previousTitle;
       if (description && previousDescription) description.setAttribute('content', previousDescription);
     };
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => event.key === 'Escape' && setMenuOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <main className="grain overflow-hidden bg-[#f5f3ec]">
+      {/* HERO */}
       <section id="inicio" className="fintech-grid relative bg-[#1d4333] text-[#f7f4ed]">
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 75% 15%, #bbd878 0, transparent 24%), linear-gradient(115deg, transparent 40%, rgba(216,232,108,.16) 40.2%, transparent 40.5%)' }} />
         <header className="relative z-10 mx-auto flex max-w-[1320px] items-center justify-between px-5 py-6 md:px-10 lg:py-8">
           <CourseLogo />
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação da educação financeira">
+          <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação dos cursos">
             <Link href="/" className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid="link-cursos-home">Início</Link>
             {courseNavItems.map((item) => (
-              <a href={item.href} key={item.href} className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid={`link-cursos-nav-${item.label.toLowerCase()}`}>
+              <a href={item.href} key={item.href} className="text-[12px] font-semibold text-[#d9e3d6] transition-colors hover:text-[#d8e86c]" data-testid={`link-cursos-nav-${item.href.slice(1)}`}>
                 {item.label}
               </a>
             ))}
           </nav>
-          <a href="mailto:oi@zems.com.br?subject=Quero%20conhecer%20os%20cursos%20Zems" className="hidden items-center gap-3 rounded-full border border-[#75977a] px-5 py-2.5 text-[12px] font-bold text-[#f7f4ed] transition-all hover:border-[#d8e86c] hover:bg-[#d8e86c] hover:text-[#1d4333] md:flex" data-testid="link-cursos-header-cta">
-            Fale com a Zems <ArrowUpRight size={15} />
+          <a href={STORE_URL} {...external} className="hidden items-center gap-3 rounded-full border border-[#75977a] px-5 py-2.5 text-[12px] font-bold text-[#f7f4ed] transition-all hover:border-[#d8e86c] hover:bg-[#d8e86c] hover:text-[#1d4333] md:flex" data-testid="link-cursos-header-cta">
+            Área do aluno <ArrowUpRight size={15} />
           </a>
-          <button onClick={() => setMenuOpen((value) => !value)} className="grid h-10 w-10 place-items-center rounded-full border border-[#75977a] md:hidden" aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} data-testid="button-cursos-mobile-menu">
+          <button onClick={() => setMenuOpen((value) => !value)} className="grid h-10 w-10 place-items-center rounded-full border border-[#75977a] md:hidden" aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} data-testid="button-cursos-mobile-menu">
             {menuOpen ? <X size={19} /> : <Menu size={19} />}
           </button>
         </header>
@@ -128,209 +82,211 @@ function Cursos() {
             <nav className="grid gap-5">
               <Link href="/" onClick={closeMenu} className="flex items-center justify-between border-b border-[#52735c] pb-4 text-sm font-semibold" data-testid="link-cursos-mobile-home">Voltar para a home <ArrowUpRight size={15} /></Link>
               {courseNavItems.map((item) => (
-                <a href={item.href} onClick={closeMenu} key={item.href} className="flex items-center justify-between border-b border-[#52735c] pb-4 text-sm font-semibold" data-testid={`link-cursos-mobile-${item.label.toLowerCase()}`}>
+                <a href={item.href} onClick={closeMenu} key={item.href} className="flex items-center justify-between border-b border-[#52735c] pb-4 text-sm font-semibold" data-testid={`link-cursos-mobile-${item.href.slice(1)}`}>
                   {item.label} <ArrowUpRight size={15} />
                 </a>
               ))}
-              <a href="mailto:oi@zems.com.br?subject=Quero%20conhecer%20os%20cursos%20Zems" onClick={closeMenu} className="flex items-center justify-between pt-1 text-sm font-bold text-[#d8e86c]" data-testid="link-cursos-mobile-cta">Quero conversar <ArrowRight size={16} /></a>
+              <a href={STORE_URL} {...external} onClick={closeMenu} className="flex items-center justify-between pt-1 text-sm font-bold text-[#d8e86c]" data-testid="link-cursos-mobile-cta">Área do aluno <ArrowRight size={16} /></a>
             </nav>
           </div>
         )}
 
-        <div className="relative z-10 mx-auto grid max-w-[1320px] gap-12 px-5 pb-16 pt-16 md:px-10 md:pb-24 md:pt-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-24 lg:pt-28">
+        <div className="relative z-10 mx-auto grid max-w-[1320px] gap-12 px-5 pb-16 pt-14 md:px-10 md:pb-24 md:pt-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-20 lg:pt-24">
           <div className="flex flex-col justify-center">
-            <CourseSectionLabel light>Educação financeira Zems · cursos gravados</CourseSectionLabel>
-            <h1 className="reveal reveal-delay-1 mt-7 max-w-[760px] text-balance text-[clamp(3.3rem,7.2vw,7.5rem)] font-normal leading-[.9] tracking-[-0.07em]">
-              Finanças que o time entende. <em className="font-display text-[#d8e86c]">Decisões que sustentam.</em>
+            <CourseSectionLabel light>Cursos Zems · online com certificado</CourseSectionLabel>
+            <h1 className="reveal reveal-delay-1 mt-7 max-w-[760px] text-balance text-[clamp(3rem,7vw,7.2rem)] font-normal leading-[.9] tracking-[-0.07em]">
+              Aprenda a gerir. <em className="font-display text-[#d8e86c]">Decida melhor.</em>
             </h1>
-            <p className="reveal reveal-delay-2 mt-8 max-w-[505px] text-[16px] leading-[1.65] text-[#c8d8c8]">
-              Conteúdo gravado para donos, gestores e equipes que querem sair do improviso, ler a operação com mais precisão e agir antes do problema aparecer.
+            <p className="reveal reveal-delay-2 mt-8 max-w-[470px] text-[16px] leading-[1.65] text-[#c8d8c8]">
+              Gestão, finanças, vendas e tecnologia em cursos curtos, 100% em vídeo. Estude no seu ritmo e aplique na semana seguinte.
             </p>
             <div className="reveal reveal-delay-3 mt-9 flex flex-wrap items-center gap-5">
               <a href="#catalogo" className="group flex items-center gap-3 rounded-full bg-[#d8e86c] px-6 py-3.5 text-[13px] font-extrabold text-[#183b2d] transition-transform hover:scale-[1.03]" data-testid="link-cursos-hero-catalogo">
                 Ver os cursos <span className="grid h-6 w-6 place-items-center rounded-full bg-[#1d4333] text-[#d8e86c] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
               </a>
-              <a href="#metodo" className="line-link text-[13px] font-semibold text-[#d8e2d5]" data-testid="link-cursos-hero-metodo">Como funciona</a>
+              <a href="#plano" className="line-link text-[13px] font-semibold text-[#d8e2d5]" data-testid="link-cursos-hero-plano">Plano Ilimitado</a>
             </div>
+            <dl className="reveal reveal-delay-4 mt-12 grid max-w-[480px] grid-cols-3 gap-3">
+              {[
+                [platformStats.courses, 'cursos'],
+                [platformStats.lessons, 'aulas'],
+                ['Grátis', 'certificado'],
+              ].map(([value, label]) => (
+                <div key={label} className="border-l border-[#52735c] pl-3">
+                  <dt className="sr-only">{label}</dt>
+                  <dd>
+                    <strong className="block font-display text-3xl text-[#f7f4ed]">{value}</strong>
+                    <span className="mt-1 block font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#a8bfaa]">{label}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <div className="relative min-h-[430px] lg:min-h-[510px]">
+
+          <div className="relative hidden min-h-[560px] sm:block">
             <div className="absolute -right-8 top-0 h-28 w-28 rounded-full border border-[#6d9272] lg:right-4 lg:top-3" />
             <div className="absolute inset-x-0 top-8 bottom-0 rounded-[2rem] rounded-bl-[7rem] border border-[#52735c] bg-[#28543f] p-5 md:p-7 lg:left-8">
               <div className="flex items-start justify-between border-b border-[#52735c] pb-5">
                 <div>
-                  <div className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#a8bfaa]">Aula aplicada</div>
-                  <div className="mt-2 text-lg font-extrabold tracking-[-.04em]">O número precisa contar algo.</div>
+                  <div className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#a8bfaa]">Em andamento · {heroCourse.area}</div>
+                  <div className="mt-2 text-lg font-extrabold tracking-[-.04em]">{heroCourse.title}</div>
                 </div>
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><GraduationCap size={21} /></span>
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><MonitorPlay size={20} /></span>
               </div>
-              <div className="relative mt-10 h-[205px] overflow-hidden rounded-xl bg-[#d8e86c] p-5 text-[#214937]">
-                <div className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[#536b37]">Leitura de caixa · exercício 02</div>
-                <div className="mt-7 flex items-end gap-2">
-                  {[42, 66, 52, 82, 70, 95, 77].map((height, index) => (
-                    <span key={index} className="flex-1 rounded-t-sm bg-[#214937]/75" style={{ height: `${height}%` }} />
-                  ))}
-                </div>
-                <div className="absolute bottom-4 left-5 right-5 flex justify-between font-mono-custom text-[9px] uppercase tracking-[.1em] text-[#536b37]"><span>jan</span><span>fev</span><span>mar</span><span>abr</span><span>mai</span><span>jun</span><span>jul</span></div>
+              <div className="relative mt-6 aspect-[16/9] overflow-hidden rounded-xl bg-[#d8e86c]">
+                <img src={courseImage(heroCourse)} alt="" className="h-full w-full object-cover mix-blend-multiply" />
+                <PlayCircle size={56} strokeWidth={1.2} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[#f7f4ed] drop-shadow-lg" />
               </div>
-              <div className="mt-5 grid grid-cols-3 gap-3">
-                {[
-                  ['04', 'cursos gravados'],
-                  ['18h', 'conteúdo'],
-                  ['100%', 'aplicável'],
-                ].map(([value, label]) => (
-                  <div key={label} className="border-l border-[#52735c] pl-3">
-                    <strong className="block font-display text-2xl text-[#f7f4ed]">{value}</strong>
-                    <span className="mt-1 block font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#a8bfaa]">{label}</span>
-                  </div>
-                ))}
+              <div className="mt-6 flex items-center gap-4">
+                <span className="font-mono-custom text-[10px] text-[#a8bfaa]">aula 04</span>
+                <div className="h-1 flex-1 overflow-hidden rounded-full bg-[#52735c]"><div className="h-full w-[38%] rounded-full bg-[#d8e86c]" /></div>
+                <span className="font-mono-custom text-[10px] text-[#a8bfaa]">38%</span>
               </div>
             </div>
-            <div className="absolute -bottom-4 left-0 z-10 max-w-[225px] rounded-2xl bg-[#f5f3ec] p-5 text-[#214937] shadow-2xl lg:-left-8 lg:bottom-7">
-              <div className="font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#718571]">Aula 01</div>
-              <div className="mt-3 font-display text-2xl leading-[1.05]">clareza antes da planilha.</div>
+            <div className="absolute -bottom-6 left-0 z-10 max-w-[230px] rounded-2xl bg-[#f5f3ec] p-5 text-[#214937] shadow-2xl lg:-left-8">
+              <div className="flex items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#718571]"><Award size={13} /> Certificado</div>
+              <div className="mt-3 font-display text-2xl leading-[1.05]">digital, gratuito e verificável.</div>
             </div>
           </div>
         </div>
+
         <div className="relative z-10 mx-auto grid max-w-[1320px] gap-5 border-t border-[#52735c] px-5 py-6 md:grid-cols-3 md:px-10">
           {[
-            ['Para quem decide', 'Dono, sócio ou gestor que quer participar da conversa financeira.'],
-            ['Para quem executa', 'Times financeiros que precisam transformar análise em rotina.'],
-            ['Para quem cresce', 'Empresas que querem escalar sem perder o controle do caixa.'],
-          ].map(([title, copy], index) => (
-            <div key={title} className={`md:pl-6 ${index > 0 ? 'border-[#52735c] md:border-l' : ''}`}>
-              <div className="font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#d8e86c]">0{index + 1}</div>
-              <div className="mt-2 text-sm font-extrabold text-[#f7f4ed]">{title}</div>
-              <p className="mt-1 max-w-[300px] text-xs leading-[1.6] text-[#a9c0aa]">{copy}</p>
-            </div>
-          ))}
+            [MonitorPlay, '100% em vídeo', 'Acesso 24h, no seu ritmo.'],
+            [Smartphone, 'No app também', 'Android e iOS.'],
+            [Award, 'Certificado grátis', 'Digital, com número de autenticidade.'],
+          ].map(([Icon, title, copy], index) => {
+            const IconComponent = Icon as typeof MonitorPlay;
+            return (
+              <div key={title as string} className={`flex items-start gap-3 md:pl-6 ${index > 0 ? 'border-[#52735c] md:border-l' : ''}`}>
+                <IconComponent size={17} className="mt-0.5 shrink-0 text-[#d8e86c]" />
+                <div>
+                  <div className="text-sm font-extrabold text-[#f7f4ed]">{title as string}</div>
+                  <p className="mt-1 text-xs leading-[1.6] text-[#a9c0aa]">{copy as string}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      <section id="catalogo" className="fintech-grid-light bg-[#e5eadf] px-5 py-24 md:px-10 md:py-32">
+      {/* CURSOS EM DESTAQUE */}
+      <section id="catalogo" className="fintech-grid-light scroll-mt-4 bg-[#e5eadf] px-5 py-24 md:px-10 md:py-32">
         <div className="mx-auto max-w-[1320px]">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
-              <CourseSectionLabel>Lista de cursos gravados</CourseSectionLabel>
-              <h2 className="mt-7 max-w-[730px] text-balance text-[clamp(2.8rem,5.8vw,6rem)] font-normal leading-[.91] tracking-[-.065em] text-[#214937]">Escolha o curso que coloca sua próxima decisão em <em className="font-display text-[#8a9e47]">movimento.</em></h2>
+              <CourseSectionLabel>Seleção Zems</CourseSectionLabel>
+              <h2 className="mt-7 max-w-[760px] text-balance text-[clamp(2.6rem,5.5vw,5.6rem)] font-normal leading-[.92] tracking-[-.065em] text-[#214937]">Os cursos que a gente <em className="font-display text-[#8a9e47]">indicaria.</em></h2>
             </div>
-            <p className="max-w-[290px] text-sm leading-[1.65] text-[#61766a] md:pb-2">Dados demonstrativos para você visualizar o catálogo. Cursos objetivos, gravados e feitos para assistir no seu ritmo.</p>
+            <p className="max-w-[300px] text-sm leading-[1.65] text-[#61766a] md:pb-2">Escolhidos para quem cuida de caixa, time e vendas. <strong className="text-[#214937]">{coursePrice.cash} à vista</strong> ou {coursePrice.installments}.</p>
           </div>
-          <div className="mt-16 grid gap-4 md:grid-cols-2">
-            {tracks.map((track) => (
-              <article key={track.index} className={`magnetic-card group relative flex min-h-[620px] flex-col overflow-hidden rounded-[1.5rem] p-5 lg:p-6 ${track.tone === 'dark' ? 'bg-[#214937] text-[#f7f4ed]' : track.tone === 'lime' ? 'bg-[#d8e86c] text-[#214937]' : track.tone === 'paper' ? 'border border-[#c4d0c1] bg-[#f5f3ec] text-[#214937]' : 'border border-[#52735c] bg-[#28523e] text-[#f7f4ed]'}`} data-testid={`card-mock-course-${track.index}`}>
-                <div className="flex items-start justify-between">
-                  <span className={`font-mono-custom text-[11px] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#8a9e47]' : 'text-[#d8e86c]'}`}>{track.index}</span>
-                  <ArrowUpRight className={`transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${track.tone === 'paper' ? 'text-[#728b75]' : ''}`} size={19} />
-                </div>
-                <div className="relative mt-5 h-40 overflow-hidden rounded-xl">
-                  <img src={track.thumbnail} alt="" className={`h-full w-full object-cover ${track.thumbnailPosition} mix-blend-multiply opacity-75 transition-transform duration-500 group-hover:scale-105`} />
-                  <div className={`absolute inset-0 ${track.tone === 'lime' ? 'bg-[#d8e86c]/45' : track.tone === 'paper' ? 'bg-[#b7c7ad]/30' : 'bg-[#214937]/45'}`} />
-                  <div className="absolute inset-x-4 bottom-3 flex items-center justify-between">
-                    <span className="rounded-full border border-white/35 bg-[#214937]/35 px-2.5 py-1 font-mono-custom text-[9px] uppercase tracking-[.12em] text-white">curso gravado</span>
-                    <MonitorPlay size={18} className="text-white" />
-                  </div>
-                </div>
-                <div className="mt-7 flex flex-1 flex-col">
-                  <div className={`flex items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.16em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a8bfaa]'}`}><MonitorPlay size={13} />{track.label}</div>
-                  <h3 className="mt-3 max-w-[420px] text-2xl font-extrabold leading-[1.02] tracking-[-.055em] lg:text-3xl">{track.title}</h3>
-                  <p className={`mt-3 max-w-[420px] text-sm leading-[1.65] ${track.tone === 'lime' ? 'text-[#526b4d]' : track.tone === 'paper' ? 'text-[#667c70]' : 'text-[#c0d0c1]'}`}>{track.description}</p>
-                  <div className={`mt-5 flex items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.12em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a9c0aa]'}`}><Clock3 size={13} /> {track.details}</div>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {track.topics.map((topic) => (
-                      <span key={topic} className={`rounded-full border px-2.5 py-1 font-mono-custom text-[9px] uppercase tracking-[.08em] ${track.tone === 'lime' ? 'border-[#91a646] text-[#536b37]' : track.tone === 'paper' ? 'border-[#c4d0c1] text-[#718571]' : 'border-[#607f68] text-[#b9cab9]'}`}>{topic}</span>
-                    ))}
-                  </div>
-                  <div className="mt-auto flex flex-wrap items-end justify-between gap-4 pt-8">
-                    <div>
-                      <div className={`font-mono-custom text-[9px] uppercase tracking-[.14em] ${track.tone === 'lime' ? 'text-[#536b37]' : track.tone === 'paper' ? 'text-[#718571]' : 'text-[#a9c0aa]'}`}>{track.level}</div>
-                      <strong className={`mt-1 block text-xl font-extrabold tracking-[-.06em] ${track.tone === 'lime' || track.tone === 'paper' ? 'text-[#214937]' : 'text-[#f7f4ed]'}`}>Conteúdo gravado</strong>
-                    </div>
-                    <a href={`mailto:oi@zems.com.br?subject=Quero%20conhecer%20o%20curso%20${encodeURIComponent(track.title)}`} className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[12px] font-extrabold transition-transform hover:scale-[1.03] ${track.tone === 'lime' || track.tone === 'paper' ? 'bg-[#214937] text-[#f5f3ec]' : 'bg-[#d8e86c] text-[#214937]'}`} data-testid={`link-course-interest-${track.index}`}>Quero conhecer <ArrowRight size={14} /></a>
-                  </div>
-                </div>
-                {track.tone === 'dark' && <div className="absolute -bottom-16 -right-10 h-64 w-64 rounded-full border-[38px] border-[#315b44] transition-transform duration-500 group-hover:scale-110" />}
-              </article>
-            ))}
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((course) => <CourseCard key={course.id} course={course} testIdPrefix="featured-course" />)}
           </div>
-          <div className="mt-10 flex justify-center">
-            <Link href="/cursos/catalogo" className="group inline-flex items-center gap-3 rounded-full border border-[#214937] px-6 py-3.5 text-[13px] font-extrabold text-[#214937] transition-colors hover:bg-[#214937] hover:text-[#f5f3ec]" data-testid="link-cursos-ver-mais">
-              Ver mais cursos <span className="grid h-6 w-6 place-items-center rounded-full bg-[#d8e86c] text-[#214937] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
+            <Link href="/cursos/catalogo" className="group inline-flex items-center gap-3 rounded-full bg-[#214937] px-6 py-3.5 text-[13px] font-extrabold text-[#f5f3ec] transition-transform hover:scale-[1.03]" data-testid="link-cursos-ver-mais">
+              Ver toda a seleção ({courses.length}) <span className="grid h-6 w-6 place-items-center rounded-full bg-[#d8e86c] text-[#214937] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
             </Link>
+            <a href={STORE_URL} {...external} className="line-link text-[13px] font-extrabold text-[#214937]" data-testid="link-cursos-loja">Todos os {platformStats.courses} cursos</a>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#f5f3ec] px-5 py-24 md:px-10 md:py-32">
-        <div className="mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[.72fr_1.28fr] lg:gap-28">
+      {/* PLANO ILIMITADO */}
+      <section id="plano" className="scroll-mt-4 bg-[#f5f3ec] px-5 py-24 md:px-10 md:py-32">
+        <div className="mx-auto grid max-w-[1320px] items-center gap-12 lg:grid-cols-[1fr_.9fr] lg:gap-24">
           <div>
-            <CourseSectionLabel>O que fica com você</CourseSectionLabel>
-            <h2 className="mt-7 max-w-[450px] text-balance text-[clamp(2.8rem,5vw,5.5rem)] font-normal leading-[.93] tracking-[-.06em] text-[#214937]">Conhecimento que aparece na <em className="font-display text-[#8a9e47]">terça-feira.</em></h2>
-            <p className="mt-8 max-w-[360px] text-sm leading-[1.7] text-[#667c70]">Cada encontro termina com uma aplicação possível. O curso não para na compreensão — ele vira conversa, ritual e decisão.</p>
+            <CourseSectionLabel>Plano Ilimitado</CourseSectionLabel>
+            <h2 className="mt-7 max-w-[560px] text-balance text-[clamp(2.6rem,5vw,5.2rem)] font-normal leading-[.93] tracking-[-.06em] text-[#214937]">Um ano. <em className="font-display text-[#8a9e47]">Todos os cursos.</em></h2>
+            <p className="mt-7 max-w-[420px] text-sm leading-[1.7] text-[#667c70]">Para quem quer montar a própria trilha — ou capacitar a equipe sem contar curso por curso.</p>
+            <ul className="mt-8 grid gap-3">
+              {[`Acesso aos ${platformStats.courses} cursos por 12 meses`, 'Certificado gratuito em todos', 'Estude no computador ou no app'].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-sm font-semibold text-[#385b42]">
+                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#d8e86c] text-[#214937]"><Check size={13} strokeWidth={3} /></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="border-t border-[#cbd7c8]">
-            {[
-              ['01', 'Leitura mais segura', 'Você passa a reconhecer o que os números estão dizendo antes de tomar uma decisão importante.'],
-              ['02', 'Perguntas melhores', 'O time troca opinião solta por uma conversa com contexto, hipótese e próximo passo.'],
-              ['03', 'Ritmo de acompanhamento', 'A empresa constrói uma cadência simples para não descobrir o passado tarde demais.'],
-              ['04', 'Autonomia compartilhada', 'Finanças deixam de ser uma ilha e viram repertório de quem movimenta o negócio.'],
-            ].map(([number, title, copy]) => (
-              <div key={number} className="group grid gap-4 border-b border-[#cbd7c8] py-7 sm:grid-cols-[70px_220px_1fr] sm:items-start">
-                <span className="font-mono-custom text-[11px] text-[#8a9e47]">{number}</span>
-                <h3 className="text-2xl font-extrabold tracking-[-.05em] text-[#214937] transition-colors group-hover:text-[#8a9e47]">{title}</h3>
-                <p className="max-w-[330px] text-sm leading-[1.65] text-[#718477]">{copy}</p>
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#214937] p-8 text-[#f7f4ed] md:p-10">
+            <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full border-[36px] border-[#28523e]" />
+            <div className="relative">
+              <div className="flex items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#a8bfaa]"><InfinityIcon size={14} className="text-[#d8e86c]" /> Acesso ilimitado</div>
+              <div className="mt-8 font-mono-custom text-[11px] uppercase tracking-[.12em] text-[#a8bfaa]">{planPrice.installments}</div>
+              <div className="mt-1 flex items-baseline gap-2">
+                <strong className="font-display text-[clamp(3.5rem,7vw,5.5rem)] leading-none text-[#d8e86c]">{planPrice.cash}</strong>
+                <span className="text-sm text-[#b9cab9]">à vista</span>
               </div>
+              <p className="mt-4 max-w-[320px] text-sm leading-[1.6] text-[#b9cab9]">Compensa a partir do quinto curso.</p>
+              <a href={PLAN_URL} {...external} className="group mt-9 flex items-center justify-between rounded-full bg-[#d8e86c] px-5 py-3.5 text-[13px] font-extrabold text-[#214937] transition-transform hover:scale-[1.02]" data-testid="link-cursos-plano">
+                Quero o Plano Ilimitado <span className="grid h-7 w-7 place-items-center rounded-full bg-[#214937] text-[#d8e86c] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ÁREAS + COMO FUNCIONA */}
+      <section id="areas" className="scroll-mt-4 bg-[#214937] px-5 py-24 text-[#f7f4ed] md:px-10 md:py-32">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <div>
+              <CourseSectionLabel light>Explore por área</CourseSectionLabel>
+              <h2 className="mt-7 max-w-[640px] text-balance text-[clamp(2.6rem,5.3vw,5.4rem)] font-normal leading-[.92] tracking-[-.06em]">{platformStats.areas} áreas. <em className="font-display text-[#d8e86c]">Um lugar.</em></h2>
+            </div>
+            <a href={STORE_URL} {...external} className="line-link text-[13px] font-extrabold text-[#d8e86c] md:pb-2" data-testid="link-cursos-todas-areas">Ver todas as áreas <ArrowUpRight size={15} className="ml-1 inline" /></a>
+          </div>
+          <div className="mt-14 grid gap-px overflow-hidden rounded-[1.5rem] border border-[#4f7058] bg-[#4f7058] sm:grid-cols-2 lg:grid-cols-4">
+            {storeAreas.map((area) => (
+              <a key={area.slug} href={areaUrl(area.slug)} {...external} className="group flex items-center justify-between gap-4 bg-[#28523e] px-6 py-5 transition-colors hover:bg-[#d8e86c] hover:text-[#214937]" data-testid={`link-area-${area.slug}`}>
+                <span>
+                  <span className="block text-[15px] font-extrabold tracking-[-.03em]">{area.label}</span>
+                  <span className="mt-1 block font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#a8bfaa] group-hover:text-[#536b37]">{area.count} cursos</span>
+                </span>
+                <ArrowUpRight size={16} className="shrink-0 transition-transform group-hover:rotate-45" />
+              </a>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section id="metodo" className="bg-[#214937] px-5 py-24 text-[#f7f4ed] md:px-10 md:py-32">
-        <div className="mx-auto max-w-[1320px]">
-          <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-28">
-            <div>
-              <CourseSectionLabel light>O jeito Zems de ensinar</CourseSectionLabel>
-              <h2 className="mt-7 max-w-[500px] text-balance text-[clamp(2.8rem,5.3vw,5.7rem)] font-normal leading-[.92] tracking-[-.06em]">Aprender junto muda a forma de <em className="font-display text-[#d8e86c]">agir.</em></h2>
-              <p className="mt-8 max-w-[360px] text-sm leading-[1.7] text-[#b9cab9]">Menos teoria isolada. Mais repertório compartilhado, exemplos do cotidiano e espaço para testar o raciocínio.</p>
-            </div>
-            <div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-[#4f7058] bg-[#4f7058] sm:grid-cols-2">
-              {[
-                ['01', 'Contexto', 'A gente começa pela decisão que está na mesa — não pela definição no slide.'],
-                ['02', 'Repertório', 'Conceitos traduzidos para a rotina de quem vende, contrata, compra e lidera.'],
-                ['03', 'Prática', 'Exercícios com dados, situações e escolhas que poderiam acontecer na sua empresa.'],
-                ['04', 'Continuidade', 'Materiais e combinados para levar o aprendizado para a próxima reunião.'],
-              ].map(([number, title, copy]) => (
-                <div key={number} className="bg-[#28523e] p-6 transition-colors hover:bg-[#315b44] md:p-8">
-                  <span className="font-mono-custom text-[10px] text-[#d8e86c]">{number}</span>
-                  <h3 className="mt-12 text-xl font-extrabold tracking-[-.04em]">{title}</h3>
-                  <p className="mt-3 text-sm leading-[1.65] text-[#b9cab9]">{copy}</p>
-                </div>
+          <div id="como-funciona" className="mt-24 scroll-mt-4">
+            <CourseSectionLabel light>Como funciona</CourseSectionLabel>
+            <ol className="mt-8 grid gap-4 md:grid-cols-3">
+              {steps.map(([number, title, copy]) => (
+                <li key={number} className="flex items-start gap-5 border-t border-[#4f7058] pt-6">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#d8e86c] font-mono-custom text-[12px] text-[#214937]">{number}</span>
+                  <div>
+                    <h3 className="text-xl font-extrabold tracking-[-.04em]">{title}</h3>
+                    <p className="mt-1 text-sm leading-[1.6] text-[#b9cab9]">{copy}</p>
+                  </div>
+                </li>
               ))}
-            </div>
-          </div>
-          <div className="mt-20 flex flex-col items-start justify-between gap-7 border-t border-[#4f7058] pt-6 md:flex-row md:items-center">
-            <div className="flex items-center gap-3 text-sm font-semibold text-[#d9e3d6]"><Layers3 size={18} className="text-[#d8e86c]" /> Uma linguagem comum para decisões melhores.</div>
-            <a href="#inscricao" className="line-link text-[13px] font-extrabold text-[#d8e86c]" data-testid="link-cursos-metodo-cta">Quero conversar sobre uma turma <ArrowRight size={16} className="ml-2 inline" /></a>
+            </ol>
           </div>
         </div>
       </section>
 
-      <section id="duvidas" className="bg-[#f5f3ec] px-5 py-24 md:px-10 md:py-32">
+      {/* FAQ */}
+      <section id="duvidas" className="scroll-mt-4 bg-[#f5f3ec] px-5 py-24 md:px-10 md:py-32">
         <div className="mx-auto grid max-w-[1100px] gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-24">
           <div>
-            <CourseSectionLabel>Perguntas honestas</CourseSectionLabel>
-            <h2 className="mt-7 text-balance text-[clamp(2.8rem,4.8vw,5rem)] font-normal leading-[.94] tracking-[-.06em] text-[#214937]">Antes de colocar o time na <em className="font-display text-[#8a9e47]">sala.</em></h2>
-            <p className="mt-7 max-w-[290px] text-sm leading-[1.7] text-[#667c70]">Ainda ficou uma pergunta? A conversa começa por ela.</p>
+            <CourseSectionLabel>Dúvidas</CourseSectionLabel>
+            <h2 className="mt-7 text-balance text-[clamp(2.6rem,4.8vw,4.8rem)] font-normal leading-[.94] tracking-[-.06em] text-[#214937]">Perguntas <em className="font-display text-[#8a9e47]">honestas.</em></h2>
+            <p className="mt-7 max-w-[290px] text-sm leading-[1.7] text-[#667c70]">Ficou outra? A conversa começa por ela.</p>
           </div>
           <div className="border-t border-[#cbd7c8]">
             {faqs.map(([question, answer], index) => {
               const isOpen = openFaq === index;
               return (
                 <div key={question} className="border-b border-[#cbd7c8]">
-                  <button onClick={() => setOpenFaq(isOpen ? null : index)} className="flex w-full items-center justify-between gap-5 py-6 text-left text-base font-extrabold tracking-[-.025em] text-[#214937]" aria-expanded={isOpen} data-testid={`button-cursos-faq-${index}`}>
+                  <button onClick={() => setOpenFaq(isOpen ? null : index)} className="flex w-full items-center justify-between gap-5 py-6 text-left text-base font-extrabold tracking-[-.025em] text-[#214937]" aria-expanded={isOpen} aria-controls={`faq-answer-${index}`} data-testid={`button-cursos-faq-${index}`}>
                     <span>{question}</span>
-                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#b5c8b6] transition-transform duration-300 ${isOpen ? 'rotate-180 bg-[#d8e86c]' : ''}`}><ChevronDown size={15} /></span>
+                    <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#b5c8b6] transition-all duration-300 ${isOpen ? 'rotate-180 border-[#d8e86c] bg-[#d8e86c]' : ''}`}><ChevronDown size={15} /></span>
                   </button>
-                  {isOpen && <div className="max-w-[560px] pb-6 pr-10 text-sm leading-[1.7] text-[#667c70]" data-testid={`text-cursos-faq-answer-${index}`}>{answer}</div>}
+                  <div id={`faq-answer-${index}`} className={`grid transition-[grid-template-rows] duration-300 ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                    <div className="overflow-hidden">
+                      <p className="max-w-[560px] pb-6 pr-10 text-sm leading-[1.7] text-[#667c70]" data-testid={`text-cursos-faq-answer-${index}`}>{answer}</p>
+                    </div>
+                  </div>
                 </div>
               );
             })}
@@ -338,23 +294,24 @@ function Cursos() {
         </div>
       </section>
 
-      <section id="inscricao" className="bg-[#d8e86c] px-5 py-20 md:px-10 md:py-28">
+      {/* CTA */}
+      <section id="inscricao" className="scroll-mt-4 bg-[#d8e86c] px-5 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[1fr_.72fr] lg:gap-28">
           <div>
-            <CourseSectionLabel>O próximo passo</CourseSectionLabel>
-            <h2 className="mt-7 max-w-[760px] text-balance text-[clamp(3.1rem,6.8vw,7.2rem)] font-normal leading-[.88] tracking-[-.07em] text-[#214937]">Uma conversa curta pode organizar o <em className="font-display">próximo ciclo.</em></h2>
-            <p className="mt-8 max-w-[450px] text-[15px] leading-[1.7] text-[#385b42]">Conte quem participa, qual decisão está pedindo mais clareza e o momento da empresa. A gente indica a trilha mais útil — sem empurrar uma solução pronta.</p>
+            <CourseSectionLabel>Para o seu time</CourseSectionLabel>
+            <h2 className="mt-7 max-w-[760px] text-balance text-[clamp(2.9rem,6.5vw,6.8rem)] font-normal leading-[.88] tracking-[-.07em] text-[#214937]">Não sabe por onde <em className="font-display">começar?</em></h2>
+            <p className="mt-8 max-w-[420px] text-[15px] leading-[1.7] text-[#385b42]">Conte quem vai estudar e o que precisa melhorar. A gente monta a trilha.</p>
             <div className="mt-10 flex flex-col gap-3 text-sm font-extrabold text-[#214937]">
-              <a href="mailto:oi@zems.com.br?subject=Quero%20me%20inscrever%20nos%20cursos%20Zems" className="flex items-center gap-3 hover:underline" data-testid="link-cursos-email"><Mail size={16} /> oi@zems.com.br</a>
-              <a href="tel:+551130301717" className="flex items-center gap-3 hover:underline" data-testid="link-cursos-phone">+55 11 3030 1717</a>
+              <a href={mailto('Quero ajuda para escolher cursos Zems')} className="flex items-center gap-3 hover:underline" data-testid="link-cursos-email"><Mail size={16} /> {CONTACT_EMAIL}</a>
+              <a href="tel:+551130301717" className="flex items-center gap-3 hover:underline" data-testid="link-cursos-phone"><Phone size={16} /> +55 11 3030 1717</a>
             </div>
           </div>
           <div className="flex flex-col justify-end rounded-[1.5rem] bg-[#214937] p-7 text-[#f7f4ed] md:p-9">
-            <div className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#a8bfaa]">Turmas e formatos</div>
-            <h3 className="mt-5 text-3xl font-extrabold leading-[1] tracking-[-.06em]">Vamos encontrar o formato que cabe na sua operação.</h3>
-            <p className="mt-4 text-sm leading-[1.65] text-[#b9cab9]">Turmas abertas, formação in company e trilhas desenhadas para o seu time.</p>
-            <a href="mailto:oi@zems.com.br?subject=Quero%20falar%20sobre%20uma%20turma%20Zems" className="group mt-8 flex items-center justify-between rounded-full bg-[#d8e86c] px-5 py-3.5 text-[13px] font-extrabold text-[#214937] transition-transform hover:scale-[1.02]" data-testid="link-cursos-enroll">
-              Quero falar sobre uma turma <span className="grid h-7 w-7 place-items-center rounded-full bg-[#214937] text-[#d8e86c] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
+            <div className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#a8bfaa]">Já sabe o que quer?</div>
+            <h3 className="mt-5 text-3xl font-extrabold leading-[1] tracking-[-.06em]">Matricule-se direto na plataforma.</h3>
+            <p className="mt-4 text-sm leading-[1.65] text-[#b9cab9]">{platformStats.courses} cursos, certificado gratuito e acesso imediato.</p>
+            <a href={STORE_URL} {...external} className="group mt-8 flex items-center justify-between rounded-full bg-[#d8e86c] px-5 py-3.5 text-[13px] font-extrabold text-[#214937] transition-transform hover:scale-[1.02]" data-testid="link-cursos-enroll">
+              Ir para a plataforma <span className="grid h-7 w-7 place-items-center rounded-full bg-[#214937] text-[#d8e86c] transition-transform group-hover:rotate-45"><ArrowUpRight size={14} /></span>
             </a>
           </div>
         </div>
@@ -364,19 +321,22 @@ function Cursos() {
         <div className="mx-auto max-w-[1320px]">
           <div className="flex flex-col justify-between gap-10 border-b border-[#52735c] pb-12 md:flex-row md:items-start">
             <div>
-              <CourseLogo />
+              <CourseLogo testId="link-cursos-footer-logo" />
               <p className="mt-5 max-w-[260px] text-sm leading-[1.6] text-[#a9c0aa]">Repertório para decidir.<br />Clareza para crescer.</p>
             </div>
             <div className="grid grid-cols-2 gap-x-16 gap-y-3 text-[12px] font-semibold md:grid-cols-3">
               <div className="col-span-2 mb-2 font-mono-custom text-[10px] uppercase tracking-[.15em] text-[#91ae94] md:col-span-1">Navegue</div>
               <Link href="/" className="transition-colors hover:text-[#d8e86c]" data-testid="link-cursos-footer-home">Início</Link>
-              <a href="#catalogo" className="transition-colors hover:text-[#d8e86c]" data-testid="link-cursos-footer-catalogo">Catálogo</a>
-              <a href="#metodo" className="transition-colors hover:text-[#d8e86c]" data-testid="link-cursos-footer-metodo">Método</a>
+              <a href="#catalogo" className="transition-colors hover:text-[#d8e86c]" data-testid="link-cursos-footer-catalogo">Cursos</a>
+              <a href="#plano" className="transition-colors hover:text-[#d8e86c]" data-testid="link-cursos-footer-plano">Plano Ilimitado</a>
               <a href="#duvidas" className="transition-colors hover:text-[#d8e86c]" data-testid="link-cursos-footer-duvidas">Dúvidas</a>
-              <a href="mailto:oi@zems.com.br?subject=Quero%20conhecer%20os%20cursos%20Zems" className="transition-colors hover:text-[#d8e86c]" data-testid="link-cursos-footer-contact">Fale com a Zems</a>
+              <a href={STORE_URL} {...external} className="transition-colors hover:text-[#d8e86c]" data-testid="link-cursos-footer-loja">Área do aluno</a>
             </div>
           </div>
-          <div className="flex flex-col justify-between gap-3 pt-6 font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#91ae94] sm:flex-row"><span>© 2024 Zems consultoria</span><span>Cursos para fazer sentido.</span></div>
+          <div className="flex flex-col justify-between gap-3 pt-6 font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#91ae94] sm:flex-row">
+            <span>© {new Date().getFullYear()} Zems consultoria</span>
+            <span className="flex gap-4"><Link href="/termos-de-uso" className="hover:text-[#d8e86c]">Termos de uso</Link><Link href="/privacidade" className="hover:text-[#d8e86c]">Privacidade</Link></span>
+          </div>
         </div>
       </footer>
     </main>
